@@ -1,22 +1,30 @@
 from chrome import ChromeManager
+from Twitter_Config import TWITTER_USER, TWEET, RETWEET
+
+
+class Tweet:
+    tweet_element = None
+    tweet_content = None
+    retweet_content = None
+    quote_content = None
+    tags = None
+
+    def __init__(self, tweet_element):
+        self.tweet_element = tweet_element
 
 
 class TwitterUser:
     # non-public variables
     _cm: ChromeManager = None
     _page_loaded = False
-    _css_selectors = {
-        'public_username': 'div#react-root div.css-1dbjc4n.r-1g94qm0 > div > div > div.css-1dbjc4n.r-1awozwy.r-18u37iz.r-dnmrzs > div > span:nth-child(1) > span',
-        'public_location': 'div#react-root div > span:nth-child(1) > span > span',
-        'tweets': 'article'
-    }
 
     # user info
     username = None
     public_username = None
     twitter_url = None
-    tweets = []
     public_location = None
+    analysed_location = None
+    tweets = []
 
     def __init__(self, chrome_manager, twitter_url):
         # initialize driver and load user twitter page
@@ -25,38 +33,36 @@ class TwitterUser:
 
         # fill user info
         self.username = '@' + twitter_url.split('/')[-1]
-        self.public_username = self._get_user_info(self._css_selectors['public_username'])
-        self.public_location = self._get_user_info(self._css_selectors['public_location'])
+        self.public_username = self._get_user_info(TWITTER_USER['public_username'])
+        self.public_location = self._get_user_info(TWITTER_USER['public_location'])
 
     def _load_user_twitter_page(self, url):
         self.twitter_url = url
-        self._page_loaded = self._cm.load_page(url, 'article')
+        self._page_loaded = self._cm.load_page(url, wait_element_selector=TWITTER_USER['tweets'])
 
     def _get_user_info(self, selector):
         if self._page_loaded:
             return self._cm.get_elements(selector, single_element=True).text.strip()
-
-    def _get_tweet_details(self, tweet_element):
-        pass
+        return None
 
     def get_user_tweets(self, tweets_count=100):
         if self._page_loaded:
             current_tweets_count = 0
             while current_tweets_count < tweets_count:
                 self._cm.scroll_page(scroll_count=1)
-                tweets = self._cm.get_elements(self._css_selectors['tweets'])
+                tweets = self._cm.get_elements(TWEET_USER['tweets'])
                 for tweet in tweets:
-                    self.tweets.append(self._get_tweet_details(tweet))
+                    self.tweets.append(Tweet(tweet))
                     current_tweets_count += 1
 
     def __repr__(self):
         return (
-            '<' +
-            f'User: {self.public_username} - {self.username} / ' +
-            f'Location: {self.public_location} / ' +
-            f'Tweets: {len(self.tweets)} / ' +
-            f'Url: {self.twitter_url}'
-            '>'
+                '<' +
+                f'User: {self.public_username} - {self.username} / ' +
+                f'Location: {self.public_location} / ' +
+                f'Tweets: {len(self.tweets)} / ' +
+                f'Url: {self.twitter_url}'
+                '>'
         )
 
 

@@ -28,9 +28,9 @@ class ChromeManager:
             print('[INFO] Timed out waiting for page to load')
             return False
 
-    def load_page(self, url, wait_element_value, wait_element_type=By.CSS_SELECTOR, wait_timeout=10):
+    def load_page(self, url, wait_element_selector, wait_element_type=By.CSS_SELECTOR, wait_timeout=10):
         self._driver.get(url)
-        return self._wait_for_element(wait_element_value, wait_element_type, wait_timeout)
+        return self._wait_for_element(wait_element_selector, wait_element_type, wait_timeout)
 
     def get_elements(self, selector, single_element=False):
         elements = self._driver.find_elements_by_css_selector(selector)
