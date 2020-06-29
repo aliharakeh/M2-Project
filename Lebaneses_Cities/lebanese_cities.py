@@ -260,7 +260,6 @@ if __name__ == '__main__':
     # data = get_cities_info('cities_3.json')
     # save('cities_4.json', data)
 
-    # TODO: clean arabic letters
     # data = get_cities_2_levels_dict('cities_4.json')
     # save('cities_5.json', data)
 
