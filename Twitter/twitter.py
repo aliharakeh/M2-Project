@@ -1,5 +1,6 @@
 from Scrapping.chrome import ChromeManager
 from twitter_config import TWEETS, PROBLEM_CHARS
+from .tweet import Tweet
 import csv
 import re
 
@@ -23,7 +24,7 @@ class Twitter:
                 self._cm.scroll_page(scroll_count=1)
                 tweets = self._cm.get_elements(TWEETS['css-selector'])
                 for tweet in tweets:
-                    self.tweets.append(tweet.text)  # TODO: can replace this with Tweet() object
+                    self.tweets.append(Tweet(tweet))  # TODO: can be Tweet(tweet) object or tweet.text
                     current_tweets_count += 1
                     if current_tweets_count == tweets_count:
                         break
@@ -33,14 +34,13 @@ class Twitter:
             for _ in self._cm.scroll_page(scroll_till_end=True, external_func=True):
                 tweets = self._cm.get_elements(TWEETS['css-selector'])
                 for tweet in tweets:
-                    self.tweets.append(tweet.text)  # TODO: can replace this with Tweet() object
+                    self.tweets.append(tweet.text)  # TODO: can be Tweet(tweet) object or tweet.text
                 print(f'[INFO] Tweets = {len(self.tweets)}')
 
     def display_tweets(self):
         for index, tweet in enumerate(self.tweets):
             print(f'[Tweet {index}]')
             print(tweet)
-            print('---------------------------------------------------------------------------\n')
 
     def save_tweets_to_csv(self):
         filename = re.sub(PROBLEM_CHARS, '_', self.twitter_page)
