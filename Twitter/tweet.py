@@ -1,38 +1,28 @@
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.remote.webelement import WebElement
-from twitter_config import CITIES_DICTIONARY, TWEET
-import json
+from twitter_config import TWEET, PROBLEM_CHARS
 from difflib import SequenceMatcher
 import re
 
-with open(CITIES_DICTIONARY, 'r', encoding='utf-8') as f:
-    Cities = json.loads(f.read())
 
+class TweetParser:
+    Cities = {}
 
-class Tweet:
-    def __init__(self, tweet_element):
-        # instance variables
-        self.tweet_element: WebElement = tweet_element
-        self.tweet_text = ''
-        self.tags = None
-        self.tweet_user = None
-        self.tweet_user_link = None
-        self.tweet_time = None
+    @staticmethod
+    def get_attribute_from_selector(tweet_element: WebElement, selector, attribute_name):
+        try:
+            e = tweet_element.find_element_by_css_selector(selector)
+            return e.get_attribute(attribute_name) if attribute_name != 'text' else e.text
+        except NoSuchElementException:
+            return None
 
-        # parse tweet
-        self.__parse_tweet()
+    @staticmethod
+    def get_tweet_words(text):
+        text = re.sub(PROBLEM_CHARS, '', text)
+        return map(lambda s: s.strip(), text.split(' '))
 
-    def __parse_tweet(self):
-        self.tweet_text = self.tweet_element.find_element_by_css_selector(TWEET['text']).text
-        self.tweet_user = self.tweet_element.find_element_by_css_selector(TWEET['username']).text
-        self.tweet_user_link = self.tweet_element.find_element_by_css_selector(TWEET['user-link']).get_attribute('href')
-        self.tweet_time = self.tweet_element.find_element_by_css_selector(TWEET['time']).text
-        tags = re.search(TWEET['tags'], self.tweet_text)
-        self.tags = tags.groups() if tags else None
-
-    def __get_tweet_words(self):
-        return map(lambda s: s.strip(), self.tweet_text.split(' '))
-
-    def __check_location(self, word, ratio=0.8):
+    @staticmethod
+    def check_and_get_location(word, ratio=0.8):
         """
         This ratio value helps getting the real locations and some predicted ones if the 2 keys are available
         Real Locations have ratio >= 0.8
@@ -50,8 +40,8 @@ class Tweet:
         k1 = word[0]
         k2 = word[1]
         possible_city = None
-        if k1 in Cities and k2 in Cities[k1]:
-            city_list = Cities[k1][k2]
+        if k1 in TweetParser.Cities and k2 in TweetParser.Cities[k1]:
+            city_list = TweetParser.Cities[k1][k2]
             for city in city_list:
                 city_lowercase = city.lower()
                 if word == city_lowercase:
@@ -60,23 +50,37 @@ class Tweet:
                     possible_city = city
         return possible_city
 
-    def get_tweet_locations(self, ratio=0.8):
-        words = self.__get_tweet_words()
+    @staticmethod
+    def get_tweet_locations(tweet_text, ratio=0.8):
+        words = TweetParser.get_tweet_words(tweet_text)
         locations = {}
         for word in words:
-            location = self.__check_location(word, ratio)
+            location = TweetParser.check_and_get_location(word, ratio)
             if location:
                 if word not in locations:
                     locations[location] = 0
                 locations[location] += 1
         return sorted(locations.items(), key=lambda l: l[1], reverse=True)
 
-    def __repr__(self):
-        return (
-            f'<Tweet: {self.tweet_user}>\n' +
-            f'[Time]: {self.tweet_time}\n' +
-            f'[User Url]: {self.tweet_user_link}\n' +
-            f'[Tags]: {self.tags}\n' +
-            f'[Text]: {self.tweet_text}\n' +
-            '------------------------------------------'
-        )
+    @staticmethod
+    def parse_tweet(tweet_element, include_locations=True):
+        tweet_text = TweetParser.get_attribute_from_selector(tweet_element, TWEET['text'], 'text')
+
+        tweet_tags = []
+        if tweet_text:
+            tags = re.findall(TWEET['tags'], tweet_text)
+            tweet_tags = list({tag for tag in tags})
+
+        locations = None
+        if include_locations:
+            locations = TweetParser.get_tweet_locations(tweet_text)
+
+        return {
+            'username': TweetParser.get_attribute_from_selector(tweet_element, TWEET['username'], 'text'),
+            'user-link': TweetParser.get_attribute_from_selector(tweet_element, TWEET['user-link'], 'href'),
+            'time': TweetParser.get_attribute_from_selector(tweet_element, TWEET['time'], 'text'),
+            'text': tweet_text,
+            'tags': tweet_tags,
+            'innerHTML': tweet_element.get_attribute('innerHTML'),
+            'locations': locations
+        }

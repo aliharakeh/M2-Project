@@ -1,8 +1,7 @@
 from Scrapping.chrome import ChromeManager
-from twitter_config import TWEETS, PROBLEM_CHARS
-from .tweet import Tweet
-import csv
-import re
+from twitter_config import TWEETS
+from .tweet import TweetParser
+import json
 
 
 class Twitter:
@@ -11,11 +10,28 @@ class Twitter:
         self._cm: ChromeManager = chrome_manager
         self._page_loaded = False
         self.twitter_page = None
-        self.tweets = []
+        self.tweets = {}
 
     def load_page(self, twitter_page):
         self.twitter_page = twitter_page
         self._page_loaded = self._cm.load_page(self.twitter_page, wait_element_selector=TWEETS['css-selector'])
+
+    def __save_tweet(self, tweet, include_locations=False):
+        """
+        Tweet Details Choices:
+        ---------------------
+            - TweetParser.parse_tweet(tweet)
+            - tweet.text
+            - tweet.get_attribute('innerHTML')
+            - tweet.get_attribute('outerHTML')
+
+        * Note: Can be overridden when used in inheritance
+        """
+        details = TweetParser.parse_tweet(tweet, include_locations=include_locations)
+        key = f'{details["username"]}_{details["time"]}'
+        if key == 'None_None' and 'None_None' in self.tweets:
+            key = f'{len(self.tweets)}{key}'
+        self.tweets[key] = details
 
     def get_some_tweets(self, tweets_count=100):
         if self._page_loaded:
@@ -24,7 +40,7 @@ class Twitter:
                 self._cm.scroll_page(scroll_count=1)
                 tweets = self._cm.get_elements(TWEETS['css-selector'])
                 for tweet in tweets:
-                    self.tweets.append(Tweet(tweet))  # TODO: can be Tweet(tweet) object or tweet.text
+                    self.__save_tweet(tweet)
                     current_tweets_count += 1
                     if current_tweets_count == tweets_count:
                         break
@@ -34,7 +50,7 @@ class Twitter:
             for _ in self._cm.scroll_page(scroll_till_end=True, external_func=True):
                 tweets = self._cm.get_elements(TWEETS['css-selector'])
                 for tweet in tweets:
-                    self.tweets.append(tweet.text)  # TODO: can be Tweet(tweet) object or tweet.text
+                    self.__save_tweet(tweet)
                 print(f'[INFO] Tweets = {len(self.tweets)}')
 
     def display_tweets(self):
@@ -42,9 +58,6 @@ class Twitter:
             print(f'[Tweet {index}]')
             print(tweet)
 
-    def save_tweets_to_csv(self):
-        filename = re.sub(PROBLEM_CHARS, '_', self.twitter_page)
-        with open(f'{filename}.csv', 'w', encoding='utf-8') as csvfile:
-            writer = csv.writer(csvfile, lineterminator='\n', delimiter=',', quotechar='"')
-            for index, tweet in enumerate(self.tweets):
-                writer.writerow((index, tweet))
+    def save_as_json(self, filename):
+        with open(f'{filename}.json', 'w', encoding='utf8') as file:
+            file.write(json.dumps(self.tweets, indent=2, ensure_ascii=False))
