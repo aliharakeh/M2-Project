@@ -1,1 +1,1 @@
-from .chrome import ChromeManager
+from Scrapping.chrome import ChromeManager

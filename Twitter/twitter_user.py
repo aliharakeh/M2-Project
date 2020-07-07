@@ -1,5 +1,5 @@
 from twitter_config import TWITTER_USER
-from .twitter import Twitter
+from Twitter.twitter import Twitter
 
 
 class TwitterUser(Twitter):

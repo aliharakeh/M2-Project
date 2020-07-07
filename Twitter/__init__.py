@@ -1,2 +1,2 @@
-from .twitter import Twitter
-from .twitter_user import TwitterUser
+from Twitter.twitter import Twitter
+from Twitter.twitter_user import TwitterUser

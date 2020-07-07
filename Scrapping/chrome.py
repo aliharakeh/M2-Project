@@ -63,6 +63,12 @@ class ChromeManager:
         scrolls = 0
 
         while True:
+
+            # apply scroll function if available
+            if external_func:
+                print('Running External Code')
+                yield
+
             # scroll page
             self._driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
@@ -71,11 +77,6 @@ class ChromeManager:
 
             # increment scroll count
             scrolls += 1
-
-            # apply scroll function if available
-            if external_func:
-                print('Running External Code')
-                yield
 
             # get new height
             new_height = self._driver.execute_script("return document.body.scrollHeight")
