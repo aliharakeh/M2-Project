@@ -61,13 +61,14 @@ class ChromeManager:
         # define initial page height for 'while' loop
         last_height = self._driver.execute_script("return document.body.scrollHeight")
         scrolls = 0
+        is_end_reached = False
 
         while True:
 
             # apply scroll function if available
             if external_func:
-                print('Running External Code')
-                yield
+                print('Running External Code...')
+                yield is_end_reached
 
             # scroll page
             self._driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -82,11 +83,16 @@ class ChromeManager:
             new_height = self._driver.execute_script("return document.body.scrollHeight")
 
             # stop conditions
-            stop_condition = (new_height == last_height) if scroll_till_end else (scrolls == scroll_count)
+            is_end_reached = new_height == last_height
+            is_scroll_count_reached = scrolls == scroll_count
+            stop_condition = is_end_reached if scroll_till_end else (is_scroll_count_reached or is_end_reached)
             if stop_condition:
                 break
             else:
                 last_height = new_height
+
+        if not external_func:
+            return is_end_reached
 
     def get_page_source(self):
         return self._driver.page_source

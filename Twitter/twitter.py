@@ -2,7 +2,6 @@ from Scrapping.chrome import ChromeManager
 from twitter_config import TWEETS
 from Twitter.tweet import TweetParser
 import json
-import time
 
 
 class Twitter:
@@ -37,8 +36,9 @@ class Twitter:
     def get_some_tweets(self, tweets_count=100, include_locations=False):
         if self._page_loaded:
             current_tweets_count = 0
-            while current_tweets_count < tweets_count:
-                self._cm.scroll_page(scroll_count=1)
+            end_reached = False
+            while current_tweets_count < tweets_count or end_reached:
+                end_reached = self._cm.scroll_page(scroll_count=1)
                 tweets = self._cm.get_elements(TWEETS['css-selector'])
                 for tweet in tweets:
                     self.__save_tweet(tweet, include_locations)
