@@ -20,7 +20,7 @@ if __name__ == '__main__':
     cm = ChromeManager(driver_path=CHROME_DRIVER)
     t = Translate(cm)
     data = read_data('sentimental_analysis/sentimental_analysis_tweets.json')
-    data = data[:5000]
+    data = data[:500]
     res = []
     for d in data:
         if not d['username']:

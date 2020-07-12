@@ -28,7 +28,14 @@ class ChromeManager:
 
     def load_page(self, url, wait_element_selector, wait_element_type=By.CSS_SELECTOR, wait_timeout=10):
         self._driver.get(url)
-        return self._wait_for_element(wait_element_selector, wait_element_type, wait_timeout)
+        try_count = 0
+        page_loaded = False
+        while try_count < 5:
+            page_loaded = self._wait_for_element(wait_element_selector, wait_element_type, wait_timeout)
+            if page_loaded:
+                return page_loaded
+            try_count += 1
+        return page_loaded
 
     def get_elements(self, selector, single_element=False):
         elements = self._driver.find_elements_by_css_selector(selector)
