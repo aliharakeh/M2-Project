@@ -36,7 +36,7 @@ class ChromeManager:
             return elements[0] if len(elements) == 1 else None
         return elements
 
-    def click_element(self, selector, sleep_after_click=2):
+    def click_element(self, selector, delay_after_click=2):
         try:
             self._driver.find_element_by_css_selector(selector).click()
             print('[INFO] Click...')
@@ -47,8 +47,8 @@ class ChromeManager:
             return 0
 
         finally:
-            if sleep_after_click:
-                time.sleep(sleep_after_click)
+            if delay_after_click:
+                time.sleep(delay_after_click)
 
     def scroll_page(self, scroll_count=10, scroll_till_end=False, scroll_delay_sec=3, external_func=False):
         """
@@ -96,6 +96,18 @@ class ChromeManager:
 
     def get_page_source(self):
         return self._driver.page_source
+
+    def set_value(self, selector, value):
+        element = self.get_elements(selector, single_element=True)
+        if element:
+            element.clear()
+            element.send_keys(value)
+
+    def get_value(self, selector):
+        e = self.get_elements(selector, single_element=True)
+        if e:
+            return e.text
+        return None
 
     def close(self):
         self._driver.close()
