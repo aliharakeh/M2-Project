@@ -48,7 +48,7 @@ class Twitter:
 
     def get_all_tweets(self, include_locations=False):
         if self._page_loaded:
-            for _ in self._cm.scroll_page(scroll_till_end=True, external_func=True, scroll_delay_sec=30):
+            for _ in self._cm.scroll_page(scroll_till_end=True, external_func=True, scroll_delay_sec=10):
                 tweets = self._cm.get_elements(TWEETS['css-selector'])
                 for tweet in tweets:
                     self.__save_tweet(tweet, include_locations)
