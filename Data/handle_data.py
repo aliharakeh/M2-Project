@@ -14,6 +14,7 @@ def read_data(filename):
 
 
 def save_json(filename, data):
+    filename = filename.replace('.json', '')
     with open(f'{filename}.json', 'w', encoding='utf-8') as file:
         file.write(json.dumps(data, indent=2, ensure_ascii=False))
 
@@ -58,12 +59,12 @@ def json_to_csv(filename, data_file):
 
 
 if __name__ == '__main__':
-    files = [
-        '#corona_lebanon_tweets_11_7_2020.json',
-        '#corona_tweets_12_7_2020.json',
-        'healthcare_tweets_10_7_2020.json',
-        'medical_tweets_11_7_2020.json'
-    ]
+    # files = [
+    #     '#corona_lebanon_tweets_11_7_2020.json',
+    #     '#corona_tweets_12_7_2020.json',
+    #     'healthcare_tweets_10_7_2020.json',
+    #     'medical_tweets_11_7_2020.json'
+    # ]
 
     # merge_files('sentimental_analysis', 'sentimental_analysis/sentimental_analysis_tweets')
     # data = read_data('sentimental_analysis/sentimental_analysis_tweets.json')
@@ -76,7 +77,18 @@ if __name__ == '__main__':
     #     clean_file(f'sentimental_analysis/without_html/{file.replace(".json", "")}',
     #                f'sentimental_analysis/with_html/{file}')
 
-    total = 0
-    for file in files:
-        total += get_tweet_count(f'sentimental_analysis/with_html/{file}')
-    print(total)  # 37,072
+    # total = 0
+    # for file in files:
+    #     total += get_tweet_count(f'sentimental_analysis/with_html/{file}')
+    # print(total)  # 37,072
+    # files = [
+    #     'sentimental_analysis\\#corona_lebanon_tweets_11_7_2020_range_0_5000.json',
+    #     'sentimental_analysis\\#corona_lebanon_tweets_11_7_2020_range_5000_10000.json',
+    #     'sentimental_analysis\\#corona_lebanon_tweets_11_7_2020_range_10000_12500.json',
+    #     'sentimental_analysis\\#corona_lebanon_tweets_11_7_2020_range_12500_15673.json'
+    # ]
+    # res = []
+    # for file in files:
+    #     res += read_data(file)
+    # save_json('sentimental_analysis\\translated\\#corona_lebanon_tweets_11_7_2020.json', res)
+    pass
