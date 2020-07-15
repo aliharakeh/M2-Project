@@ -1,0 +1,94 @@
+Getting Data:
+-------------
+
+	1) 
+	
+	Obstacle: 
+	---------
+	No direct data (for sentimental satisfaction level question)
+	
+	solution: 
+	---------
+	Get Tweets that are similar to our required end results. 
+	Here I'll use some tweets keywords that we can probably use to get what we need or at least something similar to it. 
+	For example, I tested some keywords such as: healthcare lebanon, medical lebanon, #كورونا_لبنان, #كورونا and I got some positive results as 
+	I scanned the top tweets for these keywords. These keywords can be used for answering the people satisfaction level on government 
+	work sentimental analysis, since any medical issues, healthcare systems issues, and corona increased cases can directly and indirectly 
+	represent the satisfaction level of the citizens.
+	
+	Example:
+	--------
+	Q: Satisfaction on ministery of medical actions?
+	A: data from healthcare lebanon, medical lebanon, #كورونا_لبنان, #كورونا 
+	
+	
+	Result:
+	-------
+	- 37,000 Tweets
+	- Tweets talking about the healthcare & medical system condition in corona situation
+	- Corona Tweets about corona cases and related stuff which indirectly can review the ministery actions (more cases = newgative response)
+	
+	***************************************************************************************************************************************
+	
+	2) 
+	
+	Obstacle: 
+	---------
+	Arabic & Lebanese Internet Language Text
+	
+	solution: 
+	---------
+	Automated Google Translate to translate the text
+	
+	Result:
+	-------
+	- Text was translated to English
+	- Translated Text quality was acceptable as it's not needed to be 100% correct and I just need the essence of it, i.e the general mood of these
+	text
+	
+	***************************************************************************************************************************************
+	
+	3) 
+	
+	Obstacle: 
+	---------
+	
+	
+	solution: 
+	---------
+	
+	
+	Result:
+	-------
+	
+	***************************************************************************************************************************************
+	
+	4) 
+	
+	Obstacle: 
+	---------
+	
+	
+	solution: 
+	---------
+	
+	
+	Result:
+	-------
+	
+	***************************************************************************************************************************************
+	
+	5) 
+	
+	Obstacle: 
+	---------
+	
+	
+	solution: 
+	---------
+	
+	
+	Result:
+	-------
+	
+	***************************************************************************************************************************************

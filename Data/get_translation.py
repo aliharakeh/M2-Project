@@ -90,12 +90,53 @@ def translate_arabic_only(filename, t):
     print(count)
 
 
+def translate_none_translated(filename, t):
+    data = read_data(filename)
+    res = []
+
+    for d in data:
+        if not d['translated_text']:
+            try:
+                translated_text = t.translate(d['text'])
+            except:
+                print('\n--------------------------------------------------------------')
+                print(d['text'])
+                print('--------------------------------------------------------------')
+                translated_text = input('Enter translation manually\n--> ')
+        else:
+            translated_text = d['translated_text']
+
+        res.append({
+            'username': d['username'],
+            'user-link': d['user-link'],
+            'time': d['time'],
+            'text': d['text'],
+            'translated_text': translated_text,
+            'tags': d['tags'],
+            'location': None
+        })
+
+    saved_filename = filename.replace('without_html', 'translated')
+    saved_filename = saved_filename.replace('.json', '_v2.json')
+    save_json(saved_filename, res)
+
+
 if __name__ == '__main__':
     cm = ChromeManager(driver_path=CHROME_DRIVER)
     t = Translate(cm)
 
+    files = [
+        'sentimental_analysis\\translated\\#corona_lebanon_tweets_11_7_2020_v2.json',
+        'sentimental_analysis\\translated\\#corona_tweets_12_7_2020_v2.json',
+        # 'sentimental_analysis\\translated\\healthcare_tweets_10_7_2020.json',
+        # 'sentimental_analysis\\translated\\medical_tweets_11_7_2020.json',
+    ]
+
     # translate_specific_range('sentimental_analysis\\without_html\\#corona_lebanon_tweets_11_7_2020.json', t)
 
-    translate_arabic_only('sentimental_analysis\\without_html\\healthcare_tweets_10_7_2020.json', t)
+    # translate_arabic_only('sentimental_analysis\\without_html\\healthcare_tweets_10_7_2020.json', t)
+
+    for file in files:
+        translate_none_translated(file, t)
 
     cm.close()
