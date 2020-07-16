@@ -20,3 +20,4 @@ TWEET = {
 PROBLEM_CHARS = r'[\[=\+/&<>;:!\\|*^\'"\?%$@)(_\,\.\t\r\n0-9-—\]]'
 
 CITIES_JSON = 'D:\\Desktop\\JetBrains_Pycharm_Projects\\twitter\\Lebaneses_Cities\\cities_5.json'
+CITIES_DETAILS_JSON = 'D:\\Desktop\\JetBrains_Pycharm_Projects\\twitter\\Lebaneses_Cities\\cities_6.json'

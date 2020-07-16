@@ -23,7 +23,7 @@ class TwitterUser(Twitter):
 
     def _get_user_info(self, selector):
         if self._page_loaded:
-            element = self._cm.get_elements(selector, single_element=True)
+            element = self._cm.get_element(selector)
             return element.text.strip() if element else element
         return None
 
