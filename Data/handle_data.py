@@ -41,13 +41,13 @@ def clean_file(filename, data_file):
     save_json(filename, res)
 
 
-def json_to_csv(src):
-    data = read_data(src)
-    with open(f'{src.replace(".json", "")}.csv', 'w', newline='', encoding='utf-8') as f:
+def json_to_csv(filename):
+    data = read_data(filename)
+    with open(f'{filename.replace(".json", "")}.csv', 'w', newline='', encoding='utf-8') as f:
         wr = csv.writer(f)
         wr.writerow([
             'username',
-            'user-link',
+            'user_link',
             'time',
             'text',
             'tags',
@@ -75,6 +75,41 @@ def json_to_csv(src):
             ])
 
 
+def jsons_to_csv(files, output_name):
+    with open(f'{output_name}.csv', 'w', newline='', encoding='utf-8') as f:
+        wr = csv.writer(f)
+        wr.writerow([
+            'username',
+            'user_link',
+            'time',
+            'text',
+            'tags',
+            'translated_text',
+            'sentiment',
+            'location',
+            'lat_long',
+            'lat',
+            'long'
+        ])
+        for file in files:
+            data = read_data(file)
+            for d in data:
+                lat, long = d['lat_long'].split(',')
+                wr.writerow([
+                    d['username'],
+                    d['user-link'],
+                    d['time'],
+                    d['text'].replace('\n', ' '),
+                    ';'.join(d['tags']) if len(d['tags']) > 0 else 'none',
+                    d['translated_text'].replace('\n', ' '),
+                    d['sentiment'],
+                    d['location'],
+                    d['lat_long'],
+                    lat,
+                    long
+                ])
+
+
 if __name__ == '__main__':
     files = [
         'sentimental_analysis\\dummy_locations\\#corona_lebanon_tweets_11_7_2020.json',
@@ -82,5 +117,6 @@ if __name__ == '__main__':
         'sentimental_analysis\\dummy_locations\\healthcare_tweets_10_7_2020.json',
         'sentimental_analysis\\dummy_locations\\medical_tweets_11_7_2020.json'
     ]
-    for file in files:
-        json_to_csv(file)
+    # for file in files:
+    #     json_to_csv(file)
+    jsons_to_csv(files, 'sentimental_analysis\\dummy_locations\\sentimental_analysis_tweets')
