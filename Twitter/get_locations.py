@@ -22,71 +22,149 @@ class LocationParser:
                 LocationParser.Cities_Details = json.loads(cities_file.read())
 
     @staticmethod
-    def get_words(text):
+    def get_words(text, max_words_in_an_element=5):
         """
-        returns a list of words
+        returns a list of words cleaned from any problem char. \n
+        PROBLEM_CHARS = '[\[=\+/&<>;:!\\|*^\'"\?%$@)(_\,\.\t\r\n0-9-—\]]'
         """
         text = re.sub(PROBLEM_CHARS, '', text)
-        return map(lambda s: s.strip(), text.split(' '))
+        words = text.split()
+        word_count = len(words)
+
+        result = []
+        for i in range(word_count):
+            for j in range(max_words_in_an_element):
+                if i + j < word_count:
+                    result.append(" ".join(words[i: i + j + 1]))
+
+        return result
 
     @staticmethod
-    def check_and_get_location(word, similarity_ratio=0.8):
+    def get_possible_locations(first_letter, second_letter):
         """
-        returns the exact locations name or possible location name if there was a match, else returns None
+        returns a list of locations that match any of the following conditions: \n
+        - locations that starts with first_letter & second_letter
+        - locations that starts with first_letter but not with second_letter
+        - [] if nothing starts with the first letter
+        """
+        if first_letter in LocationParser.Cities:
+            level_1_data = LocationParser.Cities[first_letter]
 
-        Note:
-        ----
-        This ratio value helps getting the real locations and some predicted ones if the 2 keys are available
-        Real Locations have ratio >= 0.8
-        Ratio of 0.6 gets us some predicted locations:
-        example:
-            --> word = saw
-            --> k1 = s, k2 = a
-            --> Cities['s']['a'] = [..., 'Sawfar']
-            --> SequenceMatcher(None, 'saw', 'Sawfar').ratio() >= 0.6
-            --> predicted location = 'Sawfar'
+            # locations that starts with first_letter & second_letter
+            if second_letter and second_letter in level_1_data:
+                return level_1_data[second_letter]
+
+            # locations that starts with first_letter but not with second_letter
+            else:
+                res = []
+                for locations in level_1_data.values():
+                    res += locations
+                return res
+
+        # nothing starts with the first letter
+        else:
+            return []
+
+    @staticmethod
+    def get_location(word, similarity_ratio=0.8):
+        """
+        returns the exact location name or the best predicted/possible location name if there was any match,
+        else returns None
         """
         if len(word) < 2 or LocationParser.Cities is None:
             return None
 
+        # initialize
         word = word.lower()
-        k1 = word[0]
-        k2 = word[1]
-        possible_city = None
-        if k1 in LocationParser.Cities and k2 in LocationParser.Cities[k1]:
-            city_list = LocationParser.Cities[k1][k2]
-            for city in city_list:
-                city_lowercase = city.lower()
-                if word == city_lowercase:
-                    return city
-                if SequenceMatcher(None, word, city_lowercase).ratio() >= similarity_ratio:
-                    possible_city = city
-        return possible_city
+        best_predicted_location = (None, None)
+
+        # check possible locations
+        locations = LocationParser.get_possible_locations(word[0], word[1])
+        for location in locations:
+            location_lower = location.lower()
+
+            # check exact location name
+            if word == location_lower:
+                return location
+
+            # check similarity ratio
+            local_similarity_ratio = SequenceMatcher(None, word, location_lower).ratio()
+            same_word_count = len(word.split()) == len(location.split())
+            if same_word_count and local_similarity_ratio >= similarity_ratio:
+                if not best_predicted_location[0] or local_similarity_ratio > best_predicted_location[1]:
+                    best_predicted_location = (location, local_similarity_ratio)
+
+        return best_predicted_location[0]
 
     @staticmethod
     def get_locations(text, similarity_ratio=0.8):
         """
-        returns a sorted list of locations in the provided text with the their frequencies
+        returns a descending sorted list of location tuples containing the location name and its frequency
+        found in the provided text
         """
         if LocationParser.Cities is None:
             return []
 
+        # get words list
         words = LocationParser.get_words(text)
         locations = {}
+
+        # check if any word refers to a location
         for word in words:
-            location = LocationParser.check_and_get_location(word, similarity_ratio)
+            location = LocationParser.get_location(word, similarity_ratio)
+
+            # add the location to the possible locations if it matches any location data
             if location:
-                if word not in locations:
+                if location not in locations:
                     locations[location] = 0
                 locations[location] += 1
+
+        # return a descending sorted list of tuples containing the location name and it's frequency
         return sorted(locations.items(), key=lambda l: l[1], reverse=True)
 
     @staticmethod
     def get_location_aliases(location):
-        location_data = LocationParser.Cities_Details[location]
+        """
+        returns the other aliases of a location
+        """
+        # get location data
+        location_data = LocationParser.Cities_Details.get(location, {})
+
+        # if location is not found, check if it refers to a location and get its data
+        if not location_data:
+            location = LocationParser.get_location(location)
+            location_data = LocationParser.Cities_Details.get(location, {})
+
+        # combine the aliases
         res = []
-        if location_data['latin']:
-            res += location_data['latin']
-        if location_data['non-latin']:
-            res += location_data['non-latin']
+        latin = location_data.get('latin', [])
+        non_latin = location_data.get('non-latin', [])
+        if latin:
+            res += latin
+        if non_latin:
+            res += non_latin
+
+        # return unique aliases
         return list({r for r in res})
+
+    @staticmethod
+    def get_arabic_alias(location):
+        aliases = LocationParser.get_location_aliases(location)
+        for alias in aliases:
+            if re.search('[\u0621-\u064A]+', alias):
+                return alias
+
+    @staticmethod
+    def get_location_details(location):
+        pass
+
+
+if __name__ == '__main__':
+    from twitter_config import CITIES_JSON, CITIES_DETAILS_JSON
+
+    LocationParser.load_locations(CITIES_JSON)
+    LocationParser.load_locations_details(CITIES_DETAILS_JSON)
+
+    l = LocationParser.get_locations('Hello, I\'m from baabda where i Aakkar el Aatiqa live in beirut adn beirut')
+    for x, f in l:
+        print(LocationParser.get_arabic_alias(x))
