@@ -51,3 +51,9 @@ class TwitterUser(Twitter):
                 f'[Possible Locations]: {self.analysed_locations}\n' +
                 '*************************************************************'
         )
+
+
+class TwitterUserTwint:
+
+    def __init__(self):
+        pass

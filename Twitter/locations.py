@@ -3,6 +3,15 @@ import json
 from difflib import SequenceMatcher
 
 PROBLEM_CHARS = r'[\[=\+/&<>;:!\\|*^\'"\?%$@)(_\,\.\t\r\n0-9-—\]]'
+ARABIC_REGEX = '[\u0621-\u064A]+'
+
+"""
+TODO:
+-----
+    - fix Cities Data to have the cities lists sorted
+    - update this code and use binary search when searching
+    - add a decorator for if Cities or Cities_Details are None (optional)
+"""
 
 
 class LocationParser:
@@ -89,7 +98,8 @@ class LocationParser:
 
             # check similarity ratio
             local_similarity_ratio = SequenceMatcher(None, word, location_lower).ratio()
-            same_word_count = len(word.split()) == len(location.split())
+            same_word_count = word.count(' ') == location.count(' ')
+
             if same_word_count and local_similarity_ratio >= similarity_ratio:
                 if not best_predicted_location[0] or local_similarity_ratio > best_predicted_location[1]:
                     best_predicted_location = (location, local_similarity_ratio)
@@ -123,17 +133,23 @@ class LocationParser:
         return sorted(locations.items(), key=lambda l: l[1], reverse=True)
 
     @staticmethod
-    def get_location_aliases(location):
-        """
-        returns the other aliases of a location
-        """
+    def get_location_details(location):
         # get location data
         location_data = LocationParser.Cities_Details.get(location, {})
 
         # if location is not found, check if it refers to a location and get its data
         if not location_data:
             location = LocationParser.get_location(location)
-            location_data = LocationParser.Cities_Details.get(location, {})
+            return LocationParser.Cities_Details.get(location, {})
+
+        return location_data
+
+    @staticmethod
+    def get_location_aliases(location):
+        """
+        returns the other aliases of a location
+        """
+        location_data = LocationParser.get_location_details(location)
 
         # combine the aliases
         res = []
@@ -151,12 +167,8 @@ class LocationParser:
     def get_arabic_alias(location):
         aliases = LocationParser.get_location_aliases(location)
         for alias in aliases:
-            if re.search('[\u0621-\u064A]+', alias):
+            if re.search(ARABIC_REGEX, alias):
                 return alias
-
-    @staticmethod
-    def get_location_details(location):
-        pass
 
 
 if __name__ == '__main__':
@@ -165,6 +177,6 @@ if __name__ == '__main__':
     LocationParser.load_locations(CITIES_JSON)
     LocationParser.load_locations_details(CITIES_DETAILS_JSON)
 
-    l = LocationParser.get_locations('Hello, I\'m from baabda where i Aakkar el Aatiqa live in beirut adn beirut')
+    l = LocationParser.get_locations('Hello, I\'m from baabda where Aakkar el Aatiqa live in beirut and beirut')
     for x, f in l:
         print(LocationParser.get_arabic_alias(x))

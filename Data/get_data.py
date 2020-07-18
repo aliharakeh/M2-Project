@@ -14,5 +14,5 @@ if __name__ == '__main__':
         print(f'[Error] => saved {len(tw.tweets)} tweets')
     finally:
         print('DONE!!')
-        tw.save_as_json('Data/#corona_tweets_12_7_2020')
+        tw.save_as_json('corona_tweets_12_7_2020')
     cm.close()

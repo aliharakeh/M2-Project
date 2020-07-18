@@ -1,4 +1,4 @@
-from Twitter.get_locations import LocationParser
+from Twitter.locations import LocationParser
 from twitter_config import CITIES_JSON, CITIES_DETAILS_JSON
 import re
 from Data.handle_data import read_data, save_json
