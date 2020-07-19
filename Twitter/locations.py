@@ -75,7 +75,7 @@ class LocationParser:
             return []
 
     @staticmethod
-    def get_location(word, similarity_ratio=0.8):
+    def get_location(word, similarity_ratio=0.7):
         """
         returns the exact location name or the best predicted/possible location name if there was any match,
         else returns None
@@ -107,7 +107,7 @@ class LocationParser:
         return best_predicted_location[0]
 
     @staticmethod
-    def get_locations(text, similarity_ratio=0.8):
+    def get_locations(text, similarity_ratio=0.7):
         """
         returns a descending sorted list of location tuples containing the location name and its frequency
         found in the provided text

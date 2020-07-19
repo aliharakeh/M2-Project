@@ -1,6 +1,9 @@
 from Scrapping.beautiful_soup import BeautifulSoupScrap as BSC
 import re
 import json
+from Twitter.locations import LocationParser
+from twitter_config import CITIES_DETAILS_JSON, CITIES_JSON
+from Data.handle_data import read_data, save_json
 
 Lebanese_cities = {}
 COUNT = 0
@@ -18,38 +21,24 @@ def create_key_tree(key_list):
 def search(link, link_text=None, parent_link=None, levels=None, root=True):
     global Lebanese_cities, COUNT
 
-    # if COUNT == 20:
-    #     return
-
-    # print('------------------------')
     if not levels:
         levels = []
 
     leaf_link = re.search(r'/LE/\d+', link)
     if leaf_link or 'world' not in link:
-        # print(f'[Parent Link]: {parent_link}')
-        # levels.append('cities')
-        # print(f'[Levels]: {levels}')
-        # print(f'[Children Leaf Link]: {link}')
         ref = Lebanese_cities
         for level in levels:
             ref = ref[level]
         if 'cities' not in ref:
             ref['cities'] = []
         ref['cities'].append(link)
-        # print(ref['cities'])
         return
 
-    els = BSC.get_elements_from_url(link, 'a')[1:]
+    els = BSC.get_elements('a', source=link)[1:]
     if not root:
         levels.append(link_text)
         create_key_tree(levels)
         COUNT += 1
-
-    # print(f'[Link]: {link}')
-    # print(f'[Parent Link]: {parent_link}')
-    print(f'[Levels]: {levels}')
-    # print(f'[Children Links]: {len(els)}')
 
     for e in els:
         search('http://www.fallingrain.com' + e['href'], e['text'], link, levels[:], False)
@@ -187,7 +176,7 @@ def get_cities_2_levels_dict(cities_4_json):
             city_list += data['latin']
         if data['non-latin']:
             city_list += data['non-latin']
-        return city_list
+        return list({c for c in city_list})
 
     fill_cities(english_letters, cities)
     fill_cities(arabic_letters, cities, english=False)
@@ -198,8 +187,6 @@ def get_cities_2_levels_dict(cities_4_json):
     for key, value in data.items():
         city_list = get_city_list(value)
         for c in city_list:
-            if not c or len(c) < 2:
-                continue
             c1 = c.lower()
             k1 = c1[0]
             k2 = c1[1]
@@ -231,16 +218,18 @@ def get_all_cities(cities_4_json):
             city_list += data['latin']
         if data['non-latin']:
             city_list += data['non-latin']
-        return city_list
+        return list({c for c in city_list})
 
     with open(cities_4_json, 'r', encoding='utf-8') as f:
         data = json.loads(f.read())
 
     for key, value in data.items():
         city_list = get_city_list(value)
+        if value['latin']:
+            value['latin'] = list({c for c in value['latin']})
+        if value['non-latin']:
+            value['non-latin'] = list({c for c in value['non-latin']})
         for c in city_list:
-            if not c:
-                continue
             cities[c] = value
 
     return cities
@@ -252,9 +241,29 @@ def get_kada2_and_mo7afaza():
         source='https://www.libandata.org/ar/mqal/layht-almdn-walqry-allbnanyt',
         attributes=True
     )
+    res = []
     for element in elements:
-        city, kada2, mo7afaza = [e.strip() for e in element['text'].split('\n') if e]
-        print(mo7afaza)
+        res.append([e.strip() for e in element['text'].split('\n') if e])
+
+    save('cities_kada2_mo7afaza_ar.json', res)
+
+
+def add_kada2_and_mo7afaza():
+    LocationParser.load_locations_details(CITIES_DETAILS_JSON)
+    LocationParser.load_locations(CITIES_JSON)
+    data = read_data('cities_kada2_mo7afaza_ar.json')
+    res = {}
+    count = 0
+    for d in data:
+        loc = LocationParser.get_location(d[0])
+        if loc:
+            location_aliases = LocationParser.get_location_aliases(loc)
+            for l in location_aliases:
+                location = LocationParser.get_location_details(l)
+                count += 1
+                res[l] = {**location, 'kadaa': d[1], 'mo7afaza': d[2]}
+    save('cities_6_kada2_mo7afaza.json', res)
+    print(count)
 
 
 if __name__ == '__main__':
@@ -275,6 +284,7 @@ if __name__ == '__main__':
     # save('cities_5.json', data)
 
     # data = get_all_cities('cities_4.json')
-    # save('cities_6.json', data)
+    # save('cities_6_updated.json', data)
 
-    get_kada2_and_mo7afaza()
+    # get_kada2_and_mo7afaza()
+    add_kada2_and_mo7afaza()

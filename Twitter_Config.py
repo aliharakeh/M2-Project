@@ -1,4 +1,4 @@
-CHROME_DRIVER = 'D:\\Desktop\\JetBrains_Pycharm_Projects\\twitter\\Scrapping\\chromedriver.exe'
+CHROME_DRIVER = 'D:\\Desktop\\GitHub\\M2-Project\\Scrapping\\chromedriver.exe'
 
 TWITTER_USER = {
     'public_username': 'div#react-root div.css-1dbjc4n.r-1g94qm0 > div > div > div.css-1dbjc4n.r-1awozwy.r-18u37iz.r-dnmrzs > div > span:nth-child(1) > span',
@@ -19,5 +19,5 @@ TWEET = {
 
 PROBLEM_CHARS = r'[\[=\+/&<>;:!\\|*^\'"\?%$@)(_\,\.\t\r\n0-9-—\]]'
 
-CITIES_JSON = 'D:\\Desktop\\JetBrains_Pycharm_Projects\\twitter\\Lebaneses_Cities\\cities_5.json'
-CITIES_DETAILS_JSON = 'D:\\Desktop\\JetBrains_Pycharm_Projects\\twitter\\Lebaneses_Cities\\cities_6.json'
+CITIES_JSON = 'D:\\Desktop\\GitHub\\M2-Project\\Lebaneses_Cities\\cities_5.json'
+CITIES_DETAILS_JSON = 'D:\\Desktop\\GitHub\\M2-Project\\Lebaneses_Cities\\cities_6_updated.json'
