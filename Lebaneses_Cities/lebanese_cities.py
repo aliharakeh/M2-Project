@@ -246,6 +246,16 @@ def get_all_cities(cities_4_json):
     return cities
 
 
+def get_kada2_and_mo7afaza():
+    elements = BSC.get_elements(
+        'table > tbody > tr',
+        source='https://www.libandata.org/ar/mqal/layht-almdn-walqry-allbnanyt',
+        attributes=True
+    )
+    for element in elements:
+        print([e.strip() for e in element['text'].split('\n') if e])
+
+
 if __name__ == '__main__':
     # search(link='http://www.fallingrain.com/world/LE/a')
     # print(Lebanese_cities)
@@ -263,5 +273,7 @@ if __name__ == '__main__':
     # data = get_cities_2_levels_dict('cities_4.json')
     # save('cities_5.json', data)
 
-    data = get_all_cities('cities_4.json')
-    save('cities_6.json', data)
+    # data = get_all_cities('cities_4.json')
+    # save('cities_6.json', data)
+
+    get_kada2_and_mo7afaza()

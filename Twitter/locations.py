@@ -172,11 +172,11 @@ class LocationParser:
 
 
 if __name__ == '__main__':
-    from twitter_config import CITIES_JSON, CITIES_DETAILS_JSON
-
-    LocationParser.load_locations(CITIES_JSON)
-    LocationParser.load_locations_details(CITIES_DETAILS_JSON)
-
+    # from twitter_config import CITIES_JSON, CITIES_DETAILS_JSON
+    #
+    # LocationParser.load_locations(CITIES_JSON)
+    # LocationParser.load_locations_details(CITIES_DETAILS_JSON)
+    #
     l = LocationParser.get_locations('Hello, I\'m from baabda where Aakkar el Aatiqa live in beirut and beirut')
     for x, f in l:
         print(LocationParser.get_arabic_alias(x))
