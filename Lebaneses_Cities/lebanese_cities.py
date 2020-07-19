@@ -253,7 +253,8 @@ def get_kada2_and_mo7afaza():
         attributes=True
     )
     for element in elements:
-        print([e.strip() for e in element['text'].split('\n') if e])
+        city, kada2, mo7afaza = [e.strip() for e in element['text'].split('\n') if e]
+        print(mo7afaza)
 
 
 if __name__ == '__main__':
