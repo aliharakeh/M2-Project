@@ -1,4 +1,4 @@
-from Twitter.locations import LocationParser
+from Locations.locations import LocationParser
 from twitter_config import CITIES_JSON, CITIES_DETAILS_JSON
 import re
 from Data.handle_data import read_data, save_json
@@ -61,7 +61,7 @@ if __name__ == '__main__':
         'sentimental_analysis\\sentimental_analysis\\#corona_lebanon_tweets_11_7_2020.json',
         'sentimental_analysis\\sentimental_analysis\\#corona_tweets_12_7_2020.json',
         'sentimental_analysis\\sentimental_analysis\\healthcare_tweets_10_7_2020.json',
-        # 'sentimental_analysis\\sentimental_analysis\\medical_tweets_11_7_2020.json',
+        'sentimental_analysis\\sentimental_analysis\\medical_tweets_11_7_2020.json',
     ]
 
     for file in files:

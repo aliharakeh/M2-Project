@@ -19,5 +19,5 @@ TWEET = {
 
 PROBLEM_CHARS = r'[\[=\+/&<>;:!\\|*^\'"\?%$@)(_\,\.\t\r\n0-9-—\]]'
 
-CITIES_JSON = 'D:\\Desktop\\GitHub\\M2-Project\\Lebaneses_Cities\\cities_5.json'
-CITIES_DETAILS_JSON = 'D:\\Desktop\\GitHub\\M2-Project\\Lebaneses_Cities\\cities_6_updated.json'
+CITIES_JSON = 'D:\\Desktop\\GitHub\\M2-Project\\Locations\\cities.json'
+CITIES_DETAILS_JSON = 'D:\\Desktop\\GitHub\\M2-Project\\Locations\\cities_details.json'

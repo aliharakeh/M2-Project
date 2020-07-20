@@ -41,38 +41,9 @@ def clean_file(filename, data_file):
     save_json(filename, res)
 
 
-def json_to_csv(filename):
-    data = read_data(filename)
-    with open(f'{filename.replace(".json", "")}.csv', 'w', newline='', encoding='utf-8') as f:
-        wr = csv.writer(f)
-        wr.writerow([
-            'username',
-            'user_link',
-            'time',
-            'text',
-            'tags',
-            'translated_text',
-            'sentiment',
-            'location',
-            'lat_long',
-            'lat',
-            'long'
-        ])
-        for d in data:
-            lat, long = d['lat_long'].split(',')
-            wr.writerow([
-                d['username'],
-                d['user-link'],
-                d['time'],
-                d['text'].replace('\n', ' '),
-                ';'.join(d['tags']) if len(d['tags']) > 0 else 'none',
-                d['translated_text'].replace('\n', ' '),
-                d['sentiment'],
-                d['location'],
-                d['lat_long'],
-                lat,
-                long
-            ])
+def fix_text(text):
+    text = text.replace(',', ' ')
+    return text.replace('\n', '')
 
 
 def jsons_to_csv(files, output_name):
@@ -99,15 +70,49 @@ def jsons_to_csv(files, output_name):
                     d['username'],
                     d['user-link'],
                     d['time'],
-                    d['text'].replace('\n', ' '),
+                    d['text'].replace(',', ' ').replace('\n', ' '),
                     ';'.join(d['tags']) if len(d['tags']) > 0 else 'none',
-                    d['translated_text'].replace('\n', ' '),
+                    d['translated_text'].replace(',', ' ').replace('\n', ' '),
                     d['sentiment'],
                     d['location'],
-                    d['lat_long'],
+                    d['lat_long'].replace(',', '_'),
                     lat,
                     long
                 ])
+
+
+def json_to_csv(file):
+    with open(f'{file.replace(".json", ".csv")}', 'w', newline='', encoding='utf-8') as f:
+        wr = csv.writer(f)
+        wr.writerow([
+            'username',
+            'user_link',
+            'time',
+            'text',
+            'tags',
+            'translated_text',
+            'sentiment',
+            'location',
+            'lat_long',
+            'lat',
+            'long'
+        ])
+        data = read_data(file)
+        for d in data:
+            lat, long = d['lat_long'].split(',')
+            wr.writerow([
+                d['username'],
+                d['user-link'],
+                d['time'].replace(',', '_'),
+                d['text'].replace(',', '').replace('\n', ''),
+                ';'.join(d['tags']) if len(d['tags']) > 0 else 'none',
+                d['translated_text'].replace(',', '').replace('\n', ''),
+                d['sentiment'],
+                d['location'].replace(',', ''),
+                d['lat_long'].replace(',', '_'),
+                lat,
+                long
+            ])
 
 
 if __name__ == '__main__':
@@ -117,6 +122,6 @@ if __name__ == '__main__':
         'sentimental_analysis\\dummy_locations\\healthcare_tweets_10_7_2020.json',
         'sentimental_analysis\\dummy_locations\\medical_tweets_11_7_2020.json'
     ]
-    # for file in files:
-    #     json_to_csv(file)
-    jsons_to_csv(files, 'sentimental_analysis\\dummy_locations\\sentimental_analysis_tweets')
+    for file in files:
+        json_to_csv(file)
+    # jsons_to_csv(files, 'sentimental_analysis\\dummy_locations\\sentimental_analysis_tweets')
