@@ -2,7 +2,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.remote.webelement import WebElement
 from twitter_config import TWEET, CITIES_JSON
 import re
-from Twitter.locations import LocationParser
+from Locations.locations import LocationParser
 
 
 class TweetParser:
@@ -25,7 +25,6 @@ class TweetParser:
 
         locations = None
         if include_locations:
-            LocationParser.load_locations(CITIES_JSON)
             locations = LocationParser.get_locations(tweet_text)
 
         return {

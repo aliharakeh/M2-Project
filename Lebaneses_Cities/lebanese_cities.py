@@ -235,7 +235,7 @@ def get_all_cities(cities_4_json):
         if value['non-latin']:
             value['non-latin'] = list({c for c in value['non-latin']})
         for c in city_list:
-            cities[c] = value
+            cities[c.lower()] = value
 
     return cities
 
@@ -257,8 +257,8 @@ if __name__ == '__main__':
     # data = get_cities_2_levels_dict('cities_4.json')
     # save('cities_5.json', data)
 
-    data = clean_cities_2_levels_dict('cities_5.json')
-    save('cities_5_updated.json', data)
+    # data = clean_cities_2_levels_dict('cities_5.json')
+    # save('cities_5_updated.json', data)
 
-    # data = get_all_cities('cities_4.json')
-    # save('cities_6_updated.json', data)
+    data = get_all_cities('cities_4.json')
+    save('cities_6_updated.json', data)

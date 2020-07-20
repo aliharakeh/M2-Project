@@ -1,10 +1,10 @@
 from Scrapping import ChromeManager
-from Twitter import Twitter
+from Twitter import TwitterScrapper
 from twitter_config import CHROME_DRIVER
 
 if __name__ == '__main__':
     cm = ChromeManager(driver_path=CHROME_DRIVER)
-    tw = Twitter(cm)
+    tw = TwitterScrapper(cm)
     tw.load_page('https://twitter.com/search?q=medical%20lebanon&src=typed_query&f=live')
     input('Configure Twitter setting then enter any key to continue...\n--> ')
     try:

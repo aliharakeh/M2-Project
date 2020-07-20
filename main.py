@@ -9,8 +9,9 @@ import twint
 
 c = twint.Config()
 
-c.Username = "NBA"
+# c.Username = "NBA"
 c.Limit = 20
-c.Store_csv = True
-c.Output = "NBA"
+# c.Store_csv = True
+# c.Output = "NBA"
+c.Search = 'corona'
 twint.run.Search(c)

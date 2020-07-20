@@ -62,7 +62,7 @@ class LocationParser:
         return result
 
     @staticmethod
-    @check_loaded_data(cities=True, on_error_value=[])
+    # @check_loaded_data(cities=True, on_error_value=[])
     def get_possible_locations(first_letter, second_letter):
         """
         returns a list of locations that match any of the following conditions: \n
@@ -70,6 +70,12 @@ class LocationParser:
         - locations that starts with first_letter but not with second_letter
         - [] if nothing starts with the first letter
         """
+        if first_letter:
+            first_letter = first_letter.lower()
+
+        if second_letter:
+            second_letter = second_letter.lower()
+
         if first_letter in LocationParser.Cities:
             level_1_data = LocationParser.Cities[first_letter]
 
@@ -89,7 +95,7 @@ class LocationParser:
             return []
 
     @staticmethod
-    @check_loaded_data(cities=True, on_error_value=None)
+    # @check_loaded_data(cities=True, on_error_value=None)
     def get_location(word, similarity_ratio=0.8):
         """
         returns the exact location name or the best predicted/possible location name if there was any match,
@@ -120,7 +126,7 @@ class LocationParser:
         return best_predicted_location[0]
 
     @staticmethod
-    @check_loaded_data(cities=True, on_error_value=[])
+    # @check_loaded_data(cities=True, on_error_value=[])
     def get_locations(text, similarity_ratio=0.8):
         """
         returns a descending sorted list of location tuples containing the location name and its frequency
@@ -147,9 +153,10 @@ class LocationParser:
         return sorted(locations.items(), key=lambda l: l[1], reverse=True)
 
     @staticmethod
-    @check_loaded_data(cities=True, cities_details=True, on_error_value=None)
+    # @check_loaded_data(cities=True, cities_details=True, on_error_value=None)
     def get_location_details(location):
         # get location data
+        location = location.lower()
         location_data = LocationParser.Cities_Details.get(location, None)
 
         # if location is not found, check if it refers to a location and get its data
@@ -160,7 +167,7 @@ class LocationParser:
         return location_data
 
     @staticmethod
-    @check_loaded_data(cities=True, cities_details=True, on_error_value=[])
+    # @check_loaded_data(cities=True, cities_details=True, on_error_value=[])
     def get_location_aliases(location):
         """
         returns the other aliases of a location
@@ -180,7 +187,7 @@ class LocationParser:
         return list({r for r in res})
 
     @staticmethod
-    @check_loaded_data(cities=True, cities_details=True, on_error_value=None)
+    # @check_loaded_data(cities=True, cities_details=True, on_error_value=None)
     def get_arabic_alias(location):
         aliases = LocationParser.get_location_aliases(location)
         for alias in aliases:
