@@ -107,11 +107,14 @@ class TwintTweet:
         self.trans_src = t.trans_src
         self.trans_dest = t.trans_dest
 
+    def __repr__(self):
+        return f'<{self.username}> <{self.datetime}> <{self.tweet}>'
+
 
 class TwitterTwint:
 
     @staticmethod
-    def get_search_tweets(
+    def search_twitter(
             username=None,
             search=None,
             limit=100,
@@ -176,22 +179,20 @@ class TwitterTwint:
 
     @staticmethod
     def predict_twitter_user_location(username, limit=2000, similarity_ratio=0.8):
-        tweets = TwitterTwint.get_search_tweets(username=username, limit=limit)
+        tweets = TwitterTwint.search_twitter(username=username, limit=limit)
         locations = {}
         for tweet in tweets:
             predicted_locations = LocationParser.get_locations(tweet.tweet, similarity_ratio)
+            print(predicted_locations)
             for location, frequency in predicted_locations:
                 if location not in locations:
                     locations[location] = frequency
                 else:
                     locations[location] += frequency
-        return locations
+        return sorted(locations.items(), key=lambda l: l[1], reverse=True)
 
 
 if __name__ == '__main__':
-    LocationParser.load_locations('../Locations/cities.json')
-    LocationParser.load_locations_details('../Locations/cities_details.json')
-    locations = TwitterTwint.predict_twitter_user_location('that_defy_dude', limit=2000, similarity_ratio=0.8)
-    data = sorted(locations.items(), key=lambda l: l[1], reverse=True)
-    for location, frequnecy in data:
+    locations = TwitterTwint.predict_twitter_user_location('that_defy_dude', limit=20, similarity_ratio=0.8)
+    for location, frequnecy in locations:
         print(LocationParser.get_arabic_alias(location), frequnecy, sep=' ==> ')

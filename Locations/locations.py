@@ -2,9 +2,11 @@ import re
 import json
 from difflib import SequenceMatcher
 import functools
+import os
 
 PROBLEM_CHARS = r'[\[=\+/&<>;:!\\|*^\'"\?%$@)(_\,\.\t\r\n0-9-—\]]'
 ARABIC_REGEX = '[\u0621-\u064A]+'
+DATA_DIR = os.path.dirname(__file__)
 
 
 # a decorator with arguments to check if data is loaded and load it if it's not
@@ -17,10 +19,16 @@ def check_loaded_data(cities=False, cities_details=False, on_error_value=None):
                     LocationParser.load_locations()
                 if cities_details and not LocationParser.Cities_Details:
                     LocationParser.load_locations_details()
-            except:
+
+                return func(*args, **kwargs)
+
+            except FileNotFoundError:
                 print('[Error]: Data File(s) Not Found!! Please Load Data Manually')
                 return on_error_value
-            return func(*args, **kwargs)
+
+            except Exception:
+                print(f'[Error]: Somthing went wrong in {func.__name__}')
+                return on_error_value
 
         return wrapper
 
@@ -32,13 +40,13 @@ class LocationParser:
     Cities_Details = None
 
     @staticmethod
-    def load_locations(cities_json='cities.json'):
+    def load_locations(cities_json=f'{DATA_DIR}\\cities.json'):
         if LocationParser.Cities is None:
             with open(cities_json, 'r', encoding='utf-8') as cities_file:
                 LocationParser.Cities = json.loads(cities_file.read())
 
     @staticmethod
-    def load_locations_details(cities_json='cities_details.json'):
+    def load_locations_details(cities_json=f'{DATA_DIR}\\cities_details.json'):
         if LocationParser.Cities_Details is None:
             with open(cities_json, 'r', encoding='utf-8') as cities_file:
                 LocationParser.Cities_Details = json.loads(cities_file.read())
@@ -52,17 +60,15 @@ class LocationParser:
         text = re.sub(PROBLEM_CHARS, '', text)
         words = text.split()
         word_count = len(words)
-
         result = []
         for i in range(word_count):
             for j in range(max_words_in_an_element):
                 if i + j < word_count:
                     result.append(" ".join(words[i: i + j + 1]))
-
         return result
 
     @staticmethod
-    # @check_loaded_data(cities=True, on_error_value=[])
+    @check_loaded_data(cities=True, on_error_value=[])
     def get_possible_locations(first_letter, second_letter):
         """
         returns a list of locations that match any of the following conditions: \n
@@ -95,7 +101,7 @@ class LocationParser:
             return []
 
     @staticmethod
-    # @check_loaded_data(cities=True, on_error_value=None)
+    @check_loaded_data(cities=True, on_error_value=None)
     def get_location(word, similarity_ratio=0.8):
         """
         returns the exact location name or the best predicted/possible location name if there was any match,
@@ -113,7 +119,7 @@ class LocationParser:
         for location in locations:
             # check exact location name
             if word == location:
-                return location.capitalize()
+                return location
 
             # check similarity ratio
             local_similarity_ratio = SequenceMatcher(None, word, location).ratio()
@@ -121,20 +127,17 @@ class LocationParser:
 
             if same_word_count and local_similarity_ratio >= similarity_ratio:
                 if not best_predicted_location[0] or local_similarity_ratio > best_predicted_location[1]:
-                    best_predicted_location = (location.capitalize(), local_similarity_ratio)
+                    best_predicted_location = (location, local_similarity_ratio)
 
         return best_predicted_location[0]
 
     @staticmethod
-    # @check_loaded_data(cities=True, on_error_value=[])
+    @check_loaded_data(cities=True, on_error_value=[])
     def get_locations(text, similarity_ratio=0.8):
         """
         returns a descending sorted list of location tuples containing the location name and its frequency
         found in the provided text
         """
-        if LocationParser.Cities is None:
-            return []
-
         # get words list
         words = LocationParser.get_words(text)
         locations = {}
@@ -153,7 +156,7 @@ class LocationParser:
         return sorted(locations.items(), key=lambda l: l[1], reverse=True)
 
     @staticmethod
-    # @check_loaded_data(cities=True, cities_details=True, on_error_value=None)
+    @check_loaded_data(cities=True, cities_details=True, on_error_value=None)
     def get_location_details(location):
         # get location data
         location = location.lower()
@@ -167,7 +170,7 @@ class LocationParser:
         return location_data
 
     @staticmethod
-    # @check_loaded_data(cities=True, cities_details=True, on_error_value=[])
+    @check_loaded_data(cities=True, cities_details=True, on_error_value=[])
     def get_location_aliases(location):
         """
         returns the other aliases of a location
@@ -184,10 +187,10 @@ class LocationParser:
             res += non_latin
 
         # return unique aliases
-        return list({r for r in res})
+        return list(set(res))
 
     @staticmethod
-    # @check_loaded_data(cities=True, cities_details=True, on_error_value=None)
+    @check_loaded_data(cities=True, cities_details=True, on_error_value=None)
     def get_arabic_alias(location):
         aliases = LocationParser.get_location_aliases(location)
         for alias in aliases:
@@ -197,7 +200,6 @@ class LocationParser:
 
 
 if __name__ == '__main__':
-    # l = LocationParser.get_locations('Hello, I\'m from baabda where Aakkar el Aatiqa live in beirut and beirut')
-    # for x, f in l:
-    #     print(LocationParser.get_arabic_alias(x))
-    print(LocationParser.get_possible_locations('a', 'b'))
+    l = LocationParser.get_locations('Hello, I\'m from baabda where Aakkar el Aatiqa live in beirut and beirut')
+    for x, f in l:
+        print(LocationParser.get_arabic_alias(x))

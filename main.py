@@ -1,17 +1,20 @@
-# from Scrapping import ChromeManager
-# from twitter_config import CHROME_DRIVER
-#
-# if __name__ == '__main__':
-#     cm = ChromeManager(driver_path=CHROME_DRIVER)
-#     cm.close()
+from Twitter import TwitterTwint
 
-import twint
-
-c = twint.Config()
-
-# c.Username = "NBA"
-c.Limit = 20
-# c.Store_csv = True
-# c.Output = "NBA"
-c.Search = 'corona'
-twint.run.Search(c)
+if __name__ == '__main__':
+    searches = [
+        'corona',
+        'covid-19',
+        'كورونا',
+        'كورونا_لبنان',
+        'healthcare',
+        'medical'
+    ]
+    for search in searches:
+        TwitterTwint.search_twitter(
+            search=search[0],
+            limit=20,
+            since='2020-1-1',
+            until='2020-8-1',
+            near='Lebanon',
+            csv_output='Data_v2\\' + search[0].replace('#', '')
+        )

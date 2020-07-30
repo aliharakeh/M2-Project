@@ -48,3 +48,6 @@ class PreProcessing:
         **Note:** More effective option than stemming.
         """
         self.df[self.text_col] = self.df[self.text_col].apply(lambda x: " ".join([Word(w).lemmatize() for w in x.split()]))
+
+    def translate(self):
+        pass
