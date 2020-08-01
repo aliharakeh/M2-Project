@@ -1,5 +1,6 @@
 from Scrapping import BeautifulSoupScrap as BSC
 from Data.handle_data import save_json
+import csv
 
 
 def save(filename, css_selector):
@@ -19,6 +20,21 @@ def save(filename, css_selector):
     save_json(filename, res)
 
 
+def save_csv():
+    with open('lb_en.txt', 'r') as f:
+        lines = f.read().split('\n')
+
+    with open('lb_en.csv', 'w', newline='', encoding='utf-8') as f:
+        wr = csv.writer(f)
+        wr.writerow(['Lebanese', 'English'])
+        for line in lines:
+            lb, en = line.strip().split('\t')
+            rows = lb.split('/')
+            for r in rows:
+                wr.writerow([r, en])
+
+
 if __name__ == '__main__':
-    css_selectors = "div#sites-canvas-main-content div > table:nth-child(2) > tbody > tr"
-    save('English_Lebanese_Dictionary.json', css_selectors)
+    # css_selectors = "div#sites-canvas-main-content div > table:nth-child(2) > tbody > tr"
+    # save('English_Lebanese_Dictionary.json', css_selectors)
+    save_csv()

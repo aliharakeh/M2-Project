@@ -1,0 +1,1789 @@
+English
+
+Lebanese
+
+Root for 1,2,3,4,6
+
+Root for 5 (I,You,We)
+
+Root for 5 (He,She,They)
+
+(to) be able (to)
+
+ye2dar/te2dar
+
+e2dar
+
+e2der
+
+e2der
+
+(to) accept
+
+ye2bal/te2bal
+
+e2bal
+
+ebel
+
+ebel
+
+(to) be afraid
+
+ye5aaf/te5aaf
+
+e5aaf
+
+5of
+
+5aaf
+
+(to) allow
+
+ye5alli/te5alli
+
+e5alli
+
+5allaiy
+
+5alla
+
+(to) be amazing
+
+yejannen/tejannen
+
+ejannen
+
+jannan
+
+jannan
+
+(to) become angry
+
+yenarfez/tenarfez
+
+enarfez
+
+narfaz
+
+narfaz
+
+(to) answer
+
+yejaeweb/tejaeweb
+
+ejaeweb
+
+jaewab
+
+jaewab
+
+(to) appear/look
+
+yebaiyen/tebaiyen
+
+ebaiyen
+
+baiyan
+
+baiyan
+
+(to) arrive
+
+yewsal/tewsal
+
+ewsal
+
+wesel
+
+wesel
+
+(to) ask
+
+yes2al/tes2al
+
+es2al
+
+sa2al
+
+sa2al
+
+(to) be assured
+
+yeta2kad/teta2kad
+
+eta2kad
+
+ta2kad
+
+ta2kad
+
+(to) awaken
+
+yew3a/tew3a
+
+ew3a
+
+we3i
+
+we3i
+
+(to) be
+
+yekoun/tekoun
+
+ekoun
+
+kaen
+
+kaen
+
+(to) become
+
+yesiir/tesiir
+
+esiir
+
+sor
+
+saar
+
+(to) begin
+
+yebalesh/tebalesh
+
+ebalesh
+
+balash
+
+balash
+
+(to) behave
+
+yetasaraf/tetasaraf
+
+etasaraf
+
+etsaraf
+
+etsaraf
+
+(to) believe
+
+ye2mon/te2mon
+
+e2mon
+
+2aeman
+
+2aeman
+
+(to) be born
+
+ye5la2/te5la2
+
+e5la2
+
+5ell2
+
+5ell2
+
+(to) break
+
+yeksor/teksor
+
+eksor
+
+kasar
+
+kasar
+
+(to) have breakfast
+
+yetrawa2/tetrawa2
+
+etrawa2
+
+etrawa2
+
+etrawa2
+
+(to) bring
+
+yejiib/tejiib
+
+ejiib
+
+jeb
+
+jaeb
+
+(to) burn
+
+ye7ro2/te7ro2
+
+e7ro2
+
+7arr2
+
+7arr2
+
+(to) buy
+
+yeshteri/teshteri
+
+eshteri
+
+eshtaraiy
+
+eshtara
+
+(to) call
+
+yetalfen/tetalfen
+
+etalfen
+
+talfan
+
+talfan
+
+(to) carry
+
+ye7mol/te7mol
+
+e7mol
+
+7amal
+
+7amal
+
+(to) change
+
+ye8aiir/te8aiir
+
+e8aiir
+
+8aiiar
+
+8aiiar
+
+(to) clean
+
+yenadef/tenadef
+
+enadef
+
+naddaf
+
+naddaf
+
+(to) color
+
+yelawin/telawin
+
+elawin
+
+lawan
+
+lawan
+
+(to) come
+
+yeji/teji
+
+eji
+
+jii
+
+eja
+
+(to) come across
+
+yemro2/temro2
+
+emro2
+
+mara2
+
+mara2
+
+ (to) complain
+
+yeshki/teshki
+
+eshki
+
+shakaiy
+
+shaka
+
+(to) complete
+
+yekmol/tekmol
+
+ekmol
+
+kammal
+
+kammal
+
+(to) continue
+
+yestamor/testamor
+
+estamor
+
+estammar
+
+estammar
+
+(to) cook
+
+yetbo5/tetbo5
+
+etbo5
+
+taba5
+
+taba5
+
+(to) cough
+
+ye2e7/te2e7
+
+e2e7
+
+2a7aiy
+
+2a7
+
+(to) cry
+
+yebki/tebki
+
+ebki
+
+bekiy
+
+bekiy
+
+(to) cut
+
+ye2es/te2es
+
+e2es
+
+2asaiy
+
+2as
+
+(to) dare
+
+yejro2/tejro2
+
+ejro2
+
+tajar2
+
+tajar2
+
+(to) die
+
+yemout/temout
+
+emout
+
+met
+
+maet
+
+(to) have dinner
+
+yet3asha/tet3asha
+
+et3asha
+
+et3ashaiy
+
+et3asha
+
+(to) declare
+
+ye3eln/te3eln
+
+e3eln
+
+a3lan
+
+a3lan
+
+(to) describe
+
+yeshra7/teshra7
+
+eshra7
+
+shara7
+
+shara7
+
+(to) do
+
+ye3mel/te3mel
+
+e3mel
+
+3mel
+
+3mel
+
+(to) draw
+
+yersom/tersom
+
+ersom
+
+rasam
+
+rasam
+
+(to) drink
+
+yeshrab/teshrab
+
+eshrab
+
+shereb
+
+shereb
+
+(to) dry
+
+yenashef/tenashef
+
+enashef
+
+nashaf
+
+nashaf
+
+(to) earn / receive
+
+ye2bad/te2bad
+
+e2bad
+
+abad
+
+abad
+
+(to) eat
+
+yekol/tekol
+
+ekol
+
+akal
+
+akal
+
+(to) empower
+
+ye2awi/te2awi
+
+e2awi
+
+2ewiy
+
+2ewiy
+
+(to) enjoy oneself
+
+yetsalla/tetsalla
+
+etsalla
+
+etsallaiy
+
+etsalla
+
+(to) escape
+
+yehrob/tehrob
+
+ehrob
+
+harab
+
+harab
+
+(to) exit
+
+yedhar/tedhar
+
+edhar
+
+dahar
+
+dahar
+
+(to) explain
+
+yefasser/tefasser
+
+efasser
+
+fassar
+
+fassar
+
+(to) fall
+
+yew2a3/tew2a3
+
+ew2a3
+
+we2e3
+
+we2e3
+
+(to) go far/away
+
+yeb3ed/teb3ed
+
+eb3ed
+
+ba3ad
+
+ba3ad
+
+(to) feel
+
+ye7es/te7es
+
+e7es
+
+7asaiy
+
+7as
+
+(to) fill/fill up
+
+ye3abbi/te3abbi
+
+e3abbi
+
+3abbaiy
+
+3abba
+
+(to) find
+
+yela2i/tela2i
+
+ela2i
+
+lae2aiy
+
+lae2a
+
+(to) finish
+
+ye5ales/te5ales
+
+e5ales
+
+5allas
+
+5allas
+
+(to) follow
+
+yel7a2/tel7a2
+
+el7a2
+
+le7a2
+
+le7a2
+
+(to) forget
+
+yensa/tensa
+
+ensa
+
+neseiy
+
+neseiy
+
+(to) have fun
+
+yemboset/temboset
+
+emboset
+
+embasat
+
+embasat
+
+(to) get
+
+yejiib/tejiib
+
+ejiib
+
+jeb
+
+jaeb
+
+(to) give
+
+ye3ti/te3ti
+
+e3ti
+
+3ataiy
+
+3ata
+
+(to) go
+
+yerou7/terou7
+
+erou7
+
+ro7
+
+raa7
+
+(to) go back
+
+yerja3/terja3
+
+erja3
+
+rej3
+
+rej3
+
+(to) go out
+
+ye5roj/te5roj
+
+e5roj
+
+5araj
+
+5araj
+
+(to) grow
+
+yekbar/tekbar
+
+ekbar
+
+kebr
+
+kebr
+
+(to) happen/be
+
+yesiir/tesiir
+
+esiir
+
+sor
+
+saar
+
+(to) hear
+
+yesma3/tesma3
+
+esma3
+
+seme3
+
+seme3
+
+(to) help
+
+yesae3d/tesae3d
+
+esae3d
+
+sae3ad
+
+sae3ad
+
+(to) hope
+
+yetamal/tetamal
+
+etamal
+
+etamal
+
+etamal
+
+(to) hit
+
+yedrob/tedrob
+
+edrob
+
+darab
+
+darab
+
+(to) hold
+
+yemsek/temsek
+
+emsek
+
+mesek
+
+mesek
+
+(to) hurry
+
+yesta3jel/testa3jel
+
+esta3jel
+
+esta3jal
+
+esta3jal
+
+(to) imagine
+
+yet5aeial/tet5aeial
+
+et5aeial
+
+et5aeial
+
+et5aeial
+
+(to) increase
+
+yeziid/teziid
+
+eziid
+
+zed
+
+zaed
+
+(to) intend
+
+ye2sod/te2sod
+
+e2sod
+
+2asad
+
+2asad
+
+(to) invite
+
+ye3zoum/te3zoum
+
+e3zoum
+
+3azam
+
+3azam
+
+(to) keep
+
+ye5alli/te5alli
+
+e5alli
+
+5allaiy
+
+5alla
+
+(to) kill
+
+ye2tol/te2tol
+
+e2tol
+
+2atal
+
+2atal
+
+(to) knock
+
+yede2/tede2
+
+ede2
+
+da2aiy
+
+da2
+
+(to) know
+
+ye3ref/te3ref
+
+e3ref
+
+3erf
+
+3erf
+
+(to) lack
+
+yef2ed/tef2ed
+
+ef2ed
+
+fa2ad
+
+fa2ad
+
+(to) last
+
+yedaain/tedaain
+
+edaain
+
+daaian
+
+daaian
+
+(to) be late
+
+yeta5ar/teta5ar
+
+eta5ar
+
+eta5ar
+
+eta5ar
+
+(to) leave
+
+yetrok/tetrok
+
+etrok
+
+tarak
+
+tarak
+
+(to) let
+
+ye5alli/te5alli
+
+e5alli
+
+5allaiy
+
+5alla
+
+(to) listen
+
+yesma3/tesma3
+
+esma3
+
+seme3
+
+seme3
+
+(to) live
+
+ye3iish/te3iish
+
+e3iish
+
+3osh
+
+3aash
+
+(to) look
+
+yetalla3/tetalla3
+
+etalla3
+
+etalla3
+
+etalla3
+
+(to) look for/search
+
+yefatish/tefatish
+
+efatish
+
+fatash
+
+fatash
+
+(to) love
+
+ye7ib/te7ib
+
+e7ib
+
+7abaiy
+
+7ab
+
+(to) have lunch
+
+yet8ada/tet8ada
+
+et8ada
+
+et8adaiy
+
+et8ada
+
+(to) get mad
+
+yenarfez/tenarfez
+
+enarfez
+
+narfaz
+
+narfaz
+
+(to) make/do
+
+ye3mel/te3mel
+
+e3mel
+
+3eml
+
+3eml
+
+(to) get married
+
+yetzawaj/tetzawaj
+
+etzawaj
+
+etzawaj
+
+etzawaj
+
+(to) meet
+
+yelta2a/telta2a
+
+elta2a
+
+elta2a
+
+elta2a
+
+(to) memorise
+
+ye7faz/te7faz
+
+e7faz
+
+7afaz
+
+7afaz
+
+(to) make a mistake
+
+ye8lat/te8lat
+
+e8lat
+
+8let
+
+8let
+
+(to) need
+
+ye7taaj/te7taj
+
+e7taj
+
+7taej
+
+7taej
+
+(to) occupy
+
+ye7tal/te7tal
+
+e7tal
+
+7talay
+
+7tal
+
+(to) offer
+
+ye3rod/te3rod
+
+e3rod
+
+3arad
+
+3arad
+
+(to) open
+
+yefta7/tefta7
+
+efta7
+
+fta7
+
+fta7
+
+(to) order/file up
+
+yenazem/tenazem
+
+enazem
+
+nazam
+
+nazam
+
+(to) own
+
+yemlok/temlok
+
+emlok
+
+malak
+
+malak
+
+(to) package
+
+ye3aleb/te3aleb
+
+e3aleb
+
+3alab
+
+3alab
+
+(to) pass through
+
+yemro2/temro2
+
+emro2
+
+marra2
+
+marra2
+
+(to) pay/push
+
+yedfa3/tedfa3
+
+edfa3
+
+dfa3
+
+dfa3
+
+(to) persuade
+
+ye2na3/te2na3
+
+e2na3
+
+2na3
+
+2na3
+
+(to) plan
+
+ye5atet/te5atet
+
+e5atet
+
+5atat
+
+5atat
+
+(to) play
+
+yel3ab/tel3ab
+
+el3ab
+
+l3eb
+
+l3eb
+
+(to) prefer
+
+yeufadel/teufadel
+
+eufadel
+
+fadal
+
+fadal
+
+(to) prevent
+
+yemna3/temna3
+
+emna3
+
+mana3
+
+mana3
+
+(to) put down
+
+yenazel/tenazel
+
+enazel
+
+nazal
+
+nazal
+
+(to) put up
+
+yetale3/yetale3
+
+etale3
+
+tala3
+
+tala3
+
+(to) read
+
+ye2ra/te2ra
+
+e2ra
+
+2eriy
+
+2eriy
+
+(to) get ready
+
+ye7ader/te7ader
+
+e7ader
+
+7adar
+
+7adar
+
+(to) refuse
+
+yerfod/terfod
+
+erfod
+
+rafad
+
+rafad
+
+(to) relax
+
+yesterii7/testerii7
+
+esterii7
+
+ertae7
+
+ertae7
+
+(to) remain
+
+yeb2a/teb2a
+
+eb2a
+
+be2iy
+
+be2iy
+
+(to) repair
+
+yesale7/tesale7
+
+esale7
+
+sala7
+
+sala7
+
+(to) reserve
+
+ye7joz/te7joz
+
+e7joz
+
+7ajaz
+
+7ajaz
+
+(to) rest
+
+yertae7/tertae7
+
+ertae7
+
+ertae7
+
+ertae7
+
+(to) retire
+
+yetae3ad/tetae3ad
+
+etae3ad
+
+etae3ad
+
+etae3ad
+
+(to) ride
+
+yerkab/terkab
+
+erkab
+
+rekeb
+
+rekeb
+
+(to) ring/ring up
+
+yede2/tede2
+
+ede2
+
+da2aiy
+
+da2
+
+(to) rule
+
+ye7kom/te7kom
+
+e7kom
+
+7akam
+
+7akam
+
+(to) become sad
+
+yez3al/tez3al
+
+ez3al
+
+z3el
+
+z3el
+
+(to) become satisfied
+
+yektefi/tektefi
+
+ektefi
+
+ektafaiy
+
+ektafa
+
+(to) save
+
+yewafer/tewafer
+
+ewafer
+
+wafar
+
+wafar
+
+(to) say
+
+ye2oul/te2oul
+
+e2oul
+
+2el
+
+2ael
+
+(to) seem
+
+yebaiin/tebaiin
+
+ebaiin
+
+baiian
+
+baiian
+
+(to) sell
+
+yebii3/tebii3
+
+ebii3
+
+bae3
+
+bae3
+
+(to) serve
+
+ye5dom/te5dom
+
+e5dom
+
+5adam
+
+5adam
+
+(to) shop (mall)
+
+yetsaoua2/tetsaoua2
+
+etsaoua2
+
+etsaoua2
+
+etsaoua2
+
+(to) shop (supermarket)
+
+yet7awaj/tet7awaj
+
+et7awaj
+
+et7awaj
+
+et7awaj
+
+(to) sign
+
+yemdi/temdi
+
+emdi
+
+madaiy
+
+mada
+
+(to) shut
+
+ye8le2/te8le2
+
+e8le2
+
+8ala2
+
+8ala2
+
+(to) sing
+
+ye8anni/te8anni
+
+e8anni
+
+8annaiy
+
+8anna
+
+(to) sit
+
+ye23oud/te23oud
+
+e23oud
+
+23ad
+
+23ad
+
+(to) sleep
+
+yenaem/tenaem
+
+enaem
+
+naem
+
+naem
+
+(to) smell
+
+yeshem/teshem
+
+eshem
+
+shamaiy
+
+sham
+
+(to) smoke
+
+yeda5en/ted5en
+
+ed5en
+
+da5an
+
+da5an
+
+(to) sort/organize
+
+yerateb/terateb
+
+erateb
+
+ratab
+
+ratab
+
+(to) speak
+
+ye7ki/te7ki
+
+e7ki
+
+7akaiy
+
+7aka
+
+(to) spend
+
+yesrouf/tesrouf
+
+esrouf
+
+saraf
+
+saraf
+
+(to) stand
+
+yew2af/tew2af
+
+ew2af
+
+wa2af
+
+wa2af
+
+(to) stay
+
+yeb2a/teb2a
+
+eb2a
+
+be2y
+
+be2y
+
+(to) steal
+
+yesro2/tesro2
+
+esro2
+
+sara2
+
+sara2
+
+(to) study
+
+yedros/tedros
+
+edros
+
+daras
+
+daras
+
+(to) submit
+
+yesalem/tesalem
+
+esalem
+
+salam
+
+salam
+
+(to) swallow
+
+yebla3/tebla3
+
+ebla3
+
+bla3
+
+bla3
+
+(to) swim
+
+yesba7/tesba7
+
+esba7
+
+saba7
+
+saba7
+
+(to) switch off
+
+yetfi/tetfi
+
+etfi
+
+tafaiy
+
+tafa
+
+(to) take
+
+ye5oud/te5oud
+
+e5oud
+
+a5ad
+
+a5ad
+
+(to) talk
+
+ye7ki/te7ki
+
+e7ki
+
+7akaiy
+
+7aka
+
+(to) taste
+
+yedo2/tedo2
+
+edo2
+
+de2et
+
+dae2
+
+(to) teach
+
+yedares/tedares
+
+edares
+
+daras
+
+daras
+
+(to) tell
+
+ye5aber/te5aber
+
+e5aber
+
+5abar
+
+5abar
+
+(to) thank
+
+yeshkor/teshkor
+
+eshkor
+
+shakar
+
+shakar
+
+(to) think
+
+yefteker/tefteker
+
+efteker
+
+eftakar
+
+eftakar
+
+(to) trade
+
+yetajer/tetajer
+
+etajer
+
+taejar
+
+taejar
+
+(to) travel
+
+yesaefer/tesarfer
+
+esarfer
+
+saefar
+
+saefar
+
+(to) try
+
+yejareb/tejareb
+
+ejareb
+
+jarab
+
+jarab
+
+(to) turn
+
+ye2loub/te2loub
+
+e2loub
+
+2alab
+
+2alab
+
+(to) turn on/off
+
+yef2es/tef2es
+
+ef2es
+
+fa2as
+
+fa2as
+
+(to) understand
+
+yefham/tefham
+
+efham
+
+fhem
+
+fhem
+
+(to) use
+
+yesta3mel/testa3mel
+
+esta3mel
+
+esta3mal
+
+esta3mal
+
+(to) visit
+
+yezour/tezour
+
+ezour
+
+zor
+
+zaar
+
+(to) wait
+
+yentezer/tentezer
+
+entezer
+
+entazar
+
+entazar
+
+(to) walk/go away
+
+yemshi/temshi
+
+emshi
+
+meshy
+
+meshy
+
+(to) wash
+
+ye8asel/te8asel
+
+e8asel
+
+8asal
+
+8asal
+
+(to) wear
+
+yelbes/telbes
+
+elbes
+
+lebes
+
+lebes
+
+(to) wear out
+
+yehri/tehri
+
+ehri
+
+haraiy
+
+hara
+
+(to) widen/get out of way
+
+yewase3/tewase3
+
+ewase3
+
+wasa3
+
+wasa3
+
+(to) withdraw
+
+yes7ab/tes7ab
+
+es7ab
+
+s7ab
+
+s7ab
+
+(to) work
+
+yeshte8el/teshte8el
+
+eshte8el
+
+eshta8al
+
+eshta8al
