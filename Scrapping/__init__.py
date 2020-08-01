@@ -1,1 +1,2 @@
 from Scrapping.chrome import ChromeManager
+from Scrapping.beautiful_soup import BeautifulSoupScrap
