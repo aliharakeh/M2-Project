@@ -34,7 +34,25 @@ def save_csv():
                 wr.writerow([r, en])
 
 
+def verbs():
+    with open('verbs.txt', 'r') as v:
+        data = v.read().split('___')[1:]
+    res = set()
+    for d in data:
+        lines = d.split('\n')
+        meaning = None
+        for i, line in enumerate(lines):
+            if i == 0:
+                meaning = line.replace('(to)', '').strip()
+            else:
+                split = line.split('/')
+                for s in split:
+                    res.add(f'{s},{meaning}')
+    return list(res)
+
+
 if __name__ == '__main__':
     # css_selectors = "div#sites-canvas-main-content div > table:nth-child(2) > tbody > tr"
     # save('English_Lebanese_Dictionary.json', css_selectors)
-    save_csv()
+    # save_csv()
+    save_json('verbs.json', verbs())

@@ -177,11 +177,6 @@ monsieur,mister
 8erfi,room
 8erfet 2e3oud,living room
 8erfet nowm,bedroom
-
-
-############################################
-
-
 a3ma,blind
 3amia,blind
 a3ti,give
@@ -192,43 +187,45 @@ a7saes,feeling
 a7san,better
 abel,before
 abiiad,white
+abyad,white
 baiida,white
 adiim,old
+adiime,old
+adeem,old
+adeeme,old
 ae5er,last
-ae5er shi,last thing/one
+ae5er shi,last thing
 ahbal,stupid
 habla,stupid
 ai akiid,yes indeed
-ai meta?,when?/what time?
-ai shou lakaen!,"No doubt,Sure thing!"
+ai meta,when
+aimtan,when
+ai shou lakaen,No doubt Sure thing
 akel,food
-akiid,certain
 akiid,definitely
-akiid,sure!
-akiid,sure??
-almaani,German man/woman
-almaaniiyi,German man/woman
-amercaeni,American man/woman
-amercaeniiyi,American man/woman
+akeed,definitely
+almaani,German
+almaaniiyi,German
+amercaeni,American
+amercaeniiyi,American
 amiir,prince
-an7asâ€¦shi,(the) worst..thing
-Ana 7orr,I am free to do as I wish!
-7orra!,I am free to do as I wish!
-Ana baddi pliiz,I want please..
-anglais(french),english
+an7as shi,the worst thing
+ana 7orr,I am free
+7orra,I am free
+ana baddi pliiz,I want please
+anglais,english
 annini,bottle
 anninit maai,bottle of water
 aou,or
+aw,or
 asad,lion
 asfar,yellow
 safra,yellow
 aswad,black
 sawda,black
-autostrade (italian),moterway/highway
-awalak,You say so?
-awalik,You say so?
-azra2,blue
-zar2a,blue
+autostrade,highway
+awalak,You think
+awalik,You think
 azra2,blue
 zar2a,blue
 b,at
@@ -238,104 +235,97 @@ bel,at
 3al,at
 ba2ara,cow
 ba3d,after
-ba3d bakiir!,Its Early! (sarcasm when someone is late)
+ba3d bakiir,Its Early
 ba3d elaw2aet,sometimes
-ba3daiin,afterwards/later
-ba5iil,cheap (person)
-ba5iili,cheap (person)
-ba7r,beach
+ba3daiin,later
+ba5iil,cheap
+ba5iili,cheap
 ba7r,sea
-baba,dad
 baba,father
 badli,suit
 baeb,door
 baida,egg
 baiit,house
+beit,house
 bakiir,early
 barra,out
-bas,just/enough
-bas,only
+bas,enough
 bas lel-asaf,unfortunately
 baset,fun
 bataata,potatos
 batii2,slow
 batii2a,slow
-be3iid,away
 be3iid,far
+b3eed,far
 bebai,baby
-bedae5el,inside (as in domestic)
-beddu yekoun,it must be!
+bedae5el,inside
+beddu yekoun,it must be
 bedoun,without
 bel2a5as,in particular
-bel5aerej,outside (as in abroad)
+bel5aerej,outside
 bela5as,especially
 belaed,country
 belbaiit,at home
 belfe3l,indeed
-bellail,(at) night
+bellail,at night
 belmediini,in the city
 belteslii7,undergoing repair
 benaiiyi,building
 benni,brown
-bent,daughter/girl
-benziin (dutch),gasoline/petrol
+bent,girl
+benziin,gasoline
 beraad,fridge
+barrad,fridge
 berdaiyi,curtain
 bernaemj,program
 bernaita,hat
-bezabet,precisely
-bi,in
-b,in
+belzabet,precisely
 bi2orb,near
 bi5esous,concerning
-bicyclette(french),bicycle
+bicyclette,bicycle
 biira,beer
 biitaa2a,card
 belmasa,in the evening
-bent,girl
 bisi,cat
 bessi,cat
 bizabet,exactly
 boia,paint
-Bonjour(french),Good day
+bonjour,Good day
 bot,shoe
 botaat,shoes
 boukra,tomorrow
 bravo 3aliik,excellent for you
 3aliiki,excellent for you
-bravo(english),excellent
-briitaani,British man/woman
-briitaaniiyi,British man/woman
+bravo,excellent
+briitaani,British
+briitaaniiyi,British
 bus,bus
-autobus (french),bus
-cadeau (french),gift
-cadeau (french),present
-canadiaeni,Canadaian  man/woman
-canadiaeniiyi,Canadaian  man/woman
-chapeau (french),hat
-chemise (french),shirt
+autobus,bus
+cadeau,gift
+canadiaeni,Canadaian
+canadiaeniiyi,Canadaian
+chapeau,hat
+chemise,shirt
 chocolat,chocolate
-cinema(english),cinema
-computer(english),computer
-cravate (french),tie
-da2â€¦,called (as in...so and so called)
-da2ait laâ€¦,called (I called)
-da3iif,week (power)
-da3iifi,week (power)
-dahab,gold (material)
-dahabi,gold (color)
-dahabiiyi,gold (color)
+cinema,cinema
+computer,computer
+cravate,tie
+da2,called
+da2ait,called
+da3iif,weak
+da3iifi,weak
+dahab,gold
+dahabi,gold
+dahabiiyi,gold
 daher,back
 dahra,outing
 daiiman,always
 darrouri,necessary
 darrouriiyi,necessary
 daw,light
-daw,light (brightness)
 dawwer,switch on
 dawwri,switch on
-de5aen,smoke (particles)
-dekaen,(a)shop
+de5aen,smoke
 dekaen,supermarket
 derous,studies
 dii3aiyaat,commercials
@@ -343,104 +333,95 @@ dii3aiyi,commercial
 diin,religion
 doctoor,doctor
 dod,against
-douche(french),shower
+douche,shower
 e7timael,a possiblity
 ebin,son
-Ã©charpe (french),scarf
 ektiiraa7,proposal
-el or e (depending on letter that follows),the
-el3aalam,(the) people
-el3aalm,the world/the people
-el3aili,(the) family
+el,the
+e,the
+el3aalam,the people
+el3aalm,the people
 el3aili,the family
 el5ariif,autumn
 elaa5ariin,the others
 elawal,first
-elawal,the first
-elensaen,(the) human being
-elhaii2a,it seems to be!
+elensaen,the human being
+elhaii2a,it seems to be
 elkel,everyone
-ella,except/minus
-ella,minus
-el-mustahlek,consumer (the consumer)
-elwaa7ad,people..typically (to teach a lesson)
+ella,except
+el mustahlek,consumer
+elwaa7ad,a person
 elyoum,today
 embare7,yesterday
 embiid,wine
-enaes,(the) people
+enaes,the people
 enak,you are
 enik,you are
 ennu,that
-eraadio,(the) radio
 eraadio,the radio
 erabii3,spring
-esae3a,(the) time
+esae3a,the time
 esaiif,summer
-esbou3,week (calender)
+esbou3,week
 eshams,the sun
 esheti,winter
 esm,name
 esobo7,the morning
-espaani,Spanish man/woman
-espaaniiyi,Spanish man/woman
+espaani,Spanish
+espaaniiyi,Spanish
 estaez,teacher
 estaezi,teacher
-estishfa,healing/medical aid
-eta2es,(the)weather
+estishfa,medical aid
+eta2es,the weather
 etaelyi,the following
-etala3,look!
-etala3i,look!
+etala3,look
+etala3i,look
 etii7aen,exam
-eza 8aiir zaelk,if otherwise/if not
-ezaaher,it appears to be!
+eza 8aiir zaelk,if otherwise
+ezaaher,it appears to be
 fa2iir,poor
 fa2iira,poor
 faadi,empty
 faadiiyi,empty
-faadi,not busy/empty
-faadiiyi,not busy/empty
-faete7,light (color)
+faete7,bright
 faj2a,suddenly
 faraashi,moth
-fedda,silver (material)
-feddi,silver (color)
-feddiiyi,silver (color)
-fehemt,understand?
-fehemti kiif?,understand?
+fedda,silver
+feddi,silver
+feddiiyi,silver
+fehemt,understand
+fehemti kiif,understand how
 fersa,chance
-fersa,holiday
 fewaeki,fruit
-fi,there is (available)
-fi,there isâ€¦
-fi 5edmt,service (at the service..Of)
+fi,there is
+fi 5edmt,there is a service
 fi e7timael,its possible
 fi,in
-bi or f,in
-b (depending on letter that follows),in
 fi7aal,in case
-fikol 7aal,anyway/anyhow
+fikol 7aal,anyway
 fikra,idea
 fistaan,dress
 fo2,above
-fo2,up/ up stairs/ above
-"fourran (pronounced, faw-run)",immediately
-frata,change (pocket change..coins)
-frensaewi,French man/woman
-frensaewiiyi,French man/woman
-garÃ§on (french),waiter
-gÃ¢teau,cake
-gÃ¢teau 3achocolat (french),chocolate cake
+fourran,immediately
+fowran,immediately
+frata,change
+frensaewi,French
+frensaewiiyi,French
+garson,waiter
+gateau,cake
+gateau 3achocolat,chocolate cake
 gateau 3ajazar,carrort cake
 gateau 3atefae7,apple cake
-ha7tal...,untilâ€¦
 habibi,darling
 habibti,darling
 hadaf,goal
 haiin,easy
+hayen,easy
 hal2,now
+halla2,now
 7o2ou2,rights
 hon,here
-hounik,there (over there)
+hounik,over there
 jaar,nieghbor
 jaara,nieghbor
 jamae3a,group
@@ -448,8 +429,10 @@ jamhour,audience
 jamiil,beautiful
 jamiili,beautiful
 janaini,garden
-jaquette (french),jacket
+jaquette,jacket
+jaget,jacket
 jariidi,newspaper
+jaride,newspaper
 jawaeb,an answer
 jazara,carrot
 jebael,mountains
@@ -466,86 +449,78 @@ jeze2,part
 jiib,get
 jiibi,get
 tanoura,skirt
-jupe (french),skirt
-kabout,coat/condom
+jupe,skirt
+kabout,coat
 kaemel,complete
 kaemeli,complete
 kaetb,writer
 kaetbi,writer
 kaeteb,author
 kalb,dog
-kam?,how many?/how much?
-2edaiish?,how many?/how much?
+kam,how much
+2edaiish,how much
 kamaen,also
-kamaen,as well
-kamaen,too/also
-kamaena..,furthermore..
-kariim,kind/generous
-kariimi,kind/generous
-kazdoura,cruise
+kamaena,furthermore
+kariim,generous
+kariimi,generous
+kazdoura,trip
 kbiir,big
-kbiir,large
 kel marra,everytime
 kel shi,everything
-kel,all/everybody
-elkel (depending on context),all/everybody
+kel,all
+elkel,all
 kelmi,word
-kelna sawa!,all of us together!
+kelna sawa,all of us together
 kersi,chair
 kezbi,lie
-kezbi baiida,lie (white)
-kezbi sawda,lie (black)
+kezbi baiida,lie
+kezbi sawda,lie
 kibaiiyi,cup
-kiif?,how/how come?
-kiif?,how?
+kiif,how
 kil maeshi wo etaeni,every now and then
 ktaeb,book
-ktiir,many/a lot
-ktiir,much
-ktiir,often
-ktiir,very
+ktiir,a lot
 l,for
 la,for
-le,for
-la shou?,why?/for what?
-la,to/for
-l (depending on following letter),to/for
-La2,No!
+le,why
+la shou,for what
+La2,No
 la2iim,mean person
 la2iimi,mean person
-la2iini 3al..,meet me at the..
-la7aalu,by him/her self
-la7aala,by him/her self
+la2iini 3al,meet me at the
+la7aalu,by himself
+la7aala,by himself
 la7aem,butcher
+la77am,butcher
 la7em,meat
 la7za,moment
-la7za!,moment (one)
-laezem,should/what should be
-laiish?,why?
-laik,look(here)/listen up!
-laiki,look(here)/listen up!
+laezem,should
+laiish,why
+laik,look
+laiki,look
 lail,night
-laili,(a) night
-lamma,once/whenever
+laili,a night
+lamma,once
 lawa7du,alone
 lawa7da,alone
 lawn,color
-lebelaed,The Country (Lebanon)
-lebnaeni,Lebanese  man/woman
-lebnaeniiyi,Lebanese  man/woman
+lebelaed,The Country
+lebnaeni,Lebanese
+lebnaeniiyi,Lebanese
 lelasaf,sadly
-letnaen,Both/the two
-lizaelk,so/thatâ€™s why
+letnaen,Both
+lizaelk,so
 ma 7adi,no one
-Ma bi 2oulu,They do not sayâ€¦(It's wrong to say)
-ma fiâ€¦,there is noâ€¦
-ma momken!,no way!
+Ma bi 2oulu,They do not say
+ma fi,there is not
+ma momken,no way
+ma,no
 ma shi,nothing
 ma3,with
 ma3a,with
 ma3na,meaning
 ma5raj,exit
-ma7ata,station/chanel
+ma7ata,station
 maai,water
 mad3ouk,worn out
 mad3ouki,worn out
@@ -554,7 +529,8 @@ maftou7,opened
 maftou7a,opened
 maiiyiet,dead
 maiiyieti,dead
-mail,side
+mayyet,dead
+maile,side
 majalli,magazine
 majhour,famous
 majhoura,famous
@@ -562,15 +538,15 @@ maktab,office
 maktabi,library
 maktoub,letter
 mala2a,spoon
-mama,mom
 mama,mother
 man5our,nose
+men5ar,nose
 manta2a,area
 manta2a,region
-manzar,view/sight
-manzar 7elou,nice sight
+manzar,view
+manzar 7elou,nice view
 mar7aba,hello
-mar7ali,period/interval
+mar7ali,period
 mariid,ill
 mariida,ill
 marra,woman
@@ -579,25 +555,22 @@ masaari,money
 mash8oul,busy
 manshafi,towel
 mat3am,restaurant
-mat3am,restaurant
 mat7af,museum
 mataar,airport
 matal,example
-matal,role model
 matalan,for example
 matba5,kitchen
 maw3ad,appointment
-me7ata,TV/(petrol) station
+me7ata,station
 mediini,city
 meftae7,key
 mehazab,polite
 mehazabi,polite
-meliaen,full/full of
-meliaeni,full/full of
+meliaen,full
+meliaeni,full
 men,from
-men,since
-men 5iilael,through/via
-men elwaad7,clear (its clear)
+men 5iilael,through
+men elwaad7,it's clear
 men meddi,from a while
 men zamaen,from a while
 menarfez,angry
@@ -606,73 +579,67 @@ menarfez,angry from me
 menarfezi meni,angry from me
 menii7,good
 menii7a,good
-menii7,nice/good
-menii7a,nice/good
-menii7,well
-menii7a,well
 meraiiyi,mirror
-merci (french),thank you
+merci,thank you
 merci ktiir,thank you very much
 mesakar,closed
 mesakara,closed
 mesh,not
-Mesh 2asdi haik,I don't mean that
+mesh 2asdi haik,I don't mean that
 mesh 8ariib,familiar
 mesh she8elak,not your business
-she8elik,not your business
+she8elik,your business
 meshkel,problem
 meshkeli,problem
-mesiibi,crisis/problem
+mesiibi,crisis
 meta,when
 met2a5r,late
 met2a5ra,late
-meddi,a while/era
-miin ma..,whoever..
-miin?,who?
+meddi,a while
+miin ma,whoever
+miin,who
 mistashfa,hospital
-mitli mitlak,just like you (in this)
-mitlik,just like you (in this)
+mitli mitlak,just like you
+mitlik,just like you
 mo5adaraat,drugs
 mo8la2,shut
 modares,teacher
 moddaresi,teacher
-moquette(french),carpet
+moquette,carpet
 motaer,engine
-mou5atat,(a)plan
-moudiir,boss/director/manager
-moudiira,boss/director/manager
-moudiir,manager
-moudiira,manager
+mou5atat,a plan
+moudiir,boss
+moudiira,boss
 mowaten,citizen
 mowateni,citizen
 munaesebi,occasion
 musii2a,music
-na3am (formal) ,yes/ya
-ai,yes/ya
-na7es,evil
-naase7,fat man/women
-naase7a,fat man/women
+na3am,yes
+ai,yes
+eh,yes
+na7es,unluck
+naase7,fat
+naase7a,fat
 nae3m,soft
+ne3em,soft
 nae3mi,soft
 naeshef,dry
 naeshefi,dry
-natra,(a) wait
-ne2en ,because
+natra,waiting
+ne2en,because
 nii2aesh,argument
+ne2ash,argument
 niihaiiyi,end
-niizaam,order (law)
+niizaam,order
 nos,half
 oronj,orange
-pantalon (french,pants
-italian),pants
-pantalon (french,trousers
-italian),trousers
-pardon (french),excuse me
-perruque(french),wig
-piscine (french),pool
-pliiz (englsih),please
+pantalon,pants
+pardon,excuse me
+perruque,wig
+piscine,pool
+pliiz,please
 ra2em,number
-ra5iis,cheap (product)
+ra5iis,cheap
 ra7a,pleasure
 raas,head
 raas bataata,potato
@@ -695,32 +662,25 @@ riiyaada,sport
 riiyaadi,sporty
 rou7,go
 rou7i,go
-rusi,Russian man/woman
-rusiiyi,Russian man/woman
-sa2al,ask (he/she)
-sa2alt,ask (he/she)
+rusi,Russian
+rusiiyi,Russian
+sa2al,ask
+sa2alt,ask
 sa2ef,ceiling
 sa2ef,roof
-sha2fi ,piece
+sha2fi,piece
 sa7,correct
-sa7,right (that's)
-sa7,true/correct
 sa7en,plate
 sa8iir,small
 sa8iiri,small
 saba7 el5aiir,Good morning
 sabi,boy
 sae3a,clock
-sae3a,clock/watch
-sae3a,hour
-sae3a,watch
 saf,classroom
-saf,queue
-saf,school class/queue
-safar,travel/a trip
+safar,travel
 sahar,staying up late
 sahel,flat land
-sahra,late night party/outing
+sahra,late night party
 saii2,bad
 saiir,traffic
 sajara,tree
@@ -728,15 +688,13 @@ salata,salad
 samak,fish
 sarii3,fast
 sarii3a,fast
-sarii3,quick
-sarii3a,quick
 sarii3an,quickly
 sawa,together
 sekar,suger
 sekiin,knife
 semiik,thick
 semiiki,thick
-shmmael ,north
+shmmael,north
 seni,year
 serae2,thief
 serae2i,thief
@@ -744,7 +702,6 @@ sha3r,hair
 sha5es,person
 sha5tuura,boat
 sha5tuura,ship
-shaai,tea
 shaai,tea
 shab,teen
 sabiiyi,teen
@@ -769,45 +726,40 @@ sheliimoni,straw
 sheti,rain
 shi,something
 shibaek,window
-shifet kiif?,"you see, how it is?"
-shifeti kiif?,"you see, how it is?"
+shifet kiif,you see how it is
+shifeti kiif,you see how it is
 shmael,left
 shouai,a bit
-shou 3arafak?,how do you know?
-shou 3arafik?,how do you know?
-shou 3arafni?,how do I know?
-shou fi?,what is there?/Whats up?
-shou lakaen!,of course
-shou mehazab,how politeâ€¦
-mehazabi,how politeâ€¦
-Shou naase7,How fat he/she is!!
-naase7a!!,How fat he/she is!!
-shou ya3ni?,What does..mean?
-shou?,what?
-ai?,what?
-"kiif? (Yes, how can used with right tone!)",what?
-shouai,a bit/just a little
-shouai,bit (a bit)
-shouai,(a) little
+shou 3arafak,how do you know
+shou 3arafik,how do you know
+shou 3arafni,how do I know
+shou fi,Whats up
+shou lakaen,of course
+shou mehazab,how polite
+mehazabi,polite
+Shou naase7,How fat
+naase7a,an advice
+shou ya3ni,What does that mean
+shou,what
+ai,what
+kiif,what
+shouai,a bit
 sibaat,shoe
 siiara,car
-makana,car
+makana,device
 siigaara,cigarette
-sit or madame (french),miss
-sho2af ,pieces
+sho2af,pieces
 so3b,difficult
 so3bi,difficult
 so7i,healthy
-sorry! (english),sorry!
 sou2,market
 sou2,store
 sou2 el5edra,vegie market
 souaat,sounds
 souaat welaed,sounds of kids
 soura,photo
-soura 3anâ€¦,photo ofâ€¦
+soura 3anna,photo of
 sout,sound
-special (french),special
 ta2iil,heavy
 ta2iili,heavy
 ta2iil,luxurious
@@ -820,25 +772,17 @@ ta3m,taste
 ta3mi,taste
 ta5et,bed
 ta7et,below
-ta7et,down/ down stairs/ below
-tabii3i,natural/normal
-tabii3iiyi,natural/normal
 tabii3i,normal
 tabii3iiyi,normal
-tabii3i,usual
-tabii3iiyi,usual
 taeta,grandma
 taeza,fresh
 tafadal,take
 tafadali,take
-taiieb ok!,Fine!
-taiieb,tasty
-taiiebi,tasty
+taiieb,Fine
 taksi,taxi
 tanjara,pot
-tante (french),aunt
+tant,aunt
 tarii2,road
-tarii2,way
 tarii2 eraj3a,way back
 tarii5,history
 tawiil,long
@@ -850,30 +794,26 @@ teiaeb,clothes
 tejrobi,experience
 telamiiz,students
 telefon,telephone
-teliani,Italian man/woman
-telianiiyi,Italian man/woman
+teliani,Italian
+telianiiyi,Italian
 telmiiz,student
 telmiizi,student
-temshaiiyi,(a) walk
+temshaiiyi,a walk
 terwii2a,breakfast
 teslii7,repair
-ticket(english),ticket
 tiiara,airplane
 tiijaara,trade
 tnaen,two
 toailet,bathroom
 tofol,baby
-train (french),train
-vacances (french),vacation
+vacances,vacation
 vaen,van
-viitaes,stick (automobile)
+viitaes,stick
 w3adtak,I promised you
 w3adtik,I promised you
 w3adtni,You promised me
 w3adtini,You promised me
 wa,and
-wa2ta,at that time
-wa2ta,at that time
 wa2ta,back then
 wa3d,promise
 wa3i,awake
@@ -883,16 +823,15 @@ waad7a,clear
 wae3i,awake
 wae3iiyi,awake
 waese3,wide
-waiin etoailet pliiz?,"where is the bathroom, please?"
-waiin?,where?
+waiin etoailet pliiz,where is the bathroom please
+waiin,where
 waja3,pain
 waja3 raas,headache
 waja3 zala3iim,sore throat
 walad,child
-walaeken,but/however
-walaeken,however
+walaeken,but
 war2,papers
-war2a,paper/contract
+war2a,paper
 wara,behind
 wardi,flower
 wasfi,prescription
@@ -900,15 +839,15 @@ wasfi men edoctoor,prescription from the doctor
 watan,nation
 wej,face
 welaed,kids
-wesl,arrived (he/she)
-weslt,arrived (he/she)
-wo2eza!,So what!
-wo2ezaâ€¦,And ifâ€¦
-ya 7aram!,pity!
-ya te3tiiri!,how terrible!
-Yalla kol,Eat Up! M/F/Group
-keli,Eat Up! M/F/Group
-kelo!,Eat Up! M/F/Group
+wesl,arrived
+weslt,arrived
+wo2eza,So what
+ya 7aram,pity
+7aram,pity
+ya te3tiiri,how terrible
+Yalla kol,Eat Up
+keli,Eat Up
+kelo,Eat Up
 yamiin,right
 yefrosh,to furnish
 tefrosh,to furnish
@@ -917,8 +856,8 @@ youm,day
 za7met saiir,traffic conjestion
 zaewiyi,corner
 zaha2,bordom
-zaha2aen,bored (im bored)
-zaha2aeni,bored (im bored)
+zaha2aen,bored
+zaha2aeni,bored
 zaiit,oil
 zaka,knowlegde
 zakerni,remind me
@@ -935,4 +874,4 @@ zawj,pair
 zebdi,butter
 zet elshi,same thing
 ziaara,a visit
-ziiaara,(a)visit
+ziiaara,a visit

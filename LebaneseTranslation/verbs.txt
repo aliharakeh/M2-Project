@@ -1,1789 +1,895 @@
 English
-
 Lebanese
-
 Root for 1,2,3,4,6
-
 Root for 5 (I,You,We)
-
 Root for 5 (He,She,They)
-
-(to) be able (to)
-
+___(to) be able (to)
 ye2dar/te2dar
-
 e2dar
-
 e2der
-
 e2der
-
-(to) accept
-
+___(to) accept
 ye2bal/te2bal
-
 e2bal
-
 ebel
-
 ebel
-
-(to) be afraid
-
+___(to) be afraid
 ye5aaf/te5aaf
-
 e5aaf
-
 5of
-
 5aaf
-
-(to) allow
-
+___(to) allow
 ye5alli/te5alli
-
 e5alli
-
 5allaiy
-
 5alla
-
-(to) be amazing
-
+___(to) be amazing
 yejannen/tejannen
-
 ejannen
-
 jannan
-
 jannan
-
-(to) become angry
-
+___(to) become angry
 yenarfez/tenarfez
-
 enarfez
-
 narfaz
-
 narfaz
-
-(to) answer
-
+___(to) answer
 yejaeweb/tejaeweb
-
 ejaeweb
-
 jaewab
-
 jaewab
-
-(to) appear/look
-
+___(to) appear/look
 yebaiyen/tebaiyen
-
 ebaiyen
-
 baiyan
-
 baiyan
-
-(to) arrive
-
+___(to) arrive
 yewsal/tewsal
-
 ewsal
-
 wesel
-
 wesel
-
-(to) ask
-
+___(to) ask
 yes2al/tes2al
-
 es2al
-
 sa2al
-
 sa2al
-
-(to) be assured
-
+___(to) be assured
 yeta2kad/teta2kad
-
 eta2kad
-
 ta2kad
-
 ta2kad
-
-(to) awaken
-
+___(to) awaken
 yew3a/tew3a
-
 ew3a
-
 we3i
-
 we3i
-
-(to) be
-
+___(to) be
 yekoun/tekoun
-
 ekoun
-
 kaen
-
 kaen
-
-(to) become
-
+___(to) become
 yesiir/tesiir
-
 esiir
-
 sor
-
 saar
-
-(to) begin
-
+___(to) begin
 yebalesh/tebalesh
-
 ebalesh
-
 balash
-
 balash
-
-(to) behave
-
+___(to) behave
 yetasaraf/tetasaraf
-
 etasaraf
-
 etsaraf
-
 etsaraf
-
-(to) believe
-
+___(to) believe
 ye2mon/te2mon
-
 e2mon
-
 2aeman
-
 2aeman
-
-(to) be born
-
+___(to) be born
 ye5la2/te5la2
-
 e5la2
-
 5ell2
-
 5ell2
-
-(to) break
-
+___(to) break
 yeksor/teksor
-
 eksor
-
 kasar
-
 kasar
-
-(to) have breakfast
-
+___(to) have breakfast
 yetrawa2/tetrawa2
-
 etrawa2
-
 etrawa2
-
 etrawa2
-
-(to) bring
-
+___(to) bring
 yejiib/tejiib
-
 ejiib
-
 jeb
-
 jaeb
-
-(to) burn
-
+___(to) burn
 ye7ro2/te7ro2
-
 e7ro2
-
 7arr2
-
 7arr2
-
-(to) buy
-
+___(to) buy
 yeshteri/teshteri
-
 eshteri
-
 eshtaraiy
-
 eshtara
-
-(to) call
-
+___(to) call
 yetalfen/tetalfen
-
 etalfen
-
 talfan
-
 talfan
-
-(to) carry
-
+___(to) carry
 ye7mol/te7mol
-
 e7mol
-
 7amal
-
 7amal
-
-(to) change
-
+___(to) change
 ye8aiir/te8aiir
-
 e8aiir
-
 8aiiar
-
 8aiiar
-
-(to) clean
-
+___(to) clean
 yenadef/tenadef
-
 enadef
-
 naddaf
-
 naddaf
-
-(to) color
-
+___(to) color
 yelawin/telawin
-
 elawin
-
 lawan
-
 lawan
-
-(to) come
-
+___(to) come
 yeji/teji
-
 eji
-
 jii
-
 eja
-
-(to) come across
-
+___(to) come across
 yemro2/temro2
-
 emro2
-
 mara2
-
 mara2
-
  (to) complain
-
 yeshki/teshki
-
 eshki
-
 shakaiy
-
 shaka
-
-(to) complete
-
+___(to) complete
 yekmol/tekmol
-
 ekmol
-
 kammal
-
 kammal
-
-(to) continue
-
+___(to) continue
 yestamor/testamor
-
 estamor
-
 estammar
-
 estammar
-
-(to) cook
-
+___(to) cook
 yetbo5/tetbo5
-
 etbo5
-
 taba5
-
 taba5
-
-(to) cough
-
+___(to) cough
 ye2e7/te2e7
-
 e2e7
-
 2a7aiy
-
 2a7
-
-(to) cry
-
+___(to) cry
 yebki/tebki
-
 ebki
-
 bekiy
-
 bekiy
-
-(to) cut
-
+___(to) cut
 ye2es/te2es
-
 e2es
-
 2asaiy
-
 2as
-
-(to) dare
-
+___(to) dare
 yejro2/tejro2
-
 ejro2
-
 tajar2
-
 tajar2
-
-(to) die
-
+___(to) die
 yemout/temout
-
 emout
-
 met
-
 maet
-
-(to) have dinner
-
+___(to) have dinner
 yet3asha/tet3asha
-
 et3asha
-
 et3ashaiy
-
 et3asha
-
-(to) declare
-
+___(to) declare
 ye3eln/te3eln
-
 e3eln
-
 a3lan
-
 a3lan
-
-(to) describe
-
+___(to) describe
 yeshra7/teshra7
-
 eshra7
-
 shara7
-
 shara7
-
-(to) do
-
+___(to) do
 ye3mel/te3mel
-
 e3mel
-
 3mel
-
 3mel
-
-(to) draw
-
+___(to) draw
 yersom/tersom
-
 ersom
-
 rasam
-
 rasam
-
-(to) drink
-
+___(to) drink
 yeshrab/teshrab
-
 eshrab
-
 shereb
-
 shereb
-
-(to) dry
-
+___(to) dry
 yenashef/tenashef
-
 enashef
-
 nashaf
-
 nashaf
-
-(to) earn / receive
-
+___(to) earn / receive
 ye2bad/te2bad
-
 e2bad
-
 abad
-
 abad
-
-(to) eat
-
+___(to) eat
 yekol/tekol
-
 ekol
-
 akal
-
 akal
-
-(to) empower
-
+___(to) empower
 ye2awi/te2awi
-
 e2awi
-
 2ewiy
-
 2ewiy
-
-(to) enjoy oneself
-
+___(to) enjoy oneself
 yetsalla/tetsalla
-
 etsalla
-
 etsallaiy
-
 etsalla
-
-(to) escape
-
+___(to) escape
 yehrob/tehrob
-
 ehrob
-
 harab
-
 harab
-
-(to) exit
-
+___(to) exit
 yedhar/tedhar
-
 edhar
-
 dahar
-
 dahar
-
-(to) explain
-
+___(to) explain
 yefasser/tefasser
-
 efasser
-
 fassar
-
 fassar
-
-(to) fall
-
+___(to) fall
 yew2a3/tew2a3
-
 ew2a3
-
 we2e3
-
 we2e3
-
-(to) go far/away
-
+___(to) go far/away
 yeb3ed/teb3ed
-
 eb3ed
-
 ba3ad
-
 ba3ad
-
-(to) feel
-
+___(to) feel
 ye7es/te7es
-
 e7es
-
 7asaiy
-
 7as
-
-(to) fill/fill up
-
+___(to) fill/fill up
 ye3abbi/te3abbi
-
 e3abbi
-
 3abbaiy
-
 3abba
-
-(to) find
-
+___(to) find
 yela2i/tela2i
-
 ela2i
-
 lae2aiy
-
 lae2a
-
-(to) finish
-
+___(to) finish
 ye5ales/te5ales
-
 e5ales
-
 5allas
-
 5allas
-
-(to) follow
-
+___(to) follow
 yel7a2/tel7a2
-
 el7a2
-
 le7a2
-
 le7a2
-
-(to) forget
-
+___(to) forget
 yensa/tensa
-
 ensa
-
 neseiy
-
 neseiy
-
-(to) have fun
-
+___(to) have fun
 yemboset/temboset
-
 emboset
-
 embasat
-
 embasat
-
-(to) get
-
+___(to) get
 yejiib/tejiib
-
 ejiib
-
 jeb
-
 jaeb
-
-(to) give
-
+___(to) give
 ye3ti/te3ti
-
 e3ti
-
 3ataiy
-
 3ata
-
-(to) go
-
+___(to) go
 yerou7/terou7
-
 erou7
-
 ro7
-
 raa7
-
-(to) go back
-
+___(to) go back
 yerja3/terja3
-
 erja3
-
 rej3
-
 rej3
-
-(to) go out
-
+___(to) go out
 ye5roj/te5roj
-
 e5roj
-
 5araj
-
 5araj
-
-(to) grow
-
+___(to) grow
 yekbar/tekbar
-
 ekbar
-
 kebr
-
 kebr
-
-(to) happen/be
-
+___(to) happen/be
 yesiir/tesiir
-
 esiir
-
 sor
-
 saar
-
-(to) hear
-
+___(to) hear
 yesma3/tesma3
-
 esma3
-
 seme3
-
 seme3
-
-(to) help
-
+___(to) help
 yesae3d/tesae3d
-
 esae3d
-
 sae3ad
-
 sae3ad
-
-(to) hope
-
+___(to) hope
 yetamal/tetamal
-
 etamal
-
 etamal
-
 etamal
-
-(to) hit
-
+___(to) hit
 yedrob/tedrob
-
 edrob
-
 darab
-
 darab
-
-(to) hold
-
+___(to) hold
 yemsek/temsek
-
 emsek
-
 mesek
-
 mesek
-
-(to) hurry
-
+___(to) hurry
 yesta3jel/testa3jel
-
 esta3jel
-
 esta3jal
-
 esta3jal
-
-(to) imagine
-
+___(to) imagine
 yet5aeial/tet5aeial
-
 et5aeial
-
 et5aeial
-
 et5aeial
-
-(to) increase
-
+___(to) increase
 yeziid/teziid
-
 eziid
-
 zed
-
 zaed
-
-(to) intend
-
+___(to) intend
 ye2sod/te2sod
-
 e2sod
-
 2asad
-
 2asad
-
-(to) invite
-
+___(to) invite
 ye3zoum/te3zoum
-
 e3zoum
-
 3azam
-
 3azam
-
-(to) keep
-
+___(to) keep
 ye5alli/te5alli
-
 e5alli
-
 5allaiy
-
 5alla
-
-(to) kill
-
+___(to) kill
 ye2tol/te2tol
-
 e2tol
-
 2atal
-
 2atal
-
-(to) knock
-
+___(to) knock
 yede2/tede2
-
 ede2
-
 da2aiy
-
 da2
-
-(to) know
-
+___(to) know
 ye3ref/te3ref
-
 e3ref
-
 3erf
-
 3erf
-
-(to) lack
-
+___(to) lack
 yef2ed/tef2ed
-
 ef2ed
-
 fa2ad
-
 fa2ad
-
-(to) last
-
+___(to) last
 yedaain/tedaain
-
 edaain
-
 daaian
-
 daaian
-
-(to) be late
-
+___(to) be late
 yeta5ar/teta5ar
-
 eta5ar
-
 eta5ar
-
 eta5ar
-
-(to) leave
-
+___(to) leave
 yetrok/tetrok
-
 etrok
-
 tarak
-
 tarak
-
-(to) let
-
+___(to) let
 ye5alli/te5alli
-
 e5alli
-
 5allaiy
-
 5alla
-
-(to) listen
-
+___(to) listen
 yesma3/tesma3
-
 esma3
-
 seme3
-
 seme3
-
-(to) live
-
+___(to) live
 ye3iish/te3iish
-
 e3iish
-
 3osh
-
 3aash
-
-(to) look
-
+___(to) look
 yetalla3/tetalla3
-
 etalla3
-
 etalla3
-
 etalla3
-
-(to) look for/search
-
+___(to) look for/search
 yefatish/tefatish
-
 efatish
-
 fatash
-
 fatash
-
-(to) love
-
+___(to) love
 ye7ib/te7ib
-
 e7ib
-
 7abaiy
-
 7ab
-
-(to) have lunch
-
+___(to) have lunch
 yet8ada/tet8ada
-
 et8ada
-
 et8adaiy
-
 et8ada
-
-(to) get mad
-
+___(to) get mad
 yenarfez/tenarfez
-
 enarfez
-
 narfaz
-
 narfaz
-
-(to) make/do
-
+___(to) make/do
 ye3mel/te3mel
-
 e3mel
-
 3eml
-
 3eml
-
-(to) get married
-
+___(to) get married
 yetzawaj/tetzawaj
-
 etzawaj
-
 etzawaj
-
 etzawaj
-
-(to) meet
-
+___(to) meet
 yelta2a/telta2a
-
 elta2a
-
 elta2a
-
 elta2a
-
-(to) memorise
-
+___(to) memorise
 ye7faz/te7faz
-
 e7faz
-
 7afaz
-
 7afaz
-
-(to) make a mistake
-
+___(to) make a mistake
 ye8lat/te8lat
-
 e8lat
-
 8let
-
 8let
-
-(to) need
-
+___(to) need
 ye7taaj/te7taj
-
 e7taj
-
 7taej
-
 7taej
-
-(to) occupy
-
+___(to) occupy
 ye7tal/te7tal
-
 e7tal
-
 7talay
-
 7tal
-
-(to) offer
-
+___(to) offer
 ye3rod/te3rod
-
 e3rod
-
 3arad
-
 3arad
-
-(to) open
-
+___(to) open
 yefta7/tefta7
-
 efta7
-
 fta7
-
 fta7
-
-(to) order/file up
-
+___(to) order/file up
 yenazem/tenazem
-
 enazem
-
 nazam
-
 nazam
-
-(to) own
-
+___(to) own
 yemlok/temlok
-
 emlok
-
 malak
-
 malak
-
-(to) package
-
+___(to) package
 ye3aleb/te3aleb
-
 e3aleb
-
 3alab
-
 3alab
-
-(to) pass through
-
+___(to) pass through
 yemro2/temro2
-
 emro2
-
 marra2
-
 marra2
-
-(to) pay/push
-
+___(to) pay/push
 yedfa3/tedfa3
-
 edfa3
-
 dfa3
-
 dfa3
-
-(to) persuade
-
+___(to) persuade
 ye2na3/te2na3
-
 e2na3
-
 2na3
-
 2na3
-
-(to) plan
-
+___(to) plan
 ye5atet/te5atet
-
 e5atet
-
 5atat
-
 5atat
-
-(to) play
-
+___(to) play
 yel3ab/tel3ab
-
 el3ab
-
 l3eb
-
 l3eb
-
-(to) prefer
-
+___(to) prefer
 yeufadel/teufadel
-
 eufadel
-
 fadal
-
 fadal
-
-(to) prevent
-
+___(to) prevent
 yemna3/temna3
-
 emna3
-
 mana3
-
 mana3
-
-(to) put down
-
+___(to) put down
 yenazel/tenazel
-
 enazel
-
 nazal
-
 nazal
-
-(to) put up
-
+___(to) put up
 yetale3/yetale3
-
 etale3
-
 tala3
-
 tala3
-
-(to) read
-
+___(to) read
 ye2ra/te2ra
-
 e2ra
-
 2eriy
-
 2eriy
-
-(to) get ready
-
+___(to) get ready
 ye7ader/te7ader
-
 e7ader
-
 7adar
-
 7adar
-
-(to) refuse
-
+___(to) refuse
 yerfod/terfod
-
 erfod
-
 rafad
-
 rafad
-
-(to) relax
-
+___(to) relax
 yesterii7/testerii7
-
 esterii7
-
 ertae7
-
 ertae7
-
-(to) remain
-
+___(to) remain
 yeb2a/teb2a
-
 eb2a
-
 be2iy
-
 be2iy
-
-(to) repair
-
+___(to) repair
 yesale7/tesale7
-
 esale7
-
 sala7
-
 sala7
-
-(to) reserve
-
+___(to) reserve
 ye7joz/te7joz
-
 e7joz
-
 7ajaz
-
 7ajaz
-
-(to) rest
-
+___(to) rest
 yertae7/tertae7
-
 ertae7
-
 ertae7
-
 ertae7
-
-(to) retire
-
+___(to) retire
 yetae3ad/tetae3ad
-
 etae3ad
-
 etae3ad
-
 etae3ad
-
-(to) ride
-
+___(to) ride
 yerkab/terkab
-
 erkab
-
 rekeb
-
 rekeb
-
-(to) ring/ring up
-
+___(to) ring/ring up
 yede2/tede2
-
 ede2
-
 da2aiy
-
 da2
-
-(to) rule
-
+___(to) rule
 ye7kom/te7kom
-
 e7kom
-
 7akam
-
 7akam
-
-(to) become sad
-
+___(to) become sad
 yez3al/tez3al
-
 ez3al
-
 z3el
-
 z3el
-
-(to) become satisfied
-
+___(to) become satisfied
 yektefi/tektefi
-
 ektefi
-
 ektafaiy
-
 ektafa
-
-(to) save
-
+___(to) save
 yewafer/tewafer
-
 ewafer
-
 wafar
-
 wafar
-
-(to) say
-
+___(to) say
 ye2oul/te2oul
-
 e2oul
-
 2el
-
 2ael
-
-(to) seem
-
+___(to) seem
 yebaiin/tebaiin
-
 ebaiin
-
 baiian
-
 baiian
-
-(to) sell
-
+___(to) sell
 yebii3/tebii3
-
 ebii3
-
 bae3
-
 bae3
-
-(to) serve
-
+___(to) serve
 ye5dom/te5dom
-
 e5dom
-
 5adam
-
 5adam
-
-(to) shop (mall)
-
+___(to) shop (mall)
 yetsaoua2/tetsaoua2
-
 etsaoua2
-
 etsaoua2
-
 etsaoua2
-
-(to) shop (supermarket)
-
+___(to) shop (supermarket)
 yet7awaj/tet7awaj
-
 et7awaj
-
 et7awaj
-
 et7awaj
-
-(to) sign
-
+___(to) sign
 yemdi/temdi
-
 emdi
-
 madaiy
-
 mada
-
-(to) shut
-
+___(to) shut
 ye8le2/te8le2
-
 e8le2
-
 8ala2
-
 8ala2
-
-(to) sing
-
+___(to) sing
 ye8anni/te8anni
-
 e8anni
-
 8annaiy
-
 8anna
-
-(to) sit
-
+___(to) sit
 ye23oud/te23oud
-
 e23oud
-
 23ad
-
 23ad
-
-(to) sleep
-
+___(to) sleep
 yenaem/tenaem
-
 enaem
-
 naem
-
 naem
-
-(to) smell
-
+___(to) smell
 yeshem/teshem
-
 eshem
-
 shamaiy
-
 sham
-
-(to) smoke
-
+___(to) smoke
 yeda5en/ted5en
-
 ed5en
-
 da5an
-
 da5an
-
-(to) sort/organize
-
+___(to) sort/organize
 yerateb/terateb
-
 erateb
-
 ratab
-
 ratab
-
-(to) speak
-
+___(to) speak
 ye7ki/te7ki
-
 e7ki
-
 7akaiy
-
 7aka
-
-(to) spend
-
+___(to) spend
 yesrouf/tesrouf
-
 esrouf
-
 saraf
-
 saraf
-
-(to) stand
-
+___(to) stand
 yew2af/tew2af
-
 ew2af
-
 wa2af
-
 wa2af
-
-(to) stay
-
+___(to) stay
 yeb2a/teb2a
-
 eb2a
-
 be2y
-
 be2y
-
-(to) steal
-
+___(to) steal
 yesro2/tesro2
-
 esro2
-
 sara2
-
 sara2
-
-(to) study
-
+___(to) study
 yedros/tedros
-
 edros
-
 daras
-
 daras
-
-(to) submit
-
+___(to) submit
 yesalem/tesalem
-
 esalem
-
 salam
-
 salam
-
-(to) swallow
-
+___(to) swallow
 yebla3/tebla3
-
 ebla3
-
 bla3
-
 bla3
-
-(to) swim
-
+___(to) swim
 yesba7/tesba7
-
 esba7
-
 saba7
-
 saba7
-
-(to) switch off
-
+___(to) switch off
 yetfi/tetfi
-
 etfi
-
 tafaiy
-
 tafa
-
-(to) take
-
+___(to) take
 ye5oud/te5oud
-
 e5oud
-
 a5ad
-
 a5ad
-
-(to) talk
-
+___(to) talk
 ye7ki/te7ki
-
 e7ki
-
 7akaiy
-
 7aka
-
-(to) taste
-
+___(to) taste
 yedo2/tedo2
-
 edo2
-
 de2et
-
 dae2
-
-(to) teach
-
+___(to) teach
 yedares/tedares
-
 edares
-
 daras
-
 daras
-
-(to) tell
-
+___(to) tell
 ye5aber/te5aber
-
 e5aber
-
 5abar
-
 5abar
-
-(to) thank
-
+___(to) thank
 yeshkor/teshkor
-
 eshkor
-
 shakar
-
 shakar
-
-(to) think
-
+___(to) think
 yefteker/tefteker
-
 efteker
-
 eftakar
-
 eftakar
-
-(to) trade
-
+___(to) trade
 yetajer/tetajer
-
 etajer
-
 taejar
-
 taejar
-
-(to) travel
-
+___(to) travel
 yesaefer/tesarfer
-
 esarfer
-
 saefar
-
 saefar
-
-(to) try
-
+___(to) try
 yejareb/tejareb
-
 ejareb
-
 jarab
-
 jarab
-
-(to) turn
-
+___(to) turn
 ye2loub/te2loub
-
 e2loub
-
 2alab
-
 2alab
-
-(to) turn on/off
-
+___(to) turn on/off
 yef2es/tef2es
-
 ef2es
-
 fa2as
-
 fa2as
-
-(to) understand
-
+___(to) understand
 yefham/tefham
-
 efham
-
 fhem
-
 fhem
-
-(to) use
-
+___(to) use
 yesta3mel/testa3mel
-
 esta3mel
-
 esta3mal
-
 esta3mal
-
-(to) visit
-
+___(to) visit
 yezour/tezour
-
 ezour
-
 zor
-
 zaar
-
-(to) wait
-
+___(to) wait
 yentezer/tentezer
-
 entezer
-
 entazar
-
 entazar
-
-(to) walk/go away
-
+___(to) walk/go away
 yemshi/temshi
-
 emshi
-
 meshy
-
 meshy
-
-(to) wash
-
+___(to) wash
 ye8asel/te8asel
-
 e8asel
-
 8asal
-
 8asal
-
-(to) wear
-
+___(to) wear
 yelbes/telbes
-
 elbes
-
 lebes
-
 lebes
-
-(to) wear out
-
+___(to) wear out
 yehri/tehri
-
 ehri
-
 haraiy
-
 hara
-
-(to) widen/get out of way
-
+___(to) widen/get out of way
 yewase3/tewase3
-
 ewase3
-
 wasa3
-
 wasa3
-
-(to) withdraw
-
+___(to) withdraw
 yes7ab/tes7ab
-
 es7ab
-
 s7ab
-
 s7ab
-
-(to) work
-
+___(to) work
 yeshte8el/teshte8el
-
 eshte8el
-
 eshta8al
-
 eshta8al
