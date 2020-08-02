@@ -1,6 +1,8 @@
 from googletrans import Translator
 from Detect_English.detect_english import EnglishDetection
 from textblob import Word
+import json
+from difflib import SequenceMatcher
 
 
 class LebaneseToEnglish:
@@ -46,6 +48,41 @@ class LebaneseToEnglish:
         '2e': 'ء',
         'en': 'ين'
     }
+    lb_en_dict = None
+    lb_words = None
+
+    @classmethod
+    def load_lb_en_dict(cls):
+        with open('lb_en.json') as f:
+            data = json.loads(f.read())
+        cls.lb_en_dict = data
+        cls.lb_words = list(data.keys())
+
+    @classmethod
+    def search_word(cls, word):
+        word = word.lower()
+        best_match = (None, None)
+        for lb_word in cls.lb_words:
+            if lb_word.lower() == word:
+                best_match = (lb_word, 1.0)
+                break
+            similarity = SequenceMatcher(None, lb_word, word).ratio()
+            if not best_match[0] or similarity >= best_match[1]:
+                best_match = (lb_word, similarity)
+        return {
+            'searched': word,
+            'matched': best_match[0],
+            'matched_en': cls.lb_en_dict[best_match[0]],
+            'similarity': best_match[1]
+        }
+
+    @classmethod
+    def match_text(cls, text):
+        words = text.split()
+        res = []
+        for word in words:
+            res.append(cls.search_word(word))
+        return res
 
     @classmethod
     def en_lb_to_ar_lb(cls, text):
@@ -120,43 +157,8 @@ class LebaneseToEnglish:
 
 
 if __name__ == '__main__':
-    # string = 'sho 2estez kefak lyom nshalla mne7'
-    # print(LebaneseToEnglish.translate(string))
-
-    # batch = [
-    #     'mar7aba kefak',
-    #     'sho 2estez kefak lyom nshalla mne7',
-    #     'eh walla, mbere7 re7na'
-    # ]
-    #
-    # for b in batch:
-    #     print(LebaneseToEnglish.en_lb_to_ar_lb(b))
-
-    # res = LebaneseToEnglish.batch_translation(batch)
-    # for r in res:
-    #     print(r['original'])
-    #     print(r['translated'])
-    #     print(r['possible_correction'])
-    #     print('--------------------------------')
-
-    text = 'This is not acceptable 3ashen ken fe y2ol 2nno howe msh hon'
-    # print(LebaneseToEnglish.split_mixed_langs(text))
-    # print(LebaneseToEnglish.translate(text))
-    en, ar = LebaneseToEnglish.split_mixed_langs(text)
-    print(ar)
-    # ts = LebaneseToEnglish.translate(ar)
-    # res = []
-    # for t in ts:
-    #     print(t)
-    #     res.append(t['translated'])
-    # print(" ".join(res))
-    # print(EnglishDetection.get_english_count('is'))
-    # print(EnglishDetection.get_english_count('3ashen'))
-    # print(EnglishDetection.get_english_count('ken'))
-    # print(EnglishDetection.get_english_count('howe'))
-
-    # from textblob import Word
-    # w = Word('hello')
-    # l = w.detect_language()
-    # print(l == 'en')
-    # print(type(l))
+    LebaneseToEnglish.load_lb_en_dict()
+    # print(LebaneseToEnglish.search_word('salm'))
+    res = LebaneseToEnglish.match_text('salam mar7aba jar')
+    for r in res:
+        print(r)
