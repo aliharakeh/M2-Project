@@ -43,16 +43,29 @@ def verbs():
         meaning = None
         for i, line in enumerate(lines):
             if i == 0:
-                meaning = line.replace('(to)', '').strip()
+                meaning = line.replace('(to)', '').strip().split('/')[0]
             else:
                 split = line.split('/')
                 for s in split:
-                    res.add(f'{s},{meaning}')
+                    if s:
+                        res.add(f'{s},{meaning}')
     return list(res)
+
+
+def csv_to_json():
+    with open('lb_en.csv', 'r') as f:
+        data = f.read().split('\n')[1:]
+
+    res = {}
+    for d in data:
+        key, val = d.split(',')
+        res[key] = val
+    save_json('lb_en.json', res)
 
 
 if __name__ == '__main__':
     # css_selectors = "div#sites-canvas-main-content div > table:nth-child(2) > tbody > tr"
     # save('English_Lebanese_Dictionary.json', css_selectors)
     # save_csv()
-    save_json('verbs.json', verbs())
+    # save_json('verbs.json', verbs())
+    csv_to_json()
