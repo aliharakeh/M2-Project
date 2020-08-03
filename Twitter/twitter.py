@@ -121,6 +121,7 @@ class TwitterTwint:
             since=None,
             until=None,
             near=None,
+            geo=None,
             csv_output=None,
             json_output=None
     ):
@@ -156,6 +157,9 @@ class TwitterTwint:
 
         if near:
             c.Near = near
+
+        if geo:
+            c.Geo = geo
 
         if since:
             c.Since = since

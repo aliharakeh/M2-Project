@@ -11,10 +11,9 @@ if __name__ == '__main__':
     ]
     for search in searches:
         TwitterTwint.search_twitter(
-            search=search[0],
-            limit=20,
-            since='2020-1-1',
-            until='2020-8-1',
-            near='Lebanon',
-            csv_output='Data_v2\\' + search[0].replace('#', '')
+            search=search,
+            limit=50000,
+            since='2020-1-1 0:0:0',
+            geo='33.870137,35.778745,10km',
+            csv_output='Data3'  # _v2\\' + search[0].replace('#', '')
         )
