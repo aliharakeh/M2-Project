@@ -119,66 +119,6 @@ class LebaneseToArabic:
         return arabic
 
 
-class Helper:
-    class MatchObj:
-        def __init__(self, start, end, text):
-            self.start = start
-            self.end = end
-            self.text = text
-
-    def __init__(self, lb_en):
-        self.lb_en = lb_en
-
-    def match1(self, text):
-        words = text.lower().split()
-        for w in words:
-            w = w.lower()
-            best_match = (None, None)
-            for lb_word in self.lb_en.lb_words:
-                if lb_word.lower() == w:
-                    best_match = (lb_word, 1.0)
-                    break
-                similarity = SequenceMatcher(None, lb_word, w).ratio()
-                if not best_match[0] or similarity >= best_match[1]:
-                    best_match = (lb_word, similarity)
-            print(best_match)
-
-    def _n_grams(self, words, size, n_grams):
-        result = []
-        for i in range(size):
-            if i + n_grams - 1 < size:
-                result.append(self.MatchObj(i, i + n_grams, ' '.join(words[i: i + n_grams])))
-        return result
-
-    def _multiple_n_grams(self, words, size, levels):
-        res = []
-        for level in levels:
-            res.append(self._n_grams(words, size, level))
-        return res
-
-    def _clean_lists(self, word, ngrams):
-        res = [[] for _ in range(len(ngrams))]
-        for i, n_gram in enumerate(ngrams):
-            for match in n_gram:
-                if word in match.text:
-                    continue
-                res[i].append(match)
-        return res
-
-    def match2(self, text):
-        words = text.lower().split()
-        size = len(words)
-        multi_n_grams = self._multiple_n_grams(words, size, [1, 2, 3, 4, 5])
-        res = {}
-        for lb in self.lb_en.lb_words:
-            for match in multi_n_grams[lb.count(' ')]:
-                if match.text == lb or SequenceMatcher(None, lb, match.text).ratio() >= 0.8:
-                    res[f'{match.start},{match.end}'] = self.lb_en.lb_en_dict[lb]
-                    multi_n_grams = self._clean_lists(match.text, multi_n_grams)
-                    break
-        print(sorted(res.items(), key=lambda i: i[0].split(',')[1]))
-
-
 class LebaneseToEnglish:
     lb_en_dict = None
     lb_words = None
@@ -228,7 +168,7 @@ class LebaneseToEnglish:
             else:
                 res += self._ar_to_en(word)
             res += ' '
-        return res.strip()
+        return res[:-1]
 
 
 if __name__ == '__main__':
