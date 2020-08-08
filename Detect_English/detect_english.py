@@ -8,6 +8,9 @@ DICTIONARY_DIR = os.path.dirname(__file__)
 class EnglishDetection:
     ENGLISH_WORDS = {}
 
+    def __init__(self):
+        self.load_dictionary()
+
     @classmethod
     def load_dictionary(cls):
         cls.ENGLISH_WORDS = {}
@@ -33,8 +36,8 @@ class EnglishDetection:
                 matches += 1
         return float(matches) / len(possible_words)
 
-    @classmethod
-    def remove_non_letters(cls, text):
+    @staticmethod
+    def remove_non_letters(text):
         letters_only = []
         for symbol in text:
             if symbol in LETTERS_AND_SPACE:
@@ -46,6 +49,9 @@ class EnglishDetection:
         # By default, 20% of the words must exist in the dictionary file, and
         # 85% of all the characters in the text must be letters or spaces
         # (not punctuation or numbers).
+        if not text:
+            return False
+
         if not cls.ENGLISH_WORDS:
             cls.load_dictionary()
 

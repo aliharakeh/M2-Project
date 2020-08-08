@@ -1,6 +1,7 @@
 from googletrans import Translator
 import json
 from difflib import SequenceMatcher
+import os
 
 SPACES = ' \t\n'
 AR_LETTERS = 'ابتثجحخدذرزسشصضطظعغفقكلمنهويء'
@@ -47,6 +48,7 @@ LB_DOUBLES = {
     'en': 'ين',
     'll': 'لا'
 }
+DIR = os.path.dirname(__file__)
 
 
 class LanguageUtil:
@@ -130,7 +132,7 @@ class LebaneseToEnglish:
 
     @classmethod
     def load_data(cls):
-        with open('lb_en.json') as f:
+        with open(f'{DIR}\\lb_en_v2.json') as f:
             data = json.loads(f.read())
         cls.lb_en_dict = data
         cls.lb_words = list(data.keys())
@@ -180,4 +182,4 @@ if __name__ == '__main__':
     ]
     lb_en = LebaneseToEnglish()
     for text in texts:
-        print(lb_en.lb_to_en(text))
+        print(text, ' ==> ', lb_en.lb_to_en(text))
