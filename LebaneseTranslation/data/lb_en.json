@@ -1259,7 +1259,6 @@
   "e5oud": "take",
   "harab": "escape",
   "erja3": "go back",
-  "(to) complain": "come across",
   "shakaiy": "come across",
   "yef2ed": "lack",
   "yesba7": "swim",
@@ -1416,7 +1415,8 @@
   "emdi": "sign",
   "elawin": "color",
   "te7ib": "love",
-  "salam": "submit",
+  "salam": "hello",
+  "sallam": "submit",
   "tektefi": "become satisfied",
   "yedros": "study",
   "ekmol": "complete",
@@ -1533,5 +1533,8 @@
   "e7ro2": "burn",
   "tentezer": "wait",
   "efham": "understand",
-  "enazem": "order"
+  "enazem": "order",
+  "walla": "indeed",
+  "honek": "there",
+  "kefak": "how are you"
 }
