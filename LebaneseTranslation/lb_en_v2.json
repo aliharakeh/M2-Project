@@ -2043,7 +2043,6 @@
   "marhaba": "hello",
   "mawjoud": "exists",
   "mawjud": "exists",
-  "mazbout": "right",
   "mazroube": "cornered",
   "mberi7": "yesterday",
   "mechi": "ok",
@@ -2442,5 +2441,8 @@
   "3adtak": "tradition",
   "3afekra": "by the way",
   "3alye": "high",
-  "3alyin": "high"
+  "3alyin": "high",
+  "mazbout": "correct",
+  "mazboot": "correct",
+  "mazbut": "correct"
 }

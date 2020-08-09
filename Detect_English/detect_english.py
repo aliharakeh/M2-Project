@@ -28,13 +28,13 @@ class EnglishDetection:
         possible_words = text.split()
 
         if not possible_words:
-            return 0.0  # No words at all, so return 0.0
+            return 0  # No words at all, so return 0.0
 
         matches = 0
         for word in possible_words:
             if word in cls.ENGLISH_WORDS:
                 matches += 1
-        return float(matches) / len(possible_words)
+        return matches // len(possible_words)
 
     @staticmethod
     def remove_non_letters(text):

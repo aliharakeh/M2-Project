@@ -1,11 +1,22 @@
 from googletrans import Translator
-import json
 from difflib import SequenceMatcher
+import json
 import os
+import re
+from Detect_English.detect_english import EnglishDetection
 
+# Special Characters
 SPACES = ' \t\n'
+PROBLEM_CHARS = r'[\[=\+/&<>;:!\\|*^\'"\?%$@)(_\,\.\t\r\n0-9-—\]]+'
+
+# Arabic Language
+AR_REGEX = '[\u0621-\u064A]+'
 AR_LETTERS = 'ابتثجحخدذرزسشصضطظعغفقكلمنهويء'
+
+# English Language
 EN_LETTERS = 'abcdefghijklmnopqrstuvwxyz'
+
+# Lebanese Language
 LB_LETTERS = EN_LETTERS + '23578' + SPACES
 LB_SINGLES = {
     'a': 'ا',
@@ -48,7 +59,60 @@ LB_DOUBLES = {
     'en': 'ين',
     'll': 'لا'
 }
+
+# Current Directory Name
 DIR = os.path.dirname(__file__)
+
+
+class LanguageDetection:
+    ar_detect = re.compile(AR_REGEX)
+    en_detect = EnglishDetection()
+
+    def __init__(self, text):
+        self.text = self.clean(text)
+        self.words = text.split()
+        self.word_count = len(self.words)
+
+    def clean(self, text):
+        res = ''
+        for ch in text:
+            if ch not in PROBLEM_CHARS:
+                res += ch
+        return res
+
+    @classmethod
+    def is_arabic(cls, word):
+        return re.search(cls.ar_detect, word)
+
+    @classmethod
+    def is_english(cls, word):
+        return word in cls.en_detect.ENGLISH_WORDS
+
+    @classmethod
+    def is_lebanese(cls, word):
+        if not cls.is_arabic(word) and not cls.is_english(word):
+            for ch in word:
+                if ch not in LB_LETTERS:
+                    return False
+            return True
+        return False
+
+    def arabic_percentage(self):
+        ar_count = 0
+        for word in self.words:
+            if self.is_arabic(word):
+                ar_count += 1
+        return (ar_count // self.word_count) * 100
+
+    def english_percentage(self):
+        return self.en_detect.get_english_count(text) * 100
+
+    def lebanese_percentage(self):
+        lb_count = 0
+        for word in self.words:
+            if self.is_lebanese(word):
+                lb_count += 1
+        return (lb_count // self.word_count) * 100
 
 
 class LanguageUtil:
@@ -56,7 +120,7 @@ class LanguageUtil:
     def __init__(self):
         self.translator = Translator()
 
-    def detect_language(self, text):
+    def quick_lang_detect(self, text):
         return self.translator.translate(text).src
 
     def quick_translation(self, text, src_lang='auto', dest_lang='en'):
