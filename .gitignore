@@ -1,8 +1,8 @@
 .idea
 twitterVenv
 Data/*/*
-LebaneseTranslation/data/*
-LebaneseTranslation/data2/*
+Language/data/*
+Language/data2/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
