@@ -40,7 +40,9 @@ class InfoExtraction:
         return self.df[self.text_col].apply(lambda s: len([s for s in s.split() if s.isdigit()]))
 
     def most_frequent_words(self, limit=10):
-        return pd.Series(" ".join(self.df[self.text_col]).split()).value_counts()[:limit]
+        # join all text ==> split words ==> create a pd.Series ==> call Series.value_counts()
+        return pd.Series((" ".join(self.df[self.text_col])).split()).value_counts()[:limit]
 
     def most_rare_words(self, limit=10):
-        return pd.Series(" ".join(self.df[self.text_col]).split()).value_counts()[-limit:]
+        # join all text ==> split words ==> create a pd.Series ==> call Series.value_counts()
+        return pd.Series((" ".join(self.df[self.text_col])).split()).value_counts()[-limit:]
