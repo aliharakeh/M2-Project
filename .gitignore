@@ -1,6 +1,7 @@
 .idea
 twitterVenv
 Other_Data
+Reports
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
