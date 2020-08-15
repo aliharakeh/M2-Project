@@ -29,7 +29,7 @@ class EnglishDetection:
         indexes = []
 
         if not possible_words:
-            return 0  # No words at all, so return 0.0
+            return 0, []  # No words at all, so return 0.0
 
         matches = 0
         for index, word in enumerate(possible_words):

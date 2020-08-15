@@ -1,6 +1,6 @@
 # Special Characters
 SPACES = ' \t\n'
-PROBLEM_CHARS = '[\[=\+/&<>;:!\\|*^\'"\?%$@)(_\,\.\t\r\n0-9-—\]]+'
+PROBLEM_CHARS = '[]=+/&<>;:!\\|*^\'"?%$#@)(_,.\t\r\n0-9-—'
 
 # Arabic Language
 AR_REGEX = '[\u0621-\u064A]+'

@@ -63,7 +63,7 @@
   "2ereb": "close",
   "2u3a": "watch out",
   "3a": "at",
-  "3am": "am",
+  "3am": "is",
   "3adad": "amount",
   "3adad kbiir": "big amount",
   "3adad sa8iir": "small amount",
@@ -2255,7 +2255,7 @@
   "yesbah": "swims",
   "yesh7ad": "beg for",
   "yesr2ou": "theft",
-  "yestawrdo": "incoming",
+  "yestawrdo": "import",
   "yestour": "bless us",
   "yet7akkamo": "hospitalized",
   "yetalbo": "demands",
@@ -2310,7 +2310,6 @@
   "news": "news",
   "eza": "if",
   "shu": "what",
-  "no": "no",
   "online": "online",
   "allah": "god",
   "like": "like",
@@ -2354,6 +2353,7 @@
   "sha3eb": "people",
   "shouf": "look",
   "hayda": "this",
+  "haida": "this",
   "abl": "before",
   "kermel": "for",
   "mnl": "from",
@@ -2444,5 +2444,6 @@
   "3alyin": "high",
   "mazbout": "correct",
   "mazboot": "correct",
-  "mazbut": "correct"
+  "mazbut": "correct",
+  "balcon": "balcony"
 }

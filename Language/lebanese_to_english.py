@@ -13,11 +13,11 @@ class LebaneseToEnglish:
 
     def __init__(self, lang_util=None):
         self.lang_util = lang_util if lang_util else LanguageUtil()
-        self.load_data()
+        self._load_data()
         self.lb_ar = LebaneseToArabic(self.lang_util)
 
     @classmethod
-    def load_data(cls):
+    def _load_data(cls):
         with open(f'{DIR}\\lb_en.json') as f:
             data = json.loads(f.read())
         cls.lb_en_dict = data
