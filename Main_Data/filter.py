@@ -1,23 +1,22 @@
 import json
 import tkinter as tk
 import tkinter.font as tkFont
+import csv
 
 
 def f():
-    count = {}
-    with open('kadaas_topics.json', encoding='utf-8') as f:
+    # t = ['mo7afazat_topics', 'MOHAFAZA']
+    t = ['kadaas_topics', 'KADAA']
+
+    with open(f'{t[0]}.json', encoding='utf-8') as f:
         data = json.loads(f.read())
 
-    for topics in data.values():
-        for topic in topics:
-            words = topic.split()
-            for w in words:
-                if w in count:
-                    count[w] += 1
-                else:
-                    count[w] = 1
-
-    return sorted(count.items(), key=lambda x: x[1], reverse=True)
+    with open(f'{t[0]}.csv', 'w', newline='', encoding='utf-8') as f:
+        wr = csv.writer(f)
+        wr.writerow(['year', 'month', f'{t[1]}_ID', f'{t[1]}_AR', f'{t[1]}_EN', 'topics'])
+        for k, v in data.items():
+            row = [*k.split('_'), v]
+            wr.writerow(row)
 
 
 class Application(tk.Frame):
@@ -59,7 +58,4 @@ if __name__ == '__main__':
     # with open('res.json', 'w', encoding='utf-8') as f:
     #     f.write(json.dumps(app.res, indent=2, ensure_ascii=False))
 
-    res = f()
-    for r in res:
-        print(r)
-        print('------------------------')
+    f()
