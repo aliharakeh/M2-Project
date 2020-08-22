@@ -2,6 +2,7 @@
 twitterVenv
 Other_Data
 Reports
+Main_Data/topics.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -132,4 +133,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-Main_Data/topics.csv
+
