@@ -3,6 +3,7 @@ twitterVenv
 Other_Data
 Reports
 Main_Data/topics.csv
+stop-words
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
