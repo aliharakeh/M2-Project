@@ -15,7 +15,7 @@ class TweetParser:
             return None
 
     @staticmethod
-    def parse_tweet(tweet_element, include_locations=True):
+    def parse_tweet(tweet_element, include_locations=False):
         tweet_text = TweetParser.get(tweet_element, TWEET['text'], 'text')
 
         tweet_tags = []

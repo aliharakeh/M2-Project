@@ -3,6 +3,7 @@ from twitter_config import TWEETS
 from Twitter.tweet import TweetParser
 from Locations.locations import LocationParser
 import json
+import csv
 import twint
 
 
@@ -50,7 +51,7 @@ class TwitterScrapper:
 
     def get_all_tweets(self, include_locations=False):
         if self._page_loaded:
-            for _ in self._cm.scroll_page(scroll_till_end=True, external_func=True, scroll_delay_sec=10):
+            for _ in self._cm.scroll_page(scroll_till_end=True, external_func=True, scroll_delay_sec=5):
                 tweets = self._cm.get_elements(TWEETS['css-selector'])
                 for tweet in tweets:
                     self.__save_tweet(tweet, include_locations)
@@ -64,6 +65,15 @@ class TwitterScrapper:
     def save_as_json(self, filename):
         with open(f'{filename}.json', 'w', encoding='utf-8') as file:
             file.write(json.dumps(self.tweets, indent=2, ensure_ascii=False))
+
+    def save_as_csv(self, filename):
+        with open(f'{filename}.csv', 'w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            keys = ['username', 'time', 'text', 'tags', 'locations']
+            writer.writerow(keys)
+            for key, details in self.tweets.items():
+                data = [details[k] for k in keys]
+                writer.writerow(data)
 
 
 class TwintTweet:
@@ -184,19 +194,40 @@ class TwitterTwint:
     @staticmethod
     def predict_twitter_user_location(username, limit=2000, similarity_ratio=0.8):
         tweets = TwitterTwint.search_twitter(username=username, limit=limit)
+        print(len(tweets))
         locations = {}
         for tweet in tweets:
             predicted_locations = LocationParser.get_locations(tweet.tweet, similarity_ratio)
-            print(predicted_locations)
             for location, frequency in predicted_locations:
                 if location not in locations:
-                    locations[location] = frequency
+                    locations[location] = {
+                        'frequency': frequency,
+                        'tweets': [tweet.tweet]
+                    }
                 else:
-                    locations[location] += frequency
-        return sorted(locations.items(), key=lambda l: l[1], reverse=True)
+                    locations[location]['frequency'] += frequency
+                    locations[location]['tweets'].append(tweet.tweet)
+
+        return locations
+        # return sorted(locations.items(), key=lambda l: l[1], reverse=True)
 
 
 if __name__ == '__main__':
-    locations = TwitterTwint.predict_twitter_user_location('that_defy_dude', limit=20, similarity_ratio=0.8)
-    for location, frequnecy in locations:
-        print(LocationParser.get_arabic_alias(location), frequnecy, sep=' ==> ')
+    # locations = TwitterTwint.predict_twitter_user_location('waddahsadek', limit=2000, similarity_ratio=0.9)
+    # with open('result.json', 'w', encoding='utf-8') as f:
+    #     f.write(json.dumps(locations, indent=2, ensure_ascii=False))
+    # TwitterTwint.search_twitter(username='waddahsadek', limit=2000, csv_output='waddahsadek')
+
+    cm = ChromeManager()
+    tw = TwitterScrapper(cm)
+    tw.load_page('https://twitter.com/search?f=live&q=covid-19%20since%3A2020-07-31&src=typed_query&lf=on')
+    input('Configure Twitter setting then enter any key to continue...\n--> ')
+    try:
+        tw.get_all_tweets()
+    except Exception as e:
+        print(e)
+        print(f'[Error] => saved {len(tw.tweets)} tweets')
+    finally:
+        print('DONE!!')
+        tw.save_as_csv('covid_tweets_1_8_2020+')
+        cm.close()

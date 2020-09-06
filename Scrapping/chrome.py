@@ -4,10 +4,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import time
+import os
+
+DIR = os.path.dirname(__file__)
 
 
 class ChromeManager:
-    def __init__(self, driver_path, headless=False, window_size='1200x600'):
+    def __init__(self, driver_path=f'{DIR}\\chromedriver', headless=False, window_size='1200x600'):
         _options = webdriver.ChromeOptions()
         _options.add_argument(f'window-size={window_size}')
         if headless:

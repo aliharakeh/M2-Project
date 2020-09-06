@@ -1,6 +1,7 @@
 import re
 import json
 from difflib import SequenceMatcher
+from fuzzywuzzy import fuzz
 import functools
 import os
 
@@ -52,9 +53,9 @@ class LocationParser:
                 LocationParser.Cities_Details = json.loads(cities_file.read())
 
     @staticmethod
-    def get_words(text, max_words_in_an_element=5):
+    def get_words(text, ngrams=5):
         """
-        returns a list of words cleaned from any problem char. \n
+        returns a list of ngrams cleaned from any problem char. \n
         PROBLEM_CHARS = '[\[=\+/&<>;:!\\|*^\'"\?%$@)(_\,\.\t\r\n0-9-—\]]'
         """
         text = re.sub(PROBLEM_CHARS, '', text)
@@ -62,7 +63,7 @@ class LocationParser:
         word_count = len(words)
         result = []
         for i in range(word_count):
-            for j in range(max_words_in_an_element):
+            for j in range(ngrams):
                 if i + j < word_count:
                     result.append(" ".join(words[i: i + j + 1]))
         return result
@@ -76,18 +77,12 @@ class LocationParser:
         - locations that starts with first_letter but not with second_letter
         - [] if nothing starts with the first letter
         """
-        if first_letter:
-            first_letter = first_letter.lower()
-
-        if second_letter:
-            second_letter = second_letter.lower()
-
-        if first_letter in LocationParser.Cities:
-            level_1_data = LocationParser.Cities[first_letter]
+        if first_letter and first_letter in LocationParser.Cities:
+            level_1_data = LocationParser.Cities[first_letter.lower()]
 
             # locations that starts with first_letter & second_letter
             if second_letter and second_letter in level_1_data:
-                return level_1_data[second_letter]
+                return level_1_data[second_letter.lower()]
 
             # locations that starts with first_letter but not with second_letter
             else:
@@ -102,7 +97,7 @@ class LocationParser:
 
     @staticmethod
     @check_loaded_data(cities=True, on_error_value=None)
-    def get_location(word, similarity_ratio=0.8):
+    def get_location(word, similarity_ratio=80, fuzzy=False):
         """
         returns the exact location name or the best predicted/possible location name if there was any match,
         else returns None
@@ -122,7 +117,10 @@ class LocationParser:
                 return location
 
             # check similarity ratio
-            local_similarity_ratio = SequenceMatcher(None, word, location).ratio()
+            if fuzzy:
+                local_similarity_ratio = fuzz.ratio(word, location)
+            else:
+                local_similarity_ratio = SequenceMatcher(None, word, location).ratio() * 100
             same_word_count = word.count(' ') == location.count(' ')
 
             if same_word_count and local_similarity_ratio >= similarity_ratio:
@@ -133,7 +131,7 @@ class LocationParser:
 
     @staticmethod
     @check_loaded_data(cities=True, on_error_value=[])
-    def get_locations(text, similarity_ratio=0.8):
+    def get_locations(text, similarity_ratio=80, fuzzy=False):
         """
         returns a descending sorted list of location tuples containing the location name and its frequency
         found in the provided text
@@ -144,13 +142,14 @@ class LocationParser:
 
         # check if any word refers to a location
         for word in words:
-            location = LocationParser.get_location(word, similarity_ratio)
+            location = LocationParser.get_location(word, similarity_ratio, fuzzy)
 
             # add the location to the possible locations if it matches any location data
             if location:
                 if location not in locations:
-                    locations[location] = 0
-                locations[location] += 1
+                    locations[location] = 1
+                else:
+                    locations[location] += 1
 
         # return a descending sorted list of tuples containing the location name and it's frequency
         return sorted(locations.items(), key=lambda l: l[1], reverse=True)
@@ -200,6 +199,6 @@ class LocationParser:
 
 
 if __name__ == '__main__':
-    l = LocationParser.get_locations('Hello, I\'m from baabda where Aakkar el Aatiqa live in beirut and beirut')
+    l = LocationParser.get_locations('Hello, I\'m from baabda where Aakkar el Aatiqa live in beirut and beirut', 90)
     for x, f in l:
         print(LocationParser.get_arabic_alias(x))
