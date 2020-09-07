@@ -2,6 +2,7 @@ import re
 import json
 from difflib import SequenceMatcher
 from fuzzywuzzy import fuzz
+import jellyfish
 import functools
 import os
 
@@ -155,6 +156,68 @@ class LocationParser:
         return sorted(locations.items(), key=lambda l: l[1], reverse=True)
 
     @staticmethod
+    @check_loaded_data(cities=True, on_error_value=None)
+    def get_location2(words, word_index, similarity_ratio=80):
+        """
+        returns the exact location name or the best predicted/possible location name if there was any match,
+        else returns None
+        """
+        if len(words[word_index]) < 2:
+            return None
+
+        # initialize
+        word = words[word_index].lower()
+        best_predicted_location = (None, None)
+
+        # check possible locations
+        locations = LocationParser.get_possible_locations(word[0], None)
+        for location in locations:
+
+            # get word/phrase
+            # location_length = len(location.split())
+            # word = " ".join(words[word_index: word_index + location_length]).lower()
+
+            # check exact location name or is substring
+            if location == word:
+                print(word, '==>', location, '==>', 100)
+                return location
+
+            # check similarity ratio
+            local_similarity_ratio = fuzz.partial_ratio(word, location)
+            if local_similarity_ratio >= similarity_ratio:
+                if not best_predicted_location[0] or local_similarity_ratio > best_predicted_location[1]:
+                    best_predicted_location = (location, local_similarity_ratio)
+                    print(word, '==>', location, '==>', local_similarity_ratio)
+
+        return best_predicted_location[0]
+
+    @staticmethod
+    @check_loaded_data(cities=True, on_error_value=[])
+    def get_locations2(text, similarity_ratio=80):
+        """
+        returns a descending sorted list of location tuples containing the location name and its frequency
+        found in the provided text
+        """
+        # get words list
+        words = text.split()
+        words_length = len(words)
+        locations = {}
+
+        # check if any word refers to a location
+        for word_index in range(words_length):
+            location = LocationParser.get_location2(words, word_index, similarity_ratio)
+
+            # add the location to the possible locations if it matches any location data
+            if location:
+                if location not in locations:
+                    locations[location] = 1
+                else:
+                    locations[location] += 1
+
+        # return a descending sorted list of tuples containing the location name and it's frequency
+        return sorted(locations.items(), key=lambda l: l[1], reverse=True)
+
+    @staticmethod
     @check_loaded_data(cities=True, cities_details=True, on_error_value=None)
     def get_location_details(location):
         # get location data
@@ -199,6 +262,8 @@ class LocationParser:
 
 
 if __name__ == '__main__':
-    l = LocationParser.get_locations('Hello, I\'m from baabda where Aakkar el Aatiqa live in beirut and beirut', 90)
+    l = LocationParser.get_locations2('Hello, I\'m from baabda where Aakkar live in beirut and beirut', 90)
     for x, f in l:
-        print(LocationParser.get_arabic_alias(x))
+        # print(x, '==>', f)
+        # print(LocationParser.get_arabic_alias(x))
+        pass
