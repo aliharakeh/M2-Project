@@ -10,24 +10,29 @@ DIR = os.path.dirname(__file__)
 
 
 class ChromeManager:
-    def __init__(self, driver_path=f'{DIR}\\chromedriver', headless=False, window_size='1200x600'):
+    def __init__(self, driver_path=f'{DIR}\\chromedriver', headless=False, window_size='1200x600', verbose=True):
         _options = webdriver.ChromeOptions()
         _options.add_argument(f'window-size={window_size}')
         if headless:
             _options.add_argument('headless')
         self._driver = webdriver.Chrome(driver_path, options=_options)
-        print('[INFO] Driver loaded!')
+        self.verbose = verbose
+        self._verbose_message('[INFO] Driver loaded!')
 
     def _wait_for_element(self, element_value, element_type, timeout):
         try:
             element_present = EC.presence_of_element_located((element_type, element_value))
             WebDriverWait(self._driver, timeout).until(element_present)
-            print('[INFO] Page loaded!')
+            self._verbose_message('[INFO] Page loaded!')
             return True
 
         except TimeoutException:
-            print('[INFO] Timed out waiting for page to load!')
+            self._verbose_message('[INFO] Timed out waiting for page to load!')
             return False
+
+    def _verbose_message(self, message):
+        if self.verbose:
+            print(message)
 
     def load_page(self, url, wait_element_selector='body', wait_element_type=By.CSS_SELECTOR, wait_timeout=10,
                   max_tries=5):
@@ -50,14 +55,14 @@ class ChromeManager:
         except NoSuchElementException:
             return None
 
-    def click_element(self, selector, delay_after_click=2):
+    def click_element(self, selector, delay_after_click=1):
         try:
             self._driver.find_element_by_css_selector(selector).click()
-            print('[INFO] Click!')
+            self._verbose_message('[INFO] Click!')
             return 1
 
         except Exception as e:
-            print(f'[ERROR]: {e}!')
+            self._verbose_message(f'[ERROR]: {e}!')
             return 0
 
         finally:
@@ -90,7 +95,7 @@ class ChromeManager:
 
                 # apply scroll function if available
                 if external_func:
-                    print('Running External Code...')
+                    self._verbose_message('Running External Code...')
                     yield is_end_reached
 
                 # scroll page
