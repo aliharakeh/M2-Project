@@ -69,7 +69,7 @@ class TwitterScrapper:
     def save_as_csv(self, filename):
         with open(f'{filename}.csv', 'w', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
-            keys = ['username', 'time', 'text', 'tags', 'locations']
+            keys = ['username', 'time', 'text', 'tags']
             writer.writerow(keys)
             for key, details in self.tweets.items():
                 data = [details[k] for k in keys]
@@ -216,18 +216,5 @@ if __name__ == '__main__':
     # locations = TwitterTwint.predict_twitter_user_location('waddahsadek', limit=2000, similarity_ratio=0.9)
     # with open('result.json', 'w', encoding='utf-8') as f:
     #     f.write(json.dumps(locations, indent=2, ensure_ascii=False))
-    # TwitterTwint.search_twitter(username='waddahsadek', limit=2000, csv_output='waddahsadek')
 
-    cm = ChromeManager()
-    tw = TwitterScrapper(cm)
-    tw.load_page('https://twitter.com/search?f=live&q=covid-19%20since%3A2020-07-31&src=typed_query&lf=on')
-    input('Configure Twitter setting then enter any key to continue...\n--> ')
-    try:
-        tw.get_all_tweets()
-    except Exception as e:
-        print(e)
-        print(f'[Error] => saved {len(tw.tweets)} tweets')
-    finally:
-        print('DONE!!')
-        tw.save_as_csv('covid_tweets_1_8_2020+')
-        cm.close()
+    TwitterTwint.search_twitter(username='waddahsadek', limit=2000, csv_output='waddahsadek')

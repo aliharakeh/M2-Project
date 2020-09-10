@@ -212,7 +212,7 @@ class LocationFinder:
         return sorted(locations, key=lambda l: l[1], reverse=True)
 
     @load_details
-    def get_location_details(self, location, predict=True):
+    def get_location_details(self, location, predict=False):
         """
         returns a location details
         Note: It predicts the location if no exact match was found.
@@ -220,16 +220,17 @@ class LocationFinder:
         # get location data
         location = location.lower()
         location_data = self.__get_location_details(location)
-        if location_data:
-            return location_data
 
         # if location is not found, check if it refers to a location and get its data
-        lang, method = ('en', Methods.SOUND) if self.__is_english(location) else ('ar', Methods.EDIT_DISTANCE)
-        location = self.search(location, lang=lang, method=method)
-        return self.__get_location_details(location)
+        if not location_data and predict:
+            lang, method = ('en', Methods.SOUND) if self.__is_english(location) else ('ar', Methods.EDIT_DISTANCE)
+            location = self.search(location, lang=lang, method=method)
+            return self.__get_location_details(location)
+
+        return location_data
 
     @load_details
-    def get_location_aliases(self, location, predict=True):
+    def get_location_aliases(self, location, predict=False):
         """
         returns the other aliases of a location
         Note: It predicts the location if no exact match was found.
@@ -249,7 +250,7 @@ class LocationFinder:
         return list(set(res))
 
     @load_details
-    def get_arabic_alias(self, location, predict=True):
+    def get_arabic_alias(self, location, predict=False):
         """
         returns the arabic aliases of a location.  \n
         Note: It predicts the location if no exact match was found.
