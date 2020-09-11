@@ -3,10 +3,10 @@ from Language.language_utils import LanguageUtil
 import pandas as pd
 import time
 
-
 read_from = 'tweets.csv'
 save_to = 'tweets_v2.csv'
 count = 0
+total = 0
 LF = LocationFinder()
 LU = LanguageUtil()
 
@@ -47,12 +47,13 @@ def get_location_data(text):
 
     finally:
         count += 1
-        print(count)
+        print(count, '/', total)
         time.sleep(0.5)
 
 
 if __name__ == '__main__':
     df = pd.read_csv(read_from, header=0)
+    total = len(df)
 
     df[[
         'translated_text',
