@@ -120,7 +120,6 @@ class LocationFinder:
         """
         res = []
         for k, v in cls.Cities.items():
-
             # exclude non english when lang == 'en'
             if (lang == 'en') and (k not in EN_ALPHANUMERIC):
                 continue
@@ -131,7 +130,6 @@ class LocationFinder:
 
             for k1, v1 in v.items():
                 res += v1
-
         return res
 
     def search(self, keyword, lang=None, method=Methods.EDIT_DISTANCE, accepted_ratio=80):
@@ -181,7 +179,8 @@ class LocationFinder:
 
     def search_text(self, text, method=Methods.EDIT_DISTANCE, accepted_ratio=80):
         """
-        returns a descending sorted list of matched locations `(location, match ratio)` that were found in the text.\n
+        returns a descending sorted list of matched locations `(location, match ratio)` that were found in the text. \n
+        Use method={'en': Methods.SOUND, 'ar': Methods.EDIT_DISTANCE} for more different langs. \n
         Note: match ratio ranges from 0 to 100, where 100 is an exact match.
         """
         # get words list
