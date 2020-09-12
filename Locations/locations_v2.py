@@ -235,6 +235,8 @@ class LocationFinder:
         Note: It predicts the location if no exact match was found.
         """
         location_data = self.get_location_details(location, predict)
+        if not location_data:
+            return []
 
         # combine the aliases
         res = []

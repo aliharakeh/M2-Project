@@ -30,7 +30,7 @@ class TweetParser:
         return {
             'username': TweetParser.get(tweet_element, TWEET['username'], 'text'),
             'user-link': TweetParser.get(tweet_element, TWEET['user-link'], 'href'),
-            'time': TweetParser.get(tweet_element, TWEET['time'], 'text'),
+            'date': TweetParser.get(tweet_element, TWEET['date'], 'text'),
             'text': tweet_text,
             'tags': tweet_tags,
             'innerHTML': tweet_element.get_attribute('innerHTML'),
