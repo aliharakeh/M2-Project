@@ -31,7 +31,7 @@ class TwitterScrapper:
         * Note: Can be overridden when used in inheritance
         """
         details = TweetParser.parse_tweet(tweet, include_locations)
-        key = f'{details["username"]}_{details["time"]}'
+        key = f'{details["username"]}_{details["date"]}'
         if key == 'None_None':
             key = f'{len(self.tweets)}_{key}'
         self.tweets[key] = details
@@ -159,7 +159,7 @@ class TwitterTwint:
             c.Store_object = True
             c.Store_object_tweets_list = tweets
 
-        if search:
+        if search is not None:
             c.Search = search
 
         if username:
