@@ -3,6 +3,7 @@ import json
 from fuzzywuzzy import fuzz
 import jellyfish
 import functools
+from difflib import SequenceMatcher
 import os
 
 PROBLEM_CHARS = r'[\[=\+/&<>;:!\\|*^\'"\?%$@)(_\,\.\t\r\n0-9-—\]]'
@@ -30,6 +31,7 @@ def load_details(func):
 
 
 class Methods:
+    SEQUENCE = 'sequence'
     EDIT_DISTANCE = 'edit-distance'
     SOUND = 'sound'
 
@@ -39,28 +41,41 @@ class PredictionMethods:
     def __init__(self, a=None, b=None, method=Methods.EDIT_DISTANCE, accepted_ratio=80):
         self.a = a
         self.b = b
-        self.method = method
         self.accepted_ratio = accepted_ratio
+
+        self.methods = {
+            Methods.SOUND: self.by_sound,
+            Methods.EDIT_DISTANCE: self.by_edit_distance,
+            Methods.SEQUENCE: self.by_sequence
+        }
+        self.method = self.methods[method]
 
     def by_sound(self):
         a = jellyfish.soundex(self.a)
         b = jellyfish.soundex(self.b)
         similarity_ratio = fuzz.ratio(self.a, self.b)
+
         accepted_prediction = (a == b) and (similarity_ratio >= self.accepted_ratio)
         return similarity_ratio, accepted_prediction
 
-    def by_edit_ratio(self):
+    def by_edit_distance(self):
         partial_ratio = fuzz.partial_ratio(self.a, self.b)
         ratio = fuzz.ratio(self.a, self.b)
         similarity_ratio = (partial_ratio + ratio) / 2
+
         accepted_prediction = similarity_ratio >= self.accepted_ratio
         return similarity_ratio, accepted_prediction
 
+    def by_sequence(self):
+        similarity_ratio = SequenceMatcher(None, self.a, self.b).ratio() * 100
+        count_a, count_b = self.a.count(' '), self.b.count(' ')
+        count_ratio = (min(count_a, count_b) / max(count_a, count_b)) * 100
+
+        accepted_prediction = count_ratio and (similarity_ratio >= self.accepted_ratio)
+        return similarity_ratio, accepted_prediction
+
     def get_ratio(self):
-        if self.method == Methods.SOUND:
-            return self.by_sound()
-        else:
-            return self.by_edit_ratio()
+        return self.method()
 
 
 class LocationFinder:
