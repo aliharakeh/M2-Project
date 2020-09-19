@@ -5,6 +5,8 @@ Reports
 Main_Data/topics.csv
 stop-words
 M2
+project_final_scripts_old
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -135,5 +137,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
 Main_Data/topics/topics.csv
