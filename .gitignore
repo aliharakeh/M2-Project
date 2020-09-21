@@ -138,3 +138,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 Main_Data/topics/topics.csv
+/Language/
+/Locations/
+/google_maps/
+/Cities/
