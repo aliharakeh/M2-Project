@@ -9,7 +9,7 @@ class SourceType:
     BS4 = 'bs4'
 
 
-class BeautifulSoupScrap:
+class BeautifulSoupScrape:
     __source = None
     __source_type = None
 
@@ -34,8 +34,8 @@ class BeautifulSoupScrap:
         - url >>> 'http://....'
         - html >>> '<html>....</html' or '<any-tag>...</any-tag>' or ...
         """
-        BeautifulSoupScrap.__source = source
-        BeautifulSoupScrap.__source_type = BeautifulSoupScrap.__get_source_type(source)
+        BeautifulSoupScrape.__source = source
+        BeautifulSoupScrape.__source_type = BeautifulSoupScrape.__get_source_type(source)
 
     @staticmethod
     def get_bs4(source=None):
@@ -48,10 +48,10 @@ class BeautifulSoupScrap:
         - html >>> '<html>....</html' or '<any-tag>...</any-tag>' or ...
         """
         if not source:
-            source = BeautifulSoupScrap.__source
-            source_type = BeautifulSoupScrap.__source_type
+            source = BeautifulSoupScrape.__source
+            source_type = BeautifulSoupScrape.__source_type
         else:
-            source_type = BeautifulSoupScrap.__get_source_type(source)
+            source_type = BeautifulSoupScrape.__get_source_type(source)
 
         if not source_type:
             return None
@@ -80,9 +80,9 @@ class BeautifulSoupScrap:
         - url >>> 'http://....'
         - html >>> '<html>....</html' or '<any-tag>...</any-tag>' or ...
         """
-        element = BeautifulSoupScrap.get_bs4(source).select_one(css_selector)
+        element = BeautifulSoupScrape.get_bs4(source).select_one(css_selector)
         if element and attributes:
-            return BeautifulSoupScrap.get_attributes(element)
+            return BeautifulSoupScrape.get_attributes(element)
         return element
 
     @staticmethod
@@ -96,9 +96,9 @@ class BeautifulSoupScrap:
         - url >>> 'http://....'
         - html >>> '<html>....</html' or '<any-tag>...</any-tag>' or ...
         """
-        elements = BeautifulSoupScrap.get_bs4(source).select(css_selector)
+        elements = BeautifulSoupScrape.get_bs4(source).select(css_selector)
         if elements and attributes:
-            return [BeautifulSoupScrap.get_attributes(e) for e in elements]
+            return [BeautifulSoupScrape.get_attributes(e) for e in elements]
         return elements
 
     @staticmethod
@@ -115,8 +115,8 @@ class BeautifulSoupScrap:
 
 
 if __name__ == '__main__':
-    els = BeautifulSoupScrap.get_elements('a', source='http://www.fallingrain.com/world/LE/')
-    # BeautifulSoupScrap.save_as_json('bs4_test', els)
+    els = BeautifulSoupScrape.get_elements('a', source='http://www.fallingrain.com/world/LE/')
+    # BeautifulSoupScrape.save_as_json('bs4_test', els)
     for el in els:
         print(el)
         print('-----------------------------------')

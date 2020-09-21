@@ -1,4 +1,4 @@
-from Scrapping.beautiful_soup import BeautifulSoupScrap as BSC
+from Scrapping.beautiful_soup import BeautifulSoupScrape as BSC
 import pandas as pd
 import json
 import time
