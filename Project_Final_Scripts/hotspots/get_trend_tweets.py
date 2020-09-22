@@ -1,5 +1,6 @@
 from Scrapping import BeautifulSoupScrape as BSS
 import json
+import time
 
 if __name__ == '__main__':
     # read data
@@ -8,6 +9,8 @@ if __name__ == '__main__':
 
     # get tweets
     for _, hotspot in hotspots.items():
+
+        print('Processing', hotspot['date'], '...')
 
         for trend in hotspot['trends']:
 
@@ -20,6 +23,7 @@ if __name__ == '__main__':
             tweets_pages = [f'{trend["link"]}/{page + 1}' for page in pages_range]
 
             # tweets
+            print('Getting Tweets...')
             tweets = []
             for tweets_page in tweets_pages:
                 tweets += [
@@ -27,9 +31,18 @@ if __name__ == '__main__':
                     BSS.get_elements('div > div.panel-body > p', source=tweets_page, attributes=True)
                 ]
 
+                # delay next request a little
+                time.sleep(0.5)
+
             # save
+            print(len(tweets), 'Tweets were scraped!!', )
             trend['tweets'] = tweets
 
+        print('-------------------------------------------------------')
+
     # save data
+    print('Saving...')
     with open('hotspots.json', 'w', encoding='utf-8') as f:
         f.write(json.dumps(hotspots, indent=2, ensure_ascii=False))
+
+    print('Done!!')
