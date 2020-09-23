@@ -1,15 +1,11 @@
-from google_maps.google_maps import search_google_maps
 import json
 import time
 import re
-import logging
+from Scrapping import ChromeManager
 
-logging.basicConfig(
-    format='%(levelname)s:%(message)s',
-    filename='search_for_locations.log',
-    level=logging.ERROR,
-    filemode='w'
-)
+# use chrome driver to open google maps
+cm = ChromeManager(verbose=False)
+cm.load_page('https://www.google.com/maps')
 
 
 def camel_case_split(str):
@@ -35,11 +31,21 @@ def clean(text):
     return res
 
 
+def search_google_maps(word):
+    # automate the input in the search field the location name and run the search
+    cm.set_value('input#searchboxinput', word)
+
+    cm.click_element('#searchbox-searchbutton', delay_after_click=2)
+
+    return None
+
+
 if __name__ == '__main__':
     with open('hotspots.json', encoding='utf-8') as f:
         hotspots = json.loads(f.read())
 
     hotspots_locations = {}
+    choice = None
 
     # iterate hotspots
     for date, hotspot in hotspots.items():
@@ -56,16 +62,31 @@ if __name__ == '__main__':
 
                 # check if any word refers to a location
                 for word in words:
+                    # try getting the location
                     try:
                         place = search_google_maps(word)
                         if place:
                             hotspots_locations[date][trend].append(place)
+
+                    # if not, then fix issue then retry
                     except:
-                        logging.error(f'[Word]: `{word}` - [Trend]: {trend["topic"]} - [Link]: {trend["link"]}')
+                        choice = input('Fix any issue then press [y] to continue or anything else to stop')
+                        if choice != 'y':
+                            break
+
+                    # sleep
                     time.sleep(1)
+
+                if choice != 'y':
+                    break
+
+            if choice != 'y':
                 break
+
+        if choice != 'y':
             break
-        break
+
+    cm.close()
 
     with open('hotspots_locations.json', 'w', encoding='utf-8') as f:
         f.write(json.dumps(hotspots_locations, indent=2, ensure_ascii=False))

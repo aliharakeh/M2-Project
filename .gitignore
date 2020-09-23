@@ -2,11 +2,10 @@
 twitterVenv
 Other_Data
 Reports
-Main_Data/topics.csv
 stop-words
 M2
 project_final_scripts_old
-Main_Data/topics/topics.csv
+Main_Data
 /Language/
 /Locations/
 /google_maps/
@@ -141,3 +140,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/Main_Data/
