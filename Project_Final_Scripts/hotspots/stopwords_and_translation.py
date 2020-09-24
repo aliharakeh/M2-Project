@@ -30,7 +30,7 @@ if __name__ == '__main__':
             tweets = []
             for tweet in list(set(trend['tweets'])):
                 if tweet:
-                    tweet = " ".join([w for w in tweet.split() if w not in stopwords])
+                    tweet = " ".join([w for w in tweet.split() if w.strip().lower() not in stopwords])
                     tweets.append(lu.quick_translation(tweet)['translated'])
                     time.sleep(1)
                     count += 1

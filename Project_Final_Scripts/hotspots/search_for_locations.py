@@ -1,96 +1,75 @@
-from google_maps.google_maps import search_google_maps
+from google_maps.google_maps import search_google_maps, split_clean_text
 import json
+import os
 import time
-import re
-import logging
 
-logging.basicConfig(
-    format='%(levelname)s:%(message)s',
-    filename='search_for_locations.log',
-    level=logging.ERROR,
-    filemode='w'
-)
+DIR = os.path.dirname(__file__)
+
+stopwords = ['http', 'https', 'com']
+with open(f'{DIR}\\..\\..\\stop-words\\english.txt', encoding='utf-8') as f:
+    stopwords += f.read().split('\n')
 
 
-def log(msg, error=False):
-    if error:
-        logging.error(msg)
-    else:
-        logging.info(msg)
-    print(msg)
-
-
-def camel_case_split(str):
-    words = [[str[0]]]
-    for c in str[1:]:
-        if words[-1][-1].islower() and c.isupper():
-            words.append(list(c))
-        else:
-            words[-1].append(c)
-    return [''.join(word) for word in words]
-
-
-def split_clean_text(text):
-    text = str(text)
-    text = re.sub(r'\n|\W|_', ' ', text)
-    words = [w.strip() for w in text.split() if len(w) > 2]
-    res = []
-    for word in words:
-        data = camel_case_split(word)
-        for d in data:
-            if len(d) > 2:
-                res.append(d.lower())
-    return res
-
-
-def search_text(topic, link, text):
+def search_text(text):
     # split text into words
     words = split_clean_text(text)
 
     # check if any word refers to a location
     places = []
     for word in words:
+        if word.strip().lower() in stopwords:
+            continue
         try:
-            place = search_google_maps(word)
-            if place:
-                log(f'[Word]: `{word}` - [Trend]: {topic} - [Link]: {link} - [Location]: {place}')
-                places.append(place)
+            place = search_google_maps(word, proxy=False)
+            if place and place[0] != "64653.2798905912":
+                print(f'[Location]: {word}')
+                places.append({
+                    'word': word,
+                    'context': text,
+                    'place': place
+                })
         except:
-            log(f'[Error Word]: `{word}` - [Trend]: {topic} - [Link]: {link}', error=True)
+            print(f'[Error Word]: `{word}`')
 
-        time.sleep(0.5)
+        # time.sleep(1)
 
     return places
 
 
 if __name__ == '__main__':
-    with open('hotspots.json', encoding='utf-8') as f:
+    with open('hotspots_cleaned_v2.json', encoding='utf-8') as f:
         hotspots = json.loads(f.read())
 
     data = {}
+    days = list(hotspots.keys())
+    start = 0
+    end = 1
 
     # iterate hotspots
-    for day, details in hotspots.items():
-        log(f'[Date]: {day}')
+    for day in days[start: end]:
+        print(f'[Date]: {day}')
 
+        details = hotspots[day]
         data[day] = {}
 
         # iterate trends
         for trend in details['trends']:
             topic, link, tweets = trend['topic'], trend['link'], trend['tweets']
-            log(f'[Trend]: {topic}')
+            print(f'[Trend]: {topic} - [Link]: {link}')
 
             data[day][topic] = []
 
             # iterate tweets
             for i, tweet in enumerate(tweets):
-                log(f'Processing Tweet {i} of `{topic}`...')
-                data[day][topic] += search_text(topic, link, tweet)
+                print(f'Processing Tweet {i} of `{topic}`...')
+                data[day][topic] += search_text(topic)
+                data[day][topic] += search_text(tweet)
 
-            log(f'[Trend]: {topic} - [Link]: {link} - [Tweets]: {len(tweets)} - [Locations]: {len(data[day][topic])}')
+            print(f'[Tweets]: {len(tweets)} - [Locations]: {len(data[day][topic])}')
+            print('---------------------------------------------------------------')
 
         # separate dates
-        log('---------------------------------------------')
+        print('################################################################################')
 
-    with open('hotspots_locations.json', 'w', encoding='utf-8') as f:
+    with open(f'hotspots_locations_days_{start}_{end}.json', 'w', encoding='utf-8') as f:
         f.write(json.dumps(data, indent=2, ensure_ascii=False))

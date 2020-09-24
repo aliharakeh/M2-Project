@@ -1,7 +1,7 @@
 import json
 
 count = 0
-with open('hotspots.json', encoding='utf-8') as f:
+with open('hotspots_cleaned_v2.json', encoding='utf-8') as f:
     hotspots = json.loads(f.read())
     for date, hotspot in hotspots.items():
         for trend in hotspot['trends']:
