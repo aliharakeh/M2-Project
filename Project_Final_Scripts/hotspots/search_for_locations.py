@@ -47,9 +47,8 @@ def search_text(topic, link, text):
     # split text into words
     words = split_clean_text(text)
 
-    places = []
-
     # check if any word refers to a location
+    places = []
     for word in words:
         try:
             place = search_google_maps(word)
@@ -59,6 +58,8 @@ def search_text(topic, link, text):
         except:
             log(f'[Error Word]: `{word}` - [Trend]: {topic} - [Link]: {link}', error=True)
 
+        time.sleep(0.5)
+
     return places
 
 
@@ -66,42 +67,30 @@ if __name__ == '__main__':
     with open('hotspots.json', encoding='utf-8') as f:
         hotspots = json.loads(f.read())
 
-    hotspots_locations = {}
+    data = {}
 
     # iterate hotspots
-    for date, hotspot in hotspots.items():
-        hotspots_locations[date] = {}
+    for day, details in hotspots.items():
+        log(f'[Date]: {day}')
 
-        log(f'[Date]: {date}')
+        data[day] = {}
 
         # iterate trends
-        for trend in hotspot['trends']:
-            hotspots_locations[date][trend['topic']] = []
-            log(f'[Trend]: {trend["topic"]}')
+        for trend in details['trends']:
+            topic, link, tweets = trend['topic'], trend['link'], trend['tweets']
+            log(f'[Trend]: {topic}')
+
+            data[day][topic] = []
 
             # iterate tweets
-            for i, tweet in enumerate(trend['tweets']):
+            for i, tweet in enumerate(tweets):
+                log(f'Processing Tweet {i} of `{topic}`...')
+                data[day][topic] += search_text(topic, link, tweet)
 
-                log(f'Processing Tweet {i}...')
+            log(f'[Trend]: {topic} - [Link]: {link} - [Tweets]: {len(tweets)} - [Locations]: {len(data[day][topic])}')
 
-                # split text into words
-                words = split_clean_text(tweet)
-
-                # check if any word refers to a location
-                for word in words:
-                    print(word)
-                    try:
-                        place = search_google_maps(word)
-                        if place:
-                            hotspots_locations[date][trend].append(place)
-                            log(f'[Word]: `{word}` - [Trend]: {trend["topic"]} - [Link]: {trend["link"]} - [Location]: {place}')
-                    except:
-                        log(f'[Error Word]: `{word}` - [Trend]: {trend["topic"]} - [Link]: {trend["link"]}', error=True)
-                    time.sleep(0.5)
-
-            log(f'[Trend]: {trend["topic"]} - {len(trend["tweets"])} tweets - {len(hotspots_locations[date][trend])} location(s) found')
-
+        # separate dates
         log('---------------------------------------------')
 
     with open('hotspots_locations.json', 'w', encoding='utf-8') as f:
-        f.write(json.dumps(hotspots_locations, indent=2, ensure_ascii=False))
+        f.write(json.dumps(data, indent=2, ensure_ascii=False))
