@@ -14,6 +14,10 @@ if __name__ == '__main__':
 
         for trend in hotspot['trends']:
 
+            # for updating and not first time use of this code
+            # if len(trend['tweets']) > 0:
+            #     continue
+
             # pager data
             pager_data = BSS.get_elements('center:nth-child(3) > nav > ul > li', source=trend['link'], attributes=True)
             max_page = len(pager_data) - 2
@@ -36,7 +40,7 @@ if __name__ == '__main__':
 
             # save
             print(len(tweets), 'Tweets were scraped!!', )
-            trend['tweets'] = tweets
+            trend['tweets'] = [tweet for tweet in set(tweets) if tweet]
 
         print('-------------------------------------------------------')
 

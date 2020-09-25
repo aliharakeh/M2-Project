@@ -28,7 +28,7 @@ if __name__ == '__main__':
         for trend in hotspot['trends']:
 
             tweets = []
-            for tweet in list(set(trend['tweets'])):
+            for tweet in trend['tweets']:
                 if tweet:
                     tweet = " ".join([w for w in tweet.split() if w.strip().lower() not in stopwords])
                     tweets.append(lu.quick_translation(tweet)['translated'])

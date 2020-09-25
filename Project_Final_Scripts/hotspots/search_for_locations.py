@@ -15,25 +15,26 @@ def search_text(text):
     words = split_clean_text(text)
 
     # check if any word refers to a location
-    places = []
+    # places = []
     for word in words:
         if word.strip().lower() in stopwords:
             continue
         try:
             place = search_google_maps(word, proxy=False)
             if place and place[0] != "64653.2798905912":
-                print(f'[Location]: {word}')
-                places.append({
-                    'word': word,
-                    'context': text,
-                    'place': place
-                })
+                # print(f'[Location]: {word}')
+                # places.append({
+                #     'word': word,
+                #     'context': text,
+                #     'place': place
+                # })
+                return True
         except:
-            print(f'[Error Word]: `{word}`')
+            # print(f'[Error Word]: `{word}`')
+            pass
+        time.sleep(1)
 
-        # time.sleep(1)
-
-    return places
+    return False
 
 
 if __name__ == '__main__':
@@ -43,7 +44,7 @@ if __name__ == '__main__':
     data = {}
     days = list(hotspots.keys())
     start = 0
-    end = 1
+    end = len(days)
 
     # iterate hotspots
     for day in days[start: end]:
@@ -62,10 +63,10 @@ if __name__ == '__main__':
             # iterate tweets
             for i, tweet in enumerate(tweets):
                 print(f'Processing Tweet {i} of `{topic}`...')
-                data[day][topic] += search_text(topic)
-                data[day][topic] += search_text(tweet)
+                if search_text(tweet):
+                    data[day][topic].append(tweet)
 
-            print(f'[Tweets]: {len(tweets)} - [Locations]: {len(data[day][topic])}')
+            print(f'[Tweets]: {len(tweets)} - [Location Tweets]: {len(data[day][topic])}')
             print('---------------------------------------------------------------')
 
         # separate dates

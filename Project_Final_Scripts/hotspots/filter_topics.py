@@ -17,11 +17,7 @@ if __name__ == '__main__':
             topic = trend['topic'].lower().strip()
             if topic in removed_topics:
                 continue
-            final_hotspots[date]['trends'].append({
-                'topic': trend['topic'],
-                'link': trend['link'],
-                'tweets': list(set(trend['tweets']))
-            })
+            final_hotspots[date]['trends'].append(trend)
 
     with open('hotspots_cleaned_v2.json', 'w', encoding='utf-8') as f:
         f.write(json.dumps(final_hotspots, indent=2, ensure_ascii=False))
