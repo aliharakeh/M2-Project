@@ -144,3 +144,7 @@ dmypy.json
 /Project_Final_Scripts/hotspots/extra/
 /Locations/
 /Language/
+/new_cities/
+new_cities/cities_ar.csv
+new_cities/cities_en.csv
+new_cities/cities_ar.csv
