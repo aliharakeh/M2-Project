@@ -8,7 +8,7 @@ if __name__ == '__main__':
     cm = ChromeManager()
     tw = TwitterScrapper(cm)
     tw.load_page(URL)
-    input('Configure Twitter setting then enter any key to continue...\n--> ')
+    input_ = input('Configure Twitter setting then enter any key to continue...\n--> ')
 
     try:
         tw.get_all_tweets()

@@ -1,8 +1,13 @@
 CHROME_DRIVER = 'D:\\Desktop\\GitHub\\M2-Project\\Scrapping\\chromedriver.exe'
 
 TWITTER_USER = {
-    'public_username': 'div#react-root div.css-1dbjc4n.r-1g94qm0 > div > div > div.css-1dbjc4n.r-1awozwy.r-18u37iz.r-dnmrzs > div > span:nth-child(1) > span',
-    'public_location': 'div#react-root div > span:nth-child(1) > span > span'
+    'display-name': 'div#react-root div.css-1dbjc4n.r-1g94qm0 > div > div > div.css-1dbjc4n.r-1awozwy.r-18u37iz.r-dnmrzs > div > span:nth-child(1) > span',
+    'username': 'div#react-root div.css-1dbjc4n.r-1g94qm0 > div > div > div.css-1dbjc4n.r-18u37iz.r-1wbh5a2 > div > span',
+    'description': 'div#react-root div:nth-child(3) > div > div > span',
+    'joined': 'div#react-root div:nth-child(4) > div > span:nth-child(2)',
+    'following': 'div#react-root div.css-1dbjc4n.r-1mf7evn > a > span.css-901oao.css-16my406.r-1qd0xha.r-vw2c0b.r-ad9z0x.r-bcqeeo.r-qvutc0 > span',
+    'followers': 'div#react-root div:nth-child(2) > a > span.css-901oao.css-16my406.r-1qd0xha.r-vw2c0b.r-ad9z0x.r-bcqeeo.r-qvutc0 > span',
+    'place': 'div#react-root div:nth-child(4) > div > span:nth-child(1) > span > span'
 }
 
 TWEETS = {

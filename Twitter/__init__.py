@@ -1,1 +1,1 @@
-from Twitter.twitter import TwitterScrapper, TwitterTwint
+from Twitter.twitter import TwitterScrapper
