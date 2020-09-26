@@ -156,7 +156,7 @@ def handle_null_data():
 
 def fix_date(date):
     if 'h' in date or 'm' in date or 's' in date:
-        return '2020-09-05'
+        return '2020-10-01'
     return datetime.strptime(date, "%b %d").strftime('2020-%m-%d')
 
 
@@ -167,6 +167,6 @@ def fix_dates():
 
 
 if __name__ == '__main__':
-    # get_extra_data()
-    # handle_null_data()
+    get_extra_data()
+    handle_null_data()
     fix_dates()

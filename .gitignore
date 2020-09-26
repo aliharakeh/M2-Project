@@ -142,3 +142,5 @@ dmypy.json
 .pyre/
 /Main_Data/
 /Project_Final_Scripts/hotspots/extra/
+/Locations/
+/Language/
