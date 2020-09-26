@@ -27,11 +27,11 @@ def str2date(date: str, date_format='%Y-%m-%d') -> datetime:
     return datetime.strptime(date, date_format)
 
 
-def date_range(date: datetime, date_format='%Y-%m-%d', range_before=1, range_after=1) -> List[datetime]:
+def date_range(date: str, date_format='%Y-%m-%d', range_before=1, range_after=1) -> List[datetime]:
     """
     Get a range of dates bases on a specified date
     """
-    date = datetime.strptime(date, date_format)
+    date = str2date(date, date_format)
     before_range = [(date - timedelta(days=range_before - i)) for i in range(range_before)]
     after_range = [(date + timedelta(days=i + 1)) for i in range(range_after)]
     return [
