@@ -15,7 +15,7 @@ with open(f'{DIR}\\..\\stop-words\\arabic.txt', encoding='utf-8') as f:
     stopwords += f.read().split('\n')
 
 # can be changed externally
-not_accepted = re.compile(r'\w*\d+\w*|http|twitter|%|com')  # numeric & non alphanumeric
+not_accepted = re.compile(r'\w*\d+\w*|http|twitter|%|com')  # numeric & non alphabets
 additional_stopwords = ['d8', 'd9', '08', '83', '86', 'a7', '84', 'a8', 'b1', '88', 'http', 'https', 'twitter', 'com', '']
 
 
@@ -36,7 +36,7 @@ def get_stopwords(data):
     return stopwords
 
 
-def tf_idf(documents: pd.Series, max_features=1000, ngram=(2, 2), limit=None, **kwargs):
+def tf_idf(documents, max_features=1000, ngram=(2, 2), limit=None, **kwargs):
     # convert iterable to pd.Series
     if not isinstance(documents, pd.Series):
         documents = pd.Series(documents)
