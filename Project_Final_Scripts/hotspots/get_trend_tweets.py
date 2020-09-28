@@ -4,7 +4,7 @@ import time
 
 if __name__ == '__main__':
     # read data
-    with open('hotspots_topics_trends.json', encoding='utf-8') as f:
+    with open('hotspots.json', encoding='utf-8') as f:
         hotspots = json.loads(f.read())
 
     # get tweets
@@ -46,7 +46,7 @@ if __name__ == '__main__':
 
     # save data
     print('Saving...')
-    with open('hotspots.json', 'w', encoding='utf-8') as f:
+    with open('hotspots_tweets.json', 'w', encoding='utf-8') as f:
         f.write(json.dumps(hotspots, indent=2, ensure_ascii=False))
 
     print('Done!!')

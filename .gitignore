@@ -10,6 +10,9 @@ Main_Data
 /Locations/
 /google_maps/
 /Cities/
+/Main_Data/
+/new_cities/
+new_cities/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -140,11 +143,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-/Main_Data/
-/Project_Final_Scripts/hotspots/extra/
-/Locations/
-/Language/
-/new_cities/
-new_cities/cities_ar.csv
-new_cities/cities_en.csv
-new_cities/cities_ar.csv
