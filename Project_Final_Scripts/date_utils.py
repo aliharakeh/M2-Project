@@ -39,3 +39,14 @@ def date_range(date: str, date_format='%Y-%m-%d', range_before=1, range_after=1)
         date,
         *after_range
     ]
+
+
+def change_format(date, from_format='%Y-%m-%d', to_format='%Y-%m-%d'):
+    """
+    change the format of a date \n
+    *Note: from_format is None if date provided is of type datetime
+    """
+    if isinstance(date, str):
+        return date2str(str2date(date, from_format), to_format)
+    elif isinstance(date, datetime):
+        return date2str(date, to_format)

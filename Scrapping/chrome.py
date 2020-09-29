@@ -34,8 +34,7 @@ class ChromeManager:
         if self.verbose:
             print(message)
 
-    def load_page(self, url, wait_element_selector='body', wait_element_type=By.CSS_SELECTOR, wait_timeout=10,
-                  max_tries=5):
+    def load_page(self, url, wait_element_selector='body', wait_element_type=By.CSS_SELECTOR, wait_timeout=10, max_tries=3):
         self._driver.get(url)
         try_count = 0
         page_loaded = False
@@ -83,6 +82,13 @@ class ChromeManager:
         for _ in self._cm.scroll_page(scroll_count=5, external_func=True):
             elements = self._cm.get_elements('div')
             ...
+
+        OR
+        ==
+
+        self._cm.scroll_page(scroll_count=5)
+        self._cm.scroll_page(scroll_till_end=True)
+        do_stuff()
         """
 
         def _scroll_generator():
@@ -129,16 +135,22 @@ class ChromeManager:
     def get_page_source(self):
         return self._driver.page_source
 
-    def set_value(self, selector, value):
+    def set_text(self, selector, value):
         element = self.get_element(selector)
         if element:
             element.clear()
             element.send_keys(value)
 
-    def get_value(self, selector):
+    def get_text(self, selector):
         e = self.get_element(selector)
         if e:
             return e.text
+        return None
+
+    def get_attribute(self, selector, attribute_name):
+        e = self.get_element(selector)
+        if e:
+            return e.get_attribute(attribute_name) if attribute_name != 'text' else e.text
         return None
 
     def close(self):
