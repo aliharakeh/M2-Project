@@ -1,11 +1,11 @@
 from Project_Final_Scripts.Locations.locations import LocationFinder, Methods
 from Project_Final_Scripts.Language.language_utils import LanguageUtil
+from Project_Final_Scripts.date_utils import change_format, date2str, now
 from Scrapping.chrome import ChromeManager
 from Twitter import TwitterScrapper
 import pandas as pd
 import time
 import re
-from Project_Final_Scripts.date_utils import change_format, date2str, now
 
 csv_file = 'geo_tweets.csv'
 count = 0
