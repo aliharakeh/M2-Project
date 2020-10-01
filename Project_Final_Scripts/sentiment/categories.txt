@@ -1,7 +1,6 @@
-news - done
-angry - done
+news
+angry
 sad
 disappointed
 hopeful
-happy
 anxious
