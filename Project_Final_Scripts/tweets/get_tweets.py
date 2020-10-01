@@ -1,12 +1,20 @@
-from Scrapping import ChromeManager
 from Twitter import TwitterScrapper
 
-URL = 'https://twitter.com/search?f=live&q=covid-19%20since%3A2020-07-31&src=typed_query&lf=on'
-SAVE_FILE = 'covid_tweets_1_8_2020+'
+keywords = [
+    'corona lebanon',
+    'covid lebanon',
+    'كورونا',
+    'كورونا_لبنان',
+    'healthcare lebanon',
+    'medical lebanon'
+]
+since = '2020-09-06'
+search = 'medical lebanon'
+URL = f'https://twitter.com/search?q={search}%20since%3A{since}&src=typed_query&f=live'
+SAVE_FILE = f'..\\combine_dataFrames\\tweets_{search}_6_9_2020+'
 
 if __name__ == '__main__':
-    cm = ChromeManager()
-    tw = TwitterScrapper(cm)
+    tw = TwitterScrapper()
     tw.load_page(URL)
     input_ = input('Configure Twitter setting then enter any key to continue...\n--> ')
 
@@ -20,4 +28,3 @@ if __name__ == '__main__':
     finally:
         print('DONE!!')
         tw.save_as_csv(SAVE_FILE)
-        cm.close()

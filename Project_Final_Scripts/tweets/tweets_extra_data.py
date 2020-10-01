@@ -5,7 +5,7 @@ import pandas as pd
 import time
 from datetime import datetime
 
-csv_file = 'tweets.csv'
+csv_file = 'tweets_data.csv'
 count = 0
 total = 0
 LF = LocationFinder()
@@ -106,9 +106,9 @@ class Translate:
         self._cm.load_page('https://translate.google.com/', '#source')
 
     def translate(self, text):
-        self._cm.set_value('#source', text)
+        self._cm.set_text('#source', text)
         time.sleep(3)
-        return self._cm.get_value('span.tlid-translation.translation')
+        return self._cm.set_text('span.tlid-translation.translation')
 
     def close(self):
         self._cm.close()
@@ -144,6 +144,11 @@ def handle_null_data():
     df.loc[df.translated_text.isna(), 'translated_text'] = null_translations.text.apply(translate)
     print('Translation Done!!')
 
+    null_text = df[df.text.isna()]
+    print('Null Text:', len(null_text))
+    null_translations = df[df.translated_text.isna()]
+    print('Null Translations:', len(null_translations))
+
     df.to_csv(csv_file, index=False)
 
     T.close()
@@ -156,13 +161,13 @@ def handle_null_data():
 
 def fix_date(date):
     if 'h' in date or 'm' in date or 's' in date:
-        return '2020-10-01'
+        return '2020-09-30'
     return datetime.strptime(date, "%b %d").strftime('2020-%m-%d')
 
 
 def fix_dates():
     df = pd.read_csv(csv_file, header=0)
-    df.date = df.date.apply(fix_date)
+    df.time = df.time.apply(fix_date)
     df.to_csv(csv_file, index=False)
 
 
