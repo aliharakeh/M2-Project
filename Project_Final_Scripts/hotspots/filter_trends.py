@@ -76,4 +76,8 @@ def tkinter_app():
 
 
 if __name__ == '__main__':
+    # using IDE Editor
     filter_empty_topics()
+
+    # using tkinter gui
+    # tkinter_app()
