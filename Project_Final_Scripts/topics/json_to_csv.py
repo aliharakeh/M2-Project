@@ -11,11 +11,11 @@ def json_to_csv(dict_, type_, filename):
 
 
 if __name__ == '__main__':
-    with open('mo7afazat_topics_old.json', encoding='utf-8') as f:
-        mo7afazat = json.loads(f.read())
+    # with open('mo7afazat_topics.json', encoding='utf-8') as f:
+    #     mo7afazat = json.loads(f.read())
 
-    with open('kadaas_topics_old.json', encoding='utf-8') as f:
+    with open('kadaas_topics.json', encoding='utf-8') as f:
         kadaas = json.loads(f.read())
 
-    json_to_csv(mo7afazat, 'MOHAFAZA', 'mo7afazat_topics')
-    json_to_csv(kadaas, 'KADAA', 'kadaas_topics')
+    # json_to_csv(mo7afazat, 'MOHAFAZA', 'mo7afazat_topics.csv')
+    json_to_csv(kadaas, 'KADAA', 'kadaas_topics.csv')
