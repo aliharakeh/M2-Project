@@ -1,43 +1,101 @@
 from Locations.locations_v2 import LocationFinder, Methods
 from Language.language_utils import LanguageUtil
 from Scrapping.chrome import ChromeManager
+from Twitter import TwitterScrapper
+from Project_Final_Scripts.date_utils import change_format, date2str, now
 import pandas as pd
 import time
-from datetime import datetime
+import re
 
 csv_file = 'tweets_data.csv'
 count = 0
 total = 0
 LF = LocationFinder()
 LU = LanguageUtil()
+TS = TwitterScrapper(headless=True)
 users = {}
 
 
-def get_location_data(username, text):
+def check_profile_location(row):
+    # get user details
+    place = TS.get_user_details(row.username)['place']
+
+    # clean place text
+    place = re.sub(r'\W', ' ', place)
+    place = re.sub(r'\s{2,}', ' ', place)
+
+    # check if the geo location of the tweets marches the user public location
+    locations = LF.search_text(place, method={'en': Methods.SOUND, 'ar': Methods.EDIT_DISTANCE}, accepted_ratio=90)
+
+    # TODO: configure best location match (can be in external func `check_predicted_location()` since the below func uses it too)
+    # for location, ratio in locations:
+    #     details = LF.get_location_details(location)
+    #     pass
+
+    # TODO: return best location match
+    # return None, [l for (l, r) in locations]
+
+
+def check_predicted_location(row):
+    # get user tweets
+    TS.load_page(f'https://twitter.com/{row.username}')
+    TS.get_some_tweets(tweets_count=10)
+    tweets = TS.get_tweets(as_dict=True)
+
+    # predict locations
+    locations = set()
+    for key, tweet in tweets.items():
+        if tweet['text']:
+            predicted_locations = LF.search_text(
+                tweet['text'],
+                method={'en': Methods.SOUND, 'ar': Methods.EDIT_DISTANCE},
+                accepted_ratio=90
+            )
+            # TODO: ??????
+            for location, ratio in predicted_locations:
+                locations.add(location)
+
+    # TODO: configure best location match
+    # # check if any predicted location matched the geo location
+    # for location in locations:
+    #     details = LF.get_location_details(location)
+    #     pass
+
+    # TODO: return best location match
+    # return None, list(locations)
+
+
+def get_location_data(row):
     global users
 
-    if username in users:
-        return users[username]
+    # check if user already exists
+    if row.username in users:
+        return users[row.username]
 
-    location = None
-    try:
-        loc = LF.search_text(text, method={'en': Methods.SOUND, 'ar': Methods.EDIT_DISTANCE})
-        if loc and loc[0][0]:
-            arabic_aliases = LF.get_arabic_alias(loc[0][0])
-            if arabic_aliases:
-                location = arabic_aliases
-            else:
-                location = loc[0][0]
-        else:
-            raise ValueError('Error')
-    except:
-        location = 'بيروت'
+    # match location to profile location
+    user_l, user_d = check_profile_location(row)
+    if user_l:
+        users[row.username] = (user_l, user_d)
+        return users[row.username]
 
-    finally:
-        location_details = LF.get_location_details(location)
-        users[username] = (location, location_details)
+    # match location to predicted locations
+    p_l, p_d = check_predicted_location(row)
+    if p_l:
+        users[row.username] = (p_l, p_d)
+        return users[row.username]
 
-    return users[username]
+    # TODO: fix everything from here to the end
+    # prefer current user profile over tweet geo location
+    # if len(user_d) > 0:
+    #     users[row.username] = (user_d['name'], user_d)
+    #     print(f'chosen profile location for {row.username}')
+    #     return users[row.username]
+    #
+    # # prefer geo location over predicted location
+    # else:
+    #     users[row.username] = (row.location, LF.get_location_details(row.location))
+    #     print(f'chosen geo location for {row.username}')
+    #     return users[row.username]
 
 
 def get_data(row):
@@ -45,7 +103,7 @@ def get_data(row):
 
     time.sleep(0.5)
 
-    location, location_details = get_location_data(row.username, row.text)
+    location, location_details = get_location_data(row)
 
     try:
         translated_text = LU.quick_translation(row.text)['translated']
@@ -161,8 +219,8 @@ def handle_null_data():
 
 def fix_date(date):
     if 'h' in date or 'm' in date or 's' in date:
-        return '2020-09-30'
-    return datetime.strptime(date, "%b %d").strftime('2020-%m-%d')
+        return date2str(now())
+    return change_format(date, from_format="%b %d", to_format='2020-%m-%d')
 
 
 def fix_dates():
