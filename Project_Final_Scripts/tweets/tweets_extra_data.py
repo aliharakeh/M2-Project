@@ -16,6 +16,21 @@ TS = TwitterScrapper(headless=True)
 users = {}
 
 
+def get_best_location(locations):
+    best_ratio, best_population = 0, 0
+    best_location = (None, [l for (l, r) in locations])
+    for location, ratio in locations:
+        details = LF.get_location_details(location)
+        if ratio == 100:
+            return location, details
+        else:
+            population = int(details['7km_population'])
+            if ratio >= best_ratio and population >= best_population:
+                best_ratio, best_population = ratio, population
+                best_location = (location, details)
+    return best_location
+
+
 def check_profile_location(row):
     # get user details
     place = TS.get_user_details(row.username)['place']
@@ -27,13 +42,8 @@ def check_profile_location(row):
     # check if the geo location of the tweets marches the user public location
     locations = LF.search_text(place, method={'en': Methods.SOUND, 'ar': Methods.EDIT_DISTANCE}, accepted_ratio=90)
 
-    # TODO: configure best location match (can be in external func `check_predicted_location()` since the below func uses it too)
-    # for location, ratio in locations:
-    #     details = LF.get_location_details(location)
-    #     pass
-
-    # TODO: return best location match
-    # return None, [l for (l, r) in locations]
+    # return best match
+    return get_best_location(locations)
 
 
 def check_predicted_location(row):
@@ -43,7 +53,7 @@ def check_predicted_location(row):
     tweets = TS.get_tweets(as_dict=True)
 
     # predict locations
-    locations = set()
+    locations = {}
     for key, tweet in tweets.items():
         if tweet['text']:
             predicted_locations = LF.search_text(
@@ -51,18 +61,18 @@ def check_predicted_location(row):
                 method={'en': Methods.SOUND, 'ar': Methods.EDIT_DISTANCE},
                 accepted_ratio=90
             )
-            # TODO: ??????
-            for location, ratio in predicted_locations:
-                locations.add(location)
+            # we use the location frequency instead of the ratio as ratio is always >= 90 which is good enough
+            for l, r in predicted_locations:
+                if l in locations:
+                    locations[l] += 1  # update count
+                else:
+                    locations[l] = 1
 
-    # TODO: configure best location match
-    # # check if any predicted location matched the geo location
-    # for location in locations:
-    #     details = LF.get_location_details(location)
-    #     pass
+    # re-format locations
+    locations = [(l, c) for l, c in locations.items()]
 
-    # TODO: return best location match
-    # return None, list(locations)
+    # return best match
+    return get_best_location(locations)
 
 
 def get_location_data(row):
@@ -84,18 +94,27 @@ def get_location_data(row):
         users[row.username] = (p_l, p_d)
         return users[row.username]
 
-    # TODO: fix everything from here to the end
-    # prefer current user profile over tweet geo location
-    # if len(user_d) > 0:
-    #     users[row.username] = (user_d['name'], user_d)
-    #     print(f'chosen profile location for {row.username}')
-    #     return users[row.username]
-    #
-    # # prefer geo location over predicted location
-    # else:
-    #     users[row.username] = (row.location, LF.get_location_details(row.location))
-    #     print(f'chosen geo location for {row.username}')
-    #     return users[row.username]
+    """ check predicted locations of both profile and tweets and choose one """
+
+    # choose from predicted profile locations
+    if len(user_d) > 0:
+        location = user_d[0]  # first item == best ratio as the list is sorted
+        details = LF.get_location_details(location)
+        print(f'chosen predicted profile location for {row.username}')
+
+    # choose from predicted tweets locations
+    elif len(p_d) > 0:
+        location = p_d[0]  # first item == best frequency as the list is sorted
+        details = LF.get_location_details(location)
+        print(f'chosen predicted tweet location for {row.username}')
+
+    # in case nothing works
+    else:
+        location = 'Beirut'
+        details = LF.get_location_details(location)
+
+    users[row.username] = (location, details)
+    return users[row.username]
 
 
 def get_data(row):

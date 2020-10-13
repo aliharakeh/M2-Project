@@ -5,17 +5,23 @@ import time
 
 class ChromeTranslate:
 
-    def __init__(self):
-        self._cm = ChromeManager()
+    def __init__(self, headless=True):
+        self._cm = ChromeManager(headless=headless)
         self._cm.load_page('https://translate.google.com/', '#source')
 
     def translate(self, text):
-        self._cm.set_value('#source', text)
+        self._cm.set_text('#source', text)
         time.sleep(3)
-        return self._cm.get_value('span.tlid-translation.translation')
+        return self._cm.get_text('span.tlid-translation.translation')
 
     def close(self):
         self._cm.close()
+
+    def __del__(self):
+        try:
+            self.close()
+        except:
+            pass
 
 
 class LanguageUtil:
@@ -26,24 +32,16 @@ class LanguageUtil:
     def quick_lang_detect(self, text):
         return self.translator.translate(text).src
 
-    def quick_translation(self, text, src_lang='auto', dest_lang='en'):
+    def translate(self, text, src_lang='auto', dest_lang='en', with_correction=False):
         translation = self.translator.translate(text, src=src_lang, dest=dest_lang)
-        correction = translation.extra_data['possible-mistakes'][1] if translation.extra_data['possible-mistakes'] else None
+        possible_mistakes = translation.extra_data.get('possible-mistakes', None)
+        corrected_text = possible_mistakes[1] if possible_mistakes else None
+        if with_correction and corrected_text:
+            translation = self.translator.translate(corrected_text, src=src_lang, dest=dest_lang)
         return {
             'original': translation.origin,
-            'translated': translation.text,
-            'src_lang': translation.src,
-            'dest_lang': translation.dest,
-            'possible_correction': correction
-        }
-
-    def translate(self, text, src_lang='auto', dest_lang='en'):
-        translation = self.quick_translation(text, src_lang, dest_lang)
-        if translation['possible_correction']:
-            translation = self.translator.translate(translation['possible_correction'], src=src_lang, dest=dest_lang)
-        return {
-            'original': translation.origin,
-            'translated': translation.text,
+            'correction': corrected_text,
+            'translation': translation.text,
             'src_lang': translation.src,
             'dest_lang': translation.dest
         }
@@ -64,3 +62,5 @@ class LanguageUtil:
                 'src_lang': None,
                 'dest_lang': None
             }
+        finally:
+            t.close()

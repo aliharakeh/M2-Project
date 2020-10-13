@@ -1,5 +1,5 @@
-from Language.Detect_English.detect_english import EnglishDetection
-from Language.language_config import AR_REGEX, PROBLEM_CHARS, LB_LETTERS
+from Language.language_config import PROBLEM_CHARS, LB_LETTERS
+from Language.lang_detection.lang_words import is_arabic, is_english
 import re
 
 
@@ -11,26 +11,7 @@ class BaseLang:
         self.word_indexes = []
 
     def clean_text(self, text):
-        ptrn = re.compile(rf'[{re.escape(PROBLEM_CHARS)}]+.*?\s')
-        return re.sub(ptrn, '', text)
-
-    def connect_indexes(self):
-        if not self.word_indexes:
-            return []
-        if len(self.word_indexes) == 1:
-            return [(self.word_indexes[0], self.word_indexes[0] + 1)]
-        res = []
-        start = None
-        end = None
-        for word_index in self.word_indexes:
-            if start is None:
-                start = word_index
-            elif word_index != end:
-                res.append((start, end))
-                start = word_index
-            end = word_index + 1
-        res.append((start, end))
-        return res
+        return re.sub(rf'[{re.escape(PROBLEM_CHARS)}]+', '', text)
 
     def word_percentage(self):
         return 0
@@ -38,15 +19,36 @@ class BaseLang:
     def detect(self, accepted_percentage=80):
         return self.word_percentage() >= accepted_percentage
 
+    def connect_indexes(self):
+        if not self.word_indexes:
+            return []
+        if len(self.word_indexes) == 1:
+            return [(self.word_indexes[0], self.word_indexes[0] + 1)]
+        res = []
+        curr_start = None
+        curr_end = None
+        for index in self.word_indexes:
+            # first time
+            if curr_start is None:
+                curr_start = index
+            # gap btw current end and index ==> save previous & update curr_start
+            elif index != curr_end:
+                res.append((curr_start, curr_end))
+                curr_start = index
+            # curr_end is the next sequentially index ([start:end] has `exclusive end` ==> [start:end+1] has `inclusive end`)
+            curr_end = index + 1
+        # last one curr_end == index ==> no save ==> save manually
+        res.append((curr_start, curr_end))
+        return res
+
 
 class AR(BaseLang):
 
     def __init__(self, text):
         super().__init__(text)
-        self.ar_detect = re.compile(AR_REGEX)
 
     def is_arabic(self, word):
-        return re.search(self.ar_detect, word) is not None
+        return is_arabic(word)
 
     def word_percentage(self):
         ar_count = 0
@@ -61,15 +63,17 @@ class EN(BaseLang):
 
     def __init__(self, text):
         super().__init__(text)
-        self.en_detect = EnglishDetection()
 
     def is_english(self, word):
-        return word.upper() in self.en_detect.ENGLISH_WORDS
+        return is_english(word)
 
     def word_percentage(self):
-        percent, indexes = self.en_detect.get_english_count(self.text)
-        self.word_indexes = indexes
-        return percent * 100
+        en_count = 0
+        for index, word in enumerate(self.words):
+            if self.is_english(word):
+                en_count += 1
+                self.word_indexes.append(index)
+        return (en_count / self.word_count) * 100
 
 
 class LB(BaseLang):
@@ -140,6 +144,7 @@ class LangDetector:
 
 
 if __name__ == '__main__':
+    from pprint import pprint
     l = LangDetector('Hello Kefak salam hello yes no why eh')
-    print(l.lang_distribution())
-    print(l.lang_percentage())
+    pprint(l.lang_distribution())
+    pprint(l.lang_percentage())

@@ -1,5 +1,5 @@
-from .language_utils import LanguageUtil
-from .lebanese_to_arabic import LebaneseToArabic
+from Language.language_utils import LanguageUtil
+from Language.lebanese_to_arabic import LebaneseToArabic
 from difflib import SequenceMatcher
 import json
 import os
@@ -24,36 +24,40 @@ class LebaneseToEnglish:
         cls.lb_words = list(data.keys())
 
     @classmethod
-    def search_word(cls, word, stop_ratio=0.8):
+    def search_word(cls, word, accepted_ratio=80):
         word = word.lower()
-        best_match = (word, 0.0)
+        best_match = (None, 0)
         if word in cls.lb_en_dict:
-            best_match = (word, 1.0)
+            best_match = (word, 100)
         else:
             for lb_word in cls.lb_words:
-                similarity = SequenceMatcher(None, lb_word, word).ratio()
+                similarity = SequenceMatcher(None, lb_word, word).ratio() * 100
                 if not best_match[0] or similarity >= best_match[1]:
                     best_match = (lb_word, similarity)
-                    if similarity >= stop_ratio:
+                    if similarity >= accepted_ratio:
                         break
         return {
             'searched': word,
             'matched_lb': best_match[0],
-            'matched_en': cls.lb_en_dict[best_match[0]],
-            'similarity': best_match[1]
+            'matched_en': cls.lb_en_dict.get(best_match[0], None),
+            'similarity_percentage': best_match[1]
         }
 
-    def _ar_to_en(self, text):
-        return self.lang_util.quick_translation(self.lb_ar.lb_to_ar(text))['translated']
+    def lb_to_ar_to_en(self, text):
+        return self.lang_util.translate(
+            self.lb_ar.map_lb_to_ar(text),
+            src_lang='ar',
+            dest_lang='en',
+            with_correction=True
+        )['translation']
 
-    def lb_to_en(self, text, accepted_similarity=0.8):
+    def lb_to_en(self, text, accepted_similarity=80):
         words = text.lower().split()
-        res = ''
+        res = []
         for word in words:
-            search = self.search_word(word)
-            if search['similarity'] >= accepted_similarity:
-                res += search['matched_en']
+            match = self.search_word(word)
+            if match['similarity_percentage'] >= accepted_similarity:
+                res.append(match['matched_en'])
             else:
-                res += self._ar_to_en(word)
-            res += ' '
-        return res[:-1]
+                res.append(self.lb_to_ar_to_en(word))
+        return " ".join(res)

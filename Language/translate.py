@@ -1,5 +1,5 @@
-from .lebanese_to_arabic import LebaneseToArabic
-from .lebanese_to_english import LebaneseToEnglish
+from Language.lebanese_to_arabic import LebaneseToArabic
+from Language.lebanese_to_english import LebaneseToEnglish
 
 if __name__ == '__main__':
     texts = [
