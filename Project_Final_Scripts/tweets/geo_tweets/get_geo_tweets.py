@@ -5,9 +5,10 @@ import json
 import pandas as pd
 
 
-def generate_url(keywords, lat, long, radius=3, since='2020-10-10'):
+def generate_url(keywords, lat, long, radius=3, since='2020-10-01'):
     keywords = quote(" OR ".join(keywords))
-    return f'https://twitter.com/search?q=({keywords})%20geocode%3A{lat}%2C{long}%2C{radius}km%20since%3A{since}&src=typed_query&f=live'
+    since = f'%20since%3A{since}' if since else ''
+    return f'https://twitter.com/search?q=({keywords})%20geocode%3A{lat}%2C{long}%2C{radius}km{since}&src=typed_query&f=live'
 
 
 def get_cities():
@@ -32,10 +33,12 @@ if __name__ == '__main__':
         'medical'
     ]
 
-    for city in cities[:10]:
+    cities = [(33.894204, 35.485805, 'Beirut')]
+
+    for city in cities:
         lat, long, name = city
         url = generate_url(keywords, lat, long, radius=10)
-        print(url)
+        # print(url)
         tw.load_page(url, max_tries=1, timeout=3)
 
         time.sleep(0.5)
@@ -54,6 +57,6 @@ if __name__ == '__main__':
         for details in tweets:
             final_data.append([*details, *key])
 
-    print(final_data)
+    # print(final_data)
     df = pd.DataFrame(final_data, columns=['username', 'time', 'text', 'tags', 'latitude', 'longitude', 'location'])
     df.to_csv('geo_tweets2.csv', index=False)

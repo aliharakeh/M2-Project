@@ -3,11 +3,16 @@ from Language.lebanese_to_english import LebaneseToEnglish
 
 if __name__ == '__main__':
     texts = [
-        'mar7aba',
-        'salam kefak',
-        'eh walla knt honek bas ma sar shi',
-        'wasfi men edoctoor'
+        # 'wasfi men edoctoor',
+        # 'eh walla nsab bl marad',
+        # 'kn mnsab bas sa7 halla2',
+        'mr7aba',
+        '2hla',
+        '2hwe',
+        'msebe',
     ]
     lb_en = LebaneseToEnglish()
     for text in texts:
-        print(text, ' ==> ', lb_en.lb_to_en(text))
+        print(text, '==>', lb_en.lb_ar.map_lb_to_ar(text))
+        print(text, '==>', lb_en.lb_ar.lb_to_ar(text))
+        print(text, '==>', lb_en.lb_to_ar_to_en(text))
