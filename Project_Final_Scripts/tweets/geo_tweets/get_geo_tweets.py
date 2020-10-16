@@ -5,7 +5,7 @@ import json
 import pandas as pd
 
 
-def generate_url(keywords, lat, long, radius=3, since='2020-10-01'):
+def generate_url(keywords, lat, long, radius=3, since='2020-08-01'):
     keywords = quote(" OR ".join(keywords))
     since = f'%20since%3A{since}' if since else ''
     return f'https://twitter.com/search?q=({keywords})%20geocode%3A{lat}%2C{long}%2C{radius}km{since}&src=typed_query&f=live'
@@ -33,7 +33,7 @@ if __name__ == '__main__':
         'medical'
     ]
 
-    cities = [(33.894204, 35.485805, 'Beirut')]
+    # cities = [(33.894204, 35.485805, 'Beirut')]
 
     for city in cities:
         lat, long, name = city
@@ -41,7 +41,7 @@ if __name__ == '__main__':
         # print(url)
         tw.load_page(url, max_tries=1, timeout=3)
 
-        time.sleep(0.5)
+        # time.sleep(0.5)
         try:
             tw.get_all_tweets()
             data[tuple(city)] = tw.get_tweets()

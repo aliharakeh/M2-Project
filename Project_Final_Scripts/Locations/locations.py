@@ -200,7 +200,7 @@ class LocationFinder:
         """
         # get words list
         en, ar = self.__separate_languages(text)
-        en_locations = ar_locations = []
+        en_locations, ar_locations = [], []
 
         # methods
         if isinstance(method, dict):
