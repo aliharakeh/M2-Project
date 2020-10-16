@@ -299,10 +299,10 @@ if __name__ == '__main__':
     # print(fuzz.partial_ratio('akka', 'akkar'))
     # print(fuzz.ratio('akka', 'akkar'))
 
-    text = 'Hello, I\'m from baabda where Akka live in beirut and beyrut. من بيروت سلام للشويفات'
-    locations = lf.search_text(text, method={'en': Methods.SOUND, 'ar': Methods.EDIT_DISTANCE})
-    for l in locations:
-        print(l)
+    # text = 'Hello, I\'m from baabda where Akka live in beirut and beyrut. من بيروت سلام للشويفات'
+    # locations = lf.search_text(text, method={'en': Methods.SOUND, 'ar': Methods.EDIT_DISTANCE})
+    # for l in locations:
+    #     print(l)
 
     """
     Edit-Distance Results:
@@ -333,3 +333,10 @@ if __name__ == '__main__':
     ('beyrouth', 86)
     ('وطى سلام', 83.5)
     """
+
+    partial_ratio = fuzz.partial_ratio("تل أخضر", "تل الأخضر")
+    ratio = fuzz.ratio("تل أخضر", "تل الأخضر")
+    print(partial_ratio)
+    print(ratio)
+    m = PredictionMethods("تل أخضر", "تل الأخضر")
+    print(m.get_ratio())
