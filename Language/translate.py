@@ -13,6 +13,7 @@ if __name__ == '__main__':
     ]
     lb_en = LebaneseToEnglish()
     for text in texts:
-        print(text, '==>', lb_en.lb_ar.map_lb_to_ar(text))
-        print(text, '==>', lb_en.lb_ar.lb_to_ar(text))
-        print(text, '==>', lb_en.lb_to_ar_to_en(text))
+        print("Mapping", text, '==>', lb_en.lb_ar.map_lb_to_ar(text))
+        print("AR", text, '==>', lb_en.lb_ar.lb_to_ar(text))
+        print("EN", text, '==>', lb_en.lb_to_ar_to_en(text))
+        print('-----------------------------------------------------')
